@@ -1,0 +1,15 @@
+{
+  "@@locale": "es",
+  "mainTitle": "Administrador de OBS",
+  "settings": "Ajustes",
+  "connectToObs": "Conectar a OBS",
+  "startStream": "Iniciar Transmisión",
+  "stopStream": "Detener Transmisión",
+  "scenes": "Escenas",
+  "sources": "Fuentes",
+  "unknownError": "Ocurrió un error desconocido",
+  "connectionRefused": "Conexión rechazada por el servidor OBS",
+  "wifiRequired": "Se requiere conexión Wi-Fi",
+  "cacheEmpty": "No se encontraron configuraciones de conexión guardadas",
+  "timeoutError": "Tiempo de espera de conexión agotado"
+}

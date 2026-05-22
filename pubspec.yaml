@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
   cupertino_icons: ^1.0.8
 
   # Icons
@@ -22,6 +25,7 @@ dependencies:
   signals_flutter: ^5.2.0
   get_it: ^7.6.0
   dartz: ^0.10.1
+  meta: ^1.11.0
   shared_preferences: ^2.5.3
   package_info_plus: ^8.3.1
   device_info_plus: ^10.1.0
@@ -53,3 +57,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
