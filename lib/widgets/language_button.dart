@@ -31,12 +31,6 @@ class LanguageButton extends StatelessWidget {
         label: Text(label),
         selected: isSelected,
         onSelected: onSelected,
-        selectedColor: const Color(0xFF4F46E5),
-        backgroundColor: const Color(0xFF1E1E38),
-        labelStyle: TextStyle(
-          color: isSelected ? Colors.white : Colors.grey,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-        ),
       ),
     );
   }

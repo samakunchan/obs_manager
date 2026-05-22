@@ -25,32 +25,22 @@ class ShowcaseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Card(
-      color: const Color(0xFF16162A),
-      elevation: 8,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: const BorderSide(color: Color(0xFF2C2C4E), width: 1.5),
-      ),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: .start,
           children: [
             Row(
+              spacing: 8,
               children: [
                 Icon(icon, color: color, size: 20),
-                const SizedBox(width: 8),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text(title, style: theme.textTheme.titleMedium),
               ],
             ),
-            const Divider(color: Color(0xFF2C2C4E), height: 20),
+            const Divider(height: 20),
             Expanded(child: child),
           ],
         ),

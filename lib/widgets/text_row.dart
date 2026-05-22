@@ -17,26 +17,17 @@ class TextRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: Text(
-              value,
-              style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w500),
-              overflow: TextOverflow.ellipsis,
-            ),
+            child: Text(value, style: theme.textTheme.bodyMedium, overflow: .ellipsis),
           ),
-          Text(
-            keyName,
-            style: const TextStyle(
-              fontSize: 10,
-              fontFamily: 'monospace',
-              color: Colors.grey,
-            ),
-          ),
+          Text(keyName, style: theme.textTheme.labelSmall),
         ],
       ),
     );

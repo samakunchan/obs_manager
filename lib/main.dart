@@ -15,15 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'OBS Manager',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6366F1),
-          brightness: Brightness.dark,
-        ),
-        scaffoldBackgroundColor: const Color(0xFF0A0A14),
-      ),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       // Default to system locale, or fallback to first supported
@@ -118,11 +112,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     width: 500,
                     height: 500,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0x266366F1), // 15% opacity constant
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? AppColors.darkGlowPrimary
+                              : AppColors.lightGlowPrimary,
                           blurRadius: 150,
                           spreadRadius: 50,
                         ),
@@ -137,11 +133,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     width: 400,
                     height: 400,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0x1EA855F7), // 12% opacity constant
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? AppColors.darkGlowAccent
+                              : AppColors.lightGlowAccent,
                           blurRadius: 120,
                           spreadRadius: 40,
                         ),
@@ -155,19 +153,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      crossAxisAlignment: .stretch,
                       children: [
                         // Header Widget
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: .spaceBetween,
                           children: [
                             Row(
+                              spacing: 14,
                               children: [
                                 Container(
                                   padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                     gradient: const LinearGradient(
-                                      colors: [Color(0xFF6366F1), Color(0xFFA855F7)],
+                                      colors: [AppColors.primary, AppColors.accent],
                                     ),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
@@ -177,24 +176,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                     size: 28,
                                   ),
                                 ),
-                                const SizedBox(width: 14),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       l10n.mainTitle,
-                                      style: const TextStyle(
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 0.5,
-                                      ),
+                                      style: Theme.of(context).textTheme.headlineMedium,
                                     ),
-                                    const Text(
+                                    Text(
                                       'Core Initialization Showcase',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
+                                      style: Theme.of(context).textTheme.bodySmall,
                                     ),
                                   ],
                                 ),
@@ -208,18 +199,21 @@ class _MyHomePageState extends State<MyHomePage> {
                                 vertical: 6,
                               ),
                               decoration: BoxDecoration(
-                                color: const Color(0xFF1E1E38),
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? AppColors.darkChipBg
+                                    : AppColors.lightChipBg,
                                 borderRadius: BorderRadius.circular(20),
                                 border: Border.all(
-                                  color: const Color(0xFF3B3B6D),
+                                  color: Theme.of(context).brightness == Brightness.dark
+                                      ? AppColors.darkChipBorder
+                                      : AppColors.lightChipBorder,
                                 ),
                               ),
                               child: Text(
                                 Localizations.localeOf(context).languageCode.toUpperCase(),
-                                style: const TextStyle(
-                                  color: Color(0xFF818CF8),
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                  color: AppColors.lightIndigo,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 12,
                                 ),
                               ),
                             ),
@@ -228,14 +222,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         const SizedBox(height: 24),
 
                         // Language Selection Row
-                        const Text(
+                        Text(
                           'SELECT LANGUAGE (LOCALIZATION TEST)',
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                            letterSpacing: 1,
-                          ),
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                         const SizedBox(height: 8),
                         SingleChildScrollView(
@@ -289,7 +278,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ShowcaseCard(
                                 title: 'Active Translations',
                                 icon: Icons.translate,
-                                color: const Color(0xFF6366F1),
+                                color: AppColors.primary,
                                 child: ListView(
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
@@ -308,7 +297,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ShowcaseCard(
                                 title: 'Mapped Errors & Alerts',
                                 icon: Icons.warning_amber_rounded,
-                                color: const Color(0xFFF59E0B),
+                                color: AppColors.warningColor,
                                 child: ListView(
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
@@ -326,25 +315,19 @@ class _MyHomePageState extends State<MyHomePage> {
                               ShowcaseCard(
                                 title: 'ClientService (OBS WebSocket)',
                                 icon: Icons.swap_calls_rounded,
-                                color: const Color(0xFF10B981),
+                                color: AppColors.successColor,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
+                                    Text(
                                       'Integrates functional exception-to-failure domain mapping using dartz Either boundaries.',
-                                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                                      style: Theme.of(context).textTheme.bodySmall,
                                     ),
                                     const Spacer(),
                                     SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton.icon(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: const Color(0xFF10B981),
-                                          foregroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                          ),
-                                        ),
+                                        style: kElevatedButtonDarkSuccess,
                                         onPressed: _isLoading ? null : _simulateObsConnection,
                                         icon: const Icon(Icons.play_arrow),
                                         label: const Text('Simulate OBS Failure'),
@@ -358,25 +341,18 @@ class _MyHomePageState extends State<MyHomePage> {
                               ShowcaseCard(
                                 title: 'ApiService (Dio REST Client)',
                                 icon: Icons.cloud_done_outlined,
-                                color: const Color(0xFF3B82F6),
+                                color: AppColors.infoColor,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text(
+                                    Text(
                                       'SOLID client managing generic HTTP requests, custom intercepts, and structured error responses.',
-                                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                                      style: Theme.of(context).textTheme.bodySmall,
                                     ),
                                     const Spacer(),
                                     SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton.icon(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: const Color(0xFF3B82F6),
-                                          foregroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                          ),
-                                        ),
                                         onPressed: _isLoading ? null : _simulateApiCall,
                                         icon: const Icon(Icons.play_arrow),
                                         label: const Text('Simulate HTTP Error'),
@@ -391,38 +367,28 @@ class _MyHomePageState extends State<MyHomePage> {
                         const SizedBox(height: 16),
 
                         // Simulation Logs terminal
-                        const Text(
+                        Text(
                           'SIMULATION LOGS & METADATA',
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                            letterSpacing: 1,
-                          ),
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                         const SizedBox(height: 8),
                         Container(
                           height: 120,
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF09090F),
+                            color: Theme.of(context).brightness == .dark ? AppColors.darkTerminalBg : AppColors.lightTerminalBg,
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: const Color(0xFF232338),
+                              color: Theme.of(context).brightness == .dark
+                                  ? AppColors.darkTerminalBorder
+                                  : AppColors.lightTerminalBorder,
                               width: 1.5,
                             ),
                           ),
                           child: SingleChildScrollView(
                             child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                _simulationLogs,
-                                style: const TextStyle(
-                                  fontFamily: 'monospace',
-                                  fontSize: 11,
-                                  color: Color(0xFF34D399),
-                                ),
-                              ),
+                              alignment: .topLeft,
+                              child: Text(_simulationLogs, style: kTerminalTextStyle),
                             ),
                           ),
                         ),
