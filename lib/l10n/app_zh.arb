@@ -1,0 +1,15 @@
+{
+  "@@locale": "zh",
+  "mainTitle": "OBS 控制台",
+  "settings": "设置",
+  "connectToObs": "连接到 OBS",
+  "startStream": "开始推流",
+  "stopStream": "停止推流",
+  "scenes": "场景",
+  "sources": "来源",
+  "unknownError": "发生未知错误",
+  "connectionRefused": "OBS 服务器拒绝连接",
+  "wifiRequired": "需要 Wi-Fi 连接",
+  "cacheEmpty": "未找到缓存的连接设置",
+  "timeoutError": "连接超时"
+}

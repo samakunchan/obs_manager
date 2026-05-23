@@ -1,0 +1,51 @@
+{
+  "@@locale": "en",
+  "mainTitle": "OBS Manager",
+  "@mainTitle": {
+    "description": "Title of the application"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings label"
+  },
+  "connectToObs": "Connect to OBS",
+  "@connectToObs": {
+    "description": "Button to connect to OBS server"
+  },
+  "startStream": "Start Stream",
+  "@startStream": {
+    "description": "Button to start streaming"
+  },
+  "stopStream": "Stop Stream",
+  "@stopStream": {
+    "description": "Button to stop streaming"
+  },
+  "scenes": "Scenes",
+  "@scenes": {
+    "description": "Scenes list title"
+  },
+  "sources": "Sources",
+  "@sources": {
+    "description": "Sources list title"
+  },
+  "unknownError": "An unknown error occurred",
+  "@unknownError": {
+    "description": "Fallback error message"
+  },
+  "connectionRefused": "Connection refused by the OBS server",
+  "@connectionRefused": {
+    "description": "Error message when connection is refused"
+  },
+  "wifiRequired": "Wi-Fi connection is required",
+  "@wifiRequired": {
+    "description": "Error message when Wi-Fi is disabled"
+  },
+  "cacheEmpty": "No cached connection settings found",
+  "@cacheEmpty": {
+    "description": "Error message when local cache is empty"
+  },
+  "timeoutError": "Connection timed out",
+  "@timeoutError": {
+    "description": "Error message when request times out"
+  }
+}
