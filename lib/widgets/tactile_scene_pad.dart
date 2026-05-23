@@ -104,7 +104,7 @@ class TactileScenePad extends StatelessWidget {
                       Icon(icon, size: 32, color: iconColor),
                       Text(
                         name,
-                        maxLines: 1,
+                        maxLines: 2,
                         overflow: .ellipsis,
                         style: GoogleFonts.jetBrainsMono(fontSize: 11, fontWeight: .w500, color: textColor),
                       ),

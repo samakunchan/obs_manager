@@ -1,17 +1,22 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:obs_manager/core/index.dart';
+import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
+import 'package:obs_manager/features/o_b_s_server/services/services.dart';
+import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
 import 'package:obs_websocket/obs_websocket.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
 class OBSService {
   ObsWebSocket? _socket;
 
+  /// Exposes the active ObsWebSocket connection.
+  ObsWebSocket? get socket => _socket;
+
   // Reactive state signals
   final isConnected = signal<bool>(false);
   final statusMessage = signal<String>('Disconnected');
   final isStreaming = signal<bool>(false);
-  final currentScene = signal<String>('');
 
   /// Attempts to connect to OBS. Enforces a singleton strategy:
   /// if a socket is already active, we close it before reconnecting.
@@ -52,12 +57,10 @@ class OBSService {
           isStreaming.value = streamStatus.outputActive;
         }
 
-        // Fetch initial current scene
+        // Fetch initial scenes and sources via their respective services
         try {
-          final scene = await _socket?.scenes.getCurrentProgramScene();
-          if (scene != null) {
-            currentScene.value = scene;
-          }
+          await getIt<OBSScenesService>().fetchScenes();
+          await getIt<OBSSourcesService>().fetchSources();
         } catch (_) {}
       } else {
         throw OBSServerException('SERVER_CANNOT_CONNECTED');
@@ -82,22 +85,54 @@ class OBSService {
       }
       isConnected.value = false;
       isStreaming.value = false;
-      currentScene.value = '';
+      getIt<OBSScenesService>().clearScenes();
+      getIt<OBSSourcesService>().clearSources();
       statusMessage.value = 'Disconnected';
     } on Exception catch (_) {
       isConnected.value = false;
       isStreaming.value = false;
-      currentScene.value = '';
+      getIt<OBSScenesService>().clearScenes();
+      getIt<OBSSourcesService>().clearSources();
       statusMessage.value = 'Disconnected';
       _socket = null;
       throw OBSServerException('SERVER_CANNOT_DISCONNECTED');
     }
   }
 
-  /// Event listener to react to real-time OBS state changes.
+  /// Starts streaming in OBS.
+  Future<void> startStreaming() async {
+    try {
+      await _socket?.stream.start();
+      isStreaming.value = true;
+    } on Exception catch (e) {
+      if (kDebugMode) {
+        print('Error starting stream: $e');
+      }
+      throw OBSStatusException(e.toString());
+    }
+  }
+
+  /// Stops streaming in OBS.
+  Future<void> stopStreaming() async {
+    try {
+      await _socket?.stream.stop();
+      isStreaming.value = false;
+    } on Exception catch (e) {
+      if (kDebugMode) {
+        print('Error stopping stream: $e');
+      }
+      throw OBSStatusException(e.toString());
+    }
+  }
+
   Future<void> _fallbackEventHandler(Event event) async {
     if (event.eventType == 'CurrentProgramSceneChanged') {
-      currentScene.value = event.eventData?['sceneName']?.toString() ?? '';
+      getIt<OBSScenesService>().activeSceneName = event.eventData?['sceneName']?.toString() ?? '';
+      await getIt<OBSSourcesService>().fetchSources();
+    }
+
+    if (event.eventType == 'SceneItemEnableStateChanged') {
+      await getIt<OBSSourcesService>().fetchSources();
     }
 
     if (event.eventType == 'StreamStateChanged') {
