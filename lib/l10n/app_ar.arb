@@ -1,0 +1,15 @@
+{
+  "@@locale": "ar",
+  "mainTitle": "مدير OBS",
+  "settings": "الإعدادات",
+  "connectToObs": "الاتصال بـ OBS",
+  "startStream": "بدء البث",
+  "stopStream": "إيقاف البث",
+  "scenes": "المشاهد",
+  "sources": "المصادر",
+  "unknownError": "حدث خطأ غير معروف",
+  "connectionRefused": "تم رفض الاتصال من قبل خادم OBS",
+  "wifiRequired": "مطلوب اتصال Wi-Fi",
+  "cacheEmpty": "لم يتم العثور على إعدادات اتصال محفوظة",
+  "timeoutError": "انتهت مهلة الاتصال"
+}
