@@ -7,7 +7,7 @@ class CyberBackgroundGlows extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      fit: StackFit.expand,
+      fit: .expand,
       children: [
         Positioned(
           top: -250,
@@ -15,10 +15,7 @@ class CyberBackgroundGlows extends StatelessWidget {
           child: Container(
             width: 600,
             height: 600,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0x0C00E5FF), // 5% opacity cyan
-            ),
+            decoration: const BoxDecoration(shape: .circle, color: Color(0x0C00E5FF)),
           ),
         ),
         Positioned(
@@ -27,10 +24,7 @@ class CyberBackgroundGlows extends StatelessWidget {
           child: Container(
             width: 500,
             height: 500,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0x0975D1FF), // 4% opacity secondary sky blue
-            ),
+            decoration: const BoxDecoration(shape: .circle, color: Color(0x0975D1FF)),
           ),
         ),
       ],

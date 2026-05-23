@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:obs_manager/core/index.dart';
+import 'package:obs_manager/core/theme/constantes.dart';
+import 'package:obs_manager/features/o_b_s_server/o_b_s_server.dart';
+import 'package:signals_flutter/signals_flutter.dart';
 
 /// Individual list option in the station drawer
 class StationDrawerOption extends StatelessWidget {
@@ -104,6 +106,25 @@ class StationDrawer extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+
+            /// OBS Connection Controls
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Watch((context) {
+                final bool isConnected = getIt<OBSService>().isConnected.value;
+                final String status = getIt<OBSService>().statusMessage.value;
+
+                return Column(
+                  crossAxisAlignment: .stretch,
+                  spacing: 12,
+                  children: [
+                    LabelInfoStatusConnection(isConnected: isConnected, status: status),
+                    const ConnectToOBSButton(),
+                    const DisconnectToOBSButton(),
+                  ],
+                );
+              }),
             ),
 
             /// Close Button
