@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/theme/constantes.dart';
 
 /// Centralized application theme provider defining Light and Dark themes.
@@ -123,28 +124,29 @@ class AppTheme {
           side: const BorderSide(color: AppColors.lightChipBorder),
         ),
       ),
-      textTheme: const TextTheme(
-        headlineMedium: TextStyle(
+      textTheme: TextTheme(
+        headlineMedium: const TextStyle(
           fontSize: 24,
           fontWeight: .bold,
           letterSpacing: 0.5,
           color: AppColors.textDark,
         ),
-        titleMedium: TextStyle(
+        titleMedium: const TextStyle(
           fontSize: 15,
           fontWeight: .bold,
           color: AppColors.textDark,
         ),
-        bodyMedium: TextStyle(
+        bodyLarge: GoogleFonts.barlowCondensed(fontSize: 20, fontWeight: .bold, letterSpacing: 1, color: Colors.white),
+        bodyMedium: const TextStyle(
           fontSize: 12.5,
           fontWeight: .w500,
           color: AppColors.textDark,
         ),
-        bodySmall: TextStyle(
+        bodySmall: const TextStyle(
           fontSize: 12,
           color: AppColors.textHintDark,
         ),
-        labelMedium: TextStyle(
+        labelMedium: const TextStyle(
           fontSize: 11,
           fontWeight: .bold,
           color: AppColors.textHintDark,
@@ -154,10 +156,18 @@ class AppTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(style: kElevatedButtonDarkPrimary),
       iconButtonTheme: IconButtonThemeData(style: kElevatedButtonDarkPrimary),
+      outlinedButtonTheme: OutlinedButtonThemeData(style: kOutlinedButtonDarkPrimary),
       iconTheme: kIconTheme,
     );
   }
 }
+
+ButtonStyle kOutlinedButtonDarkPrimary = OutlinedButton.styleFrom(
+  side: const BorderSide(color: AppColors.textHintLight),
+  foregroundColor: AppColors.cyberTextLight,
+  padding: const EdgeInsets.symmetric(vertical: 14),
+  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+);
 
 ButtonStyle kElevatedButtonDarkPrimary = ElevatedButton.styleFrom(
   backgroundColor: AppColors.primary,

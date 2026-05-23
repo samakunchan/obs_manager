@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppDefaultValues {
   AppDefaultValues._();
@@ -32,6 +33,20 @@ class AppColors {
   static const Color accent = Color(0xFFA855F7);
   static const Color lightIndigo = Color(0xFF818CF8);
   static const Color selectedChip = Color(0xFF4F46E5);
+
+  // Cyber-Broadcaster / Stitch UI Colors
+  static const Color cyberSurface = Color(0xFF051424);
+  static const Color cyberSurfaceContainerLowest = Color(0xFF010F1F);
+  static const Color cyberSurfaceContainerLow = Color(0xFF0E1C2D);
+  static const Color cyberSurfaceContainer = Color(0xFF122031);
+  static const Color cyberSurfaceContainerHigh = Color(0xFF1D2B3C);
+  static const Color cyberSurfaceContainerHighest = Color(0xFF283647);
+  static const Color cyberCyan = Color(0xFF00E5FF);
+  static const Color cyberHighlight = Color(0x3B494C66);
+  static const Color cyberSkyBlue = Color(0xFF75D1FF);
+  static const Color cyberAlertRed = Color(0xFFFF1744);
+  static const Color cyberTextLight = Color(0xFFD5E4FA);
+  static const Color cyberTextMuted = Color(0xFFBAC9CC);
 
   // Semantic Status Colors
   static const Color successColor = Color(0xFF10B981);
@@ -88,4 +103,15 @@ class AppChipsTheme {
   AppChipsTheme._();
 
   static const double borderWidth = 1;
+}
+
+class AppTextTheme {
+  AppTextTheme._();
+
+  static TextStyle barlowCondensed = GoogleFonts.barlowCondensed(
+    fontSize: 20,
+    fontWeight: .bold,
+    letterSpacing: 1,
+    color: Colors.white,
+  );
 }
