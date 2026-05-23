@@ -9,6 +9,7 @@ import 'package:obs_manager/features/o_b_s_server/o_b_s_server.dart';
 import 'package:obs_manager/pages/main_page/desktop_layout.dart';
 import 'package:obs_manager/pages/main_page/mobile_layout.dart';
 import 'package:obs_manager/widgets/widgets.dart';
+import 'package:obs_websocket/obs_websocket.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
 /// State-of-the-art OBS Manager Tactile Command Center.
@@ -23,9 +24,9 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   // Live streaming states
-  bool _isStreaming = false;
-  int _activeSceneIndex = 0;
-  String _activeSceneName = 'STARTING_SOON';
+  final bool _isStreaming = false;
+  final int _activeSceneIndex = 0;
+  final String _activeSceneName = 'STARTING_SOON';
 
   // Animation for pulsing REC red dot
   late AnimationController _pulseController;
@@ -36,34 +37,6 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
   double _bgmDb = -24;
   double _discordDb = -18.2;
   late Timer _vuMeterTimer;
-
-  // Preset scene list mirroring the mockup
-  final List<Map<String, dynamic>> _scenes = [
-    {
-      'name': 'STARTING_SOON',
-      'icon': Icons.grid_view,
-    },
-    {
-      'name': 'FULL_CAM',
-      'icon': Icons.person,
-    },
-    {
-      'name': 'GAMEPLAY_ULTRA',
-      'icon': Icons.desktop_windows,
-    },
-    {
-      'name': 'INTERMISSION',
-      'icon': Icons.chat,
-    },
-    {
-      'name': 'GUEST_SPLIT',
-      'icon': Icons.group,
-    },
-    {
-      'name': 'BE_RIGHT_BACK',
-      'icon': Icons.videocam_off,
-    },
-  ];
 
   @override
   void initState() {
@@ -102,49 +75,6 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
     super.dispose();
   }
 
-  IconData _getIconForScene(String sceneName) {
-    final name = sceneName.toUpperCase();
-    if (name.contains('CAM') || name.contains('PERSON')) {
-      return Icons.person;
-    }
-    if (name.contains('GAME') || name.contains('PLAY') || name.contains('DESKTOP') || name.contains('SCREEN')) {
-      return Icons.desktop_windows;
-    }
-    if (name.contains('CHAT') || name.contains('INTERMISSION') || name.contains('TALK')) {
-      return Icons.chat;
-    }
-    if (name.contains('GUEST') || name.contains('GROUP') || name.contains('SPLIT') || name.contains('COLLAB')) {
-      return Icons.group;
-    }
-    if (name.contains('BRB') ||
-        name.contains('RIGHT') ||
-        name.contains('BACK') ||
-        name.contains('OFF') ||
-        name.contains('PAUSE')) {
-      return Icons.videocam_off;
-    }
-    if (name.contains('SOON') || name.contains('START') || name.contains('GRID') || name.contains('INTRO')) {
-      return Icons.grid_view;
-    }
-    if (name.contains('END') || name.contains('OUTRO')) {
-      return Icons.power_settings_new;
-    }
-    if (name.contains('STREAM')) {
-      return Icons.desktop_mac;
-    }
-    if (name.contains('IPAD')) {
-      return Icons.tablet_mac;
-    }
-    if (name.contains('IDE')) {
-      return Icons.screen_search_desktop;
-    }
-    if (name.contains('APPLICATION')) {
-      return Icons.apps;
-    }
-    // Fallback
-    return Icons.layers;
-  }
-
   Future<void> _toggleStream() async {
     final OBSService obsService = getIt<OBSService>();
     if (obsService.isConnected.value) {
@@ -154,19 +84,6 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
           await obsService.startStreaming();
         } else {
           await obsService.stopStreaming();
-        }
-
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: starting ? AppColors.successColor : AppColors.cyberAlertRed,
-              content: Text(
-                starting ? '🚨 LIVE BROADCAST INITIALIZED' : '🛑 BROADCAST TERMINATED',
-                style: GoogleFonts.jetBrainsMono(color: Colors.white, fontWeight: .bold),
-              ),
-              duration: const Duration(seconds: 2),
-            ),
-          );
         }
       } catch (e) {
         if (mounted) {
@@ -183,15 +100,11 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
         }
       }
     } else {
-      setState(() {
-        _isStreaming = !_isStreaming;
-      });
-
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          backgroundColor: _isStreaming ? AppColors.successColor : AppColors.cyberAlertRed,
+          backgroundColor: AppColors.cyberAlertRed,
           content: Text(
-            _isStreaming ? '🚨 LIVE BROADCAST INITIALIZED (MOCK)' : '🛑 BROADCAST TERMINATED (MOCK)',
+            '🚨 OBS IS NOT CONNECTED',
             style: GoogleFonts.jetBrainsMono(color: Colors.white, fontWeight: .bold),
           ),
           duration: const Duration(seconds: 2),
@@ -218,10 +131,10 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
       final int activeSceneIndex;
 
       if (isConnected) {
-        scenesList = scenesService.scenes.value.map((scene) {
+        scenesList = scenesService.scenes.value.map((Scene scene) {
           return {
             'name': scene.sceneName,
-            'icon': _getIconForScene(scene.sceneName),
+            'icon': getIconForScene(scene.sceneName),
           };
         }).toList();
 
@@ -229,7 +142,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
         final index = scenesList.indexWhere((s) => s['name'] == activeSceneName);
         activeSceneIndex = index != -1 ? index : 0;
       } else {
-        scenesList = _scenes;
+        scenesList = List.empty(growable: true);
         activeSceneName = _activeSceneName;
         activeSceneIndex = _activeSceneIndex;
       }
@@ -271,11 +184,6 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
                             onSceneSelected: (int index, String name) {
                               if (isConnected) {
                                 getIt<OBSScenesService>().changeScene(name);
-                              } else {
-                                setState(() {
-                                  _activeSceneIndex = index;
-                                  _activeSceneName = name;
-                                });
                               }
                             },
                           )
@@ -289,11 +197,6 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
                             onSceneSelected: (int index, String name) {
                               if (isConnected) {
                                 getIt<OBSScenesService>().changeScene(name);
-                              } else {
-                                setState(() {
-                                  _activeSceneIndex = index;
-                                  _activeSceneName = name;
-                                });
                               }
                             },
                           ),
