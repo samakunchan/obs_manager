@@ -148,7 +148,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
   Future<void> _toggleStream() async {
     final OBSService obsService = getIt<OBSService>();
     if (obsService.isConnected.value) {
-      final bool starting = !obsService.isStreaming.value;
+      final bool starting = obsService.streamStatus.value != StatusStream.started;
       try {
         if (starting) {
           await obsService.startStreaming();
@@ -209,7 +209,9 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
 
     return Watch((_) {
       final bool isConnected = obsService.isConnected.value;
-      final bool liveStreaming = isConnected ? obsService.isStreaming.value : _isStreaming;
+      final bool liveStreaming = isConnected
+          ? (obsService.streamStatus.value == StatusStream.started || obsService.streamStatus.value == StatusStream.isStarting)
+          : _isStreaming;
 
       final List<Map<String, dynamic>> scenesList;
       final String activeSceneName;
@@ -306,7 +308,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
               left: 0,
               right: 0,
               child: BottomActionBar(
-                isStreaming: liveStreaming,
+                streamStatus: obsService.streamStatus.value,
                 onToggleStream: _toggleStream,
               ),
             ),

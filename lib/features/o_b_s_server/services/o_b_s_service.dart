@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
@@ -6,6 +7,7 @@ import 'package:obs_manager/features/o_b_s_server/services/services.dart';
 import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
 import 'package:obs_websocket/obs_websocket.dart';
 import 'package:signals_flutter/signals_flutter.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class OBSService {
   ObsWebSocket? _socket;
@@ -16,7 +18,7 @@ class OBSService {
   // Reactive state signals
   final isConnected = signal<bool>(false);
   final statusMessage = signal<String>('Disconnected');
-  final isStreaming = signal<bool>(false);
+  final streamStatus = signal<StatusStream>(StatusStream.stopped);
 
   /// Attempts to connect to OBS. Enforces a singleton strategy:
   /// if a socket is already active, we close it before reconnecting.
@@ -52,9 +54,9 @@ class OBSService {
         await _socket?.subscribe(EventSubscription.all);
 
         // Fetch initial streaming status
-        final streamStatus = await _socket?.stream.status;
-        if (streamStatus != null) {
-          isStreaming.value = streamStatus.outputActive;
+        final initialStreamStatus = await _socket?.stream.status;
+        if (initialStreamStatus != null) {
+          streamStatus.value = initialStreamStatus.outputActive ? StatusStream.started : StatusStream.stopped;
         }
 
         // Fetch initial scenes and sources via their respective services
@@ -84,13 +86,13 @@ class OBSService {
         _socket = null;
       }
       isConnected.value = false;
-      isStreaming.value = false;
+      streamStatus.value = StatusStream.stopped;
       getIt<OBSScenesService>().clearScenes();
       getIt<OBSSourcesService>().clearSources();
       statusMessage.value = 'Disconnected';
     } on Exception catch (_) {
       isConnected.value = false;
-      isStreaming.value = false;
+      streamStatus.value = StatusStream.stopped;
       getIt<OBSScenesService>().clearScenes();
       getIt<OBSSourcesService>().clearSources();
       statusMessage.value = 'Disconnected';
@@ -103,7 +105,7 @@ class OBSService {
   Future<void> startStreaming() async {
     try {
       await _socket?.stream.start();
-      isStreaming.value = true;
+      streamStatus.value = StatusStream.isStarting;
     } on Exception catch (e) {
       if (kDebugMode) {
         print('Error starting stream: $e');
@@ -116,7 +118,7 @@ class OBSService {
   Future<void> stopStreaming() async {
     try {
       await _socket?.stream.stop();
-      isStreaming.value = false;
+      streamStatus.value = StatusStream.isStopping;
     } on Exception catch (e) {
       if (kDebugMode) {
         print('Error stopping stream: $e');
@@ -137,10 +139,20 @@ class OBSService {
 
     if (event.eventType == 'StreamStateChanged') {
       final state = event.eventData?['outputState']?.toString();
-      if (state == 'OBS_WEBSOCKET_OUTPUT_STARTED') {
-        isStreaming.value = true;
+      if (state == 'OBS_WEBSOCKET_OUTPUT_STARTING') {
+        streamStatus.value = StatusStream.isStarting;
+      } else if (state == 'OBS_WEBSOCKET_OUTPUT_STARTED') {
+        streamStatus.value = StatusStream.started;
+        try {
+          await WakelockPlus.enable();
+        } catch (_) {}
+      } else if (state == 'OBS_WEBSOCKET_OUTPUT_STOPPING') {
+        streamStatus.value = StatusStream.isStopping;
       } else if (state == 'OBS_WEBSOCKET_OUTPUT_STOPPED') {
-        isStreaming.value = false;
+        streamStatus.value = StatusStream.stopped;
+        try {
+          await WakelockPlus.disable();
+        } catch (_) {}
       }
     }
   }
