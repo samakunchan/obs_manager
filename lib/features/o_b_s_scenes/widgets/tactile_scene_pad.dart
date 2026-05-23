@@ -2,64 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/core/utils/utils.dart';
-
-/// Clipper for geometric 45° chamfered corners (top-left & bottom-right).
-class ChamferClipper extends CustomClipper<Path> {
-  const ChamferClipper({this.chamferSize = 12.0});
-
-  final double chamferSize;
-
-  @override
-  Path getClip(Size size) {
-    return Path()
-      ..moveTo(chamferSize, 0)
-      ..lineTo(size.width, 0)
-      ..lineTo(size.width, size.height - chamferSize)
-      ..lineTo(size.width - chamferSize, size.height)
-      ..lineTo(0, size.height)
-      ..lineTo(0, chamferSize)
-      ..close();
-  }
-
-  @override
-  bool shouldReclip(covariant ChamferClipper oldClipper) => oldClipper.chamferSize != chamferSize;
-}
-
-/// Custom painter to draw a continuous stroke around the chamfered path.
-class ChamferBorderPainter extends CustomPainter {
-  const ChamferBorderPainter({
-    required this.color,
-    this.chamferSize = 12.0,
-    this.strokeWidth = 1.5,
-  });
-
-  final double chamferSize;
-  final Color color;
-  final double strokeWidth;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Paint paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth;
-
-    final Path path = Path()
-      ..moveTo(chamferSize, 0)
-      ..lineTo(size.width, 0)
-      ..lineTo(size.width, size.height - chamferSize)
-      ..lineTo(size.width - chamferSize, size.height)
-      ..lineTo(0, size.height)
-      ..lineTo(0, chamferSize)
-      ..close();
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant ChamferBorderPainter oldDelegate) =>
-      oldDelegate.color != color || oldDelegate.chamferSize != chamferSize || oldDelegate.strokeWidth != strokeWidth;
-}
+import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 
 /// Custom 45° Clipped Tactile Button Pad
 class TactileScenePad extends StatelessWidget {

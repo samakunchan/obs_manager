@@ -1,6 +1,8 @@
 /// Centralized OBS Scenes Feature Exports
 library;
 
-/// Services
-export 'services/services.dart'; // Widgets
+export 'clippers/clippers.dart';
+export 'painters/painters.dart';
+export 'services/services.dart';
+export 'utils/utils.dart';
 export 'widgets/widgets.dart';
