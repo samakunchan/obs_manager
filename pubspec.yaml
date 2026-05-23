@@ -2,7 +2,7 @@ name: obs_manager
 description: "A new Flutter project to manage OBS (replaces obs_for_sama)."
 publish_to: "none"
 
-version: 1.0.0+1
+version: 0.2.0+2
 
 environment:
   sdk: ^3.10.1
