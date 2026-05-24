@@ -87,10 +87,10 @@ class ExceptionModel implements Exception {
   final int statusCode;
 
   Map<String, dynamic> toJson() => {
-        'message': message,
-        'exception': exception,
-        'statusCode': statusCode,
-      };
+    'message': message,
+    'exception': exception,
+    'statusCode': statusCode,
+  };
 
   @override
   String toString() => 'ExceptionModel(message: $message, exception: $exception, statusCode: $statusCode)';

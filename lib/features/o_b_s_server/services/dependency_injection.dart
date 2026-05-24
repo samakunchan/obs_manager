@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:obs_manager/features/app_lifecycle/app_lifecycle.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 import 'package:obs_manager/features/o_b_s_server/services/o_b_s_service.dart';
+import 'package:obs_manager/features/o_b_s_sound/o_b_s_sound.dart';
 import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
 
 final getIt = GetIt.instance;
@@ -11,5 +12,6 @@ void setupLocator() {
     ..registerLazySingleton<OBSService>(OBSService.new)
     ..registerLazySingleton<OBSScenesService>(OBSScenesService.new)
     ..registerLazySingleton<OBSSourcesService>(OBSSourcesService.new)
+    ..registerLazySingleton<OBSSoundService>(OBSSoundService.new)
     ..registerLazySingleton<AppLifecycleService>(AppLifecycleService.new);
 }

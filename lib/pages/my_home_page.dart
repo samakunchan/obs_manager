@@ -342,7 +342,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 120,
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkTerminalBg : AppColors.lightTerminalBg,
+                            color: Theme.of(context).brightness == Brightness.dark
+                                ? AppColors.darkTerminalBg
+                                : AppColors.lightTerminalBg,
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
                               color: Theme.of(context).brightness == Brightness.dark

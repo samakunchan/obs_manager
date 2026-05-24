@@ -1,5 +1,21 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.5.0 - 24/05/2026
+
+### Added
+- Created the new `o_b_s_sound` feature module to support microphone state detection and management reactively with Signals + GetIt.
+- Built a high-fidelity, interactive `OBSToggleSoundButton` displaying microphone volume and mute states with glowing neon background, custom borders, and seamless scale micro-animations.
+- Integrated a premium **Audio Control** dashboard in `AudioMixPanel` displaying current microphone name (synchronized from OBS) and glowing, color-coded live/muted status states.
+- Implemented real-time event-driven synchronization for sound mute states using the OBS WebSocket `InputMuteStateChanged` event fallback handler inside `OBSService`.
+
+### Changed
+- Refactored UI layouts (`DesktopLayout` and `MobileLayout`) to consume the new `AudioMixPanel` with zero parameters.
+- Purged all simulated, non-poolable DB levels, VU timers, and math packages from `tactile_command_page.dart` to optimize CPU efficiency and keep code maintainable.
+- Standardized `const` constructors on layout pages to maximize drawing and rendering performance.
+
+### Fixed
+- Fixed and cleaned up all unused imports, trailing comma placements, and linter constraints to achieve a 100% clean `flutter analyze` build.
+
 ## 🚀 0.4.0 - 24/05/2026
 
 ### Added

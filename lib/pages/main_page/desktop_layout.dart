@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
+import 'package:obs_manager/features/o_b_s_sound/o_b_s_sound.dart';
 import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
-import 'package:obs_manager/widgets/widgets.dart';
 
-/// Dynamic Widescreen Split Panel Layout Widget
 class DesktopLayout extends StatelessWidget {
   const DesktopLayout({
     required this.isConnected,
     required this.scenes,
     required this.activeSceneIndex,
     required this.activeSceneName,
-    required this.micDb,
-    required this.bgmDb,
-    required this.discordDb,
     required this.onSceneSelected,
     super.key,
   });
@@ -21,9 +17,6 @@ class DesktopLayout extends StatelessWidget {
   final List<Map<String, dynamic>> scenes;
   final int activeSceneIndex;
   final String activeSceneName;
-  final double micDb;
-  final double bgmDb;
-  final double discordDb;
   final void Function(int index, String name) onSceneSelected;
 
   @override
@@ -50,19 +43,18 @@ class DesktopLayout extends StatelessWidget {
               else
                 const OfflineScenesPlaceholder(),
               const SizedBox(height: 24),
-              PreviewMonitor(activeSceneName: activeSceneName),
+              // PreviewMonitor(activeSceneName: activeSceneName),
             ],
           ),
         ),
-        // Right Area: Audio sliders and active sources
-        Expanded(
+        const Expanded(
           flex: 4,
           child: Column(
-            crossAxisAlignment: .start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AudioMixPanel(micDb: micDb, bgmDb: bgmDb, discordDb: discordDb),
-              const SizedBox(height: 24),
-              const SourcesPanel(),
+              AudioMixPanel(),
+              SizedBox(height: 24),
+              SourcesPanel(),
             ],
           ),
         ),
