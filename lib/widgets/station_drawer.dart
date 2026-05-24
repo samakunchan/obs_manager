@@ -111,7 +111,7 @@ class StationDrawer extends StatelessWidget {
             /// OBS Connection Controls
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Watch((context) {
+              child: Watch((_) {
                 final bool isConnected = getIt<OBSService>().isConnected.value;
                 final String status = getIt<OBSService>().statusMessage.value;
 
