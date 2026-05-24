@@ -1,5 +1,21 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.4.0 - 24/05/2026
+
+### Added
+- Created new feature module `lib/features/app_lifecycle/` to manage app-lifecycle aware states and WiFi network connectivity fallback screens.
+- Implemented reactive WiFi tracking utilizing the `connectivity_plus` package inside `AppLifecycleService`.
+- Built custom full-screen cyberpunk `NoWifiScreen` warning page with pulsing red icon warning signals and a manual "RESCAN CONNECTION" button.
+- Built a beautiful cyber-style `ReconnectingScreen` loading spinner showing status animations during automatic reconnect sequences.
+- Developed `AppLifecycleGate` widget wrapping `Watch` which blocks the command interface reactively on WiFi loss, transitions to a loading screen on reconnection, and displays the main dashboard on success.
+
+### Changed
+- Updated `AppLifecycleService` to automatically trigger `obsService.logout()` to tear down websocket sessions on WiFi loss and automatically trigger `obsService.reconnect()` on restored WiFi connection.
+- Integrated `WidgetsFlutterBinding.ensureInitialized()` and `AppLifecycleService` bootstrap initialization in `main.dart`, wrapping the home root tactile command center with `AppLifecycleGate`.
+
+### Fixed
+- Resolved all double literal parameters and typed warnings to achieve 100% clean `flutter analyze`.
+
 ## 🚀 0.3.0 - 24/05/2026
 
 ### Added
