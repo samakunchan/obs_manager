@@ -11,6 +11,9 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 
 class OBSService {
   ObsWebSocket? _socket;
+  String? _lastIp;
+  String? _lastPort;
+  String? _lastPassword;
 
   /// Exposes the active ObsWebSocket connection.
   ObsWebSocket? get socket => _socket;
@@ -47,6 +50,10 @@ class OBSService {
       // Verify connection by getting active profile list
       final ProfileListResponse? defaultProfile = await _socket?.config.getProfileList();
       if (defaultProfile != null && defaultProfile.currentProfileName.isNotEmpty) {
+        _lastIp = ip;
+        _lastPort = port;
+        _lastPassword = password;
+
         isConnected.value = true;
         statusMessage.value = 'Connected';
 
@@ -75,6 +82,19 @@ class OBSService {
         print('Message : $e');
       }
       throw OBSServerException(e.toString());
+    }
+  }
+
+  /// Reconnects to OBS using the cached last used credentials.
+  Future<void> reconnect() async {
+    final ip = _lastIp;
+    final port = _lastPort;
+    if (ip != null && port != null) {
+      await connect(
+        ip: ip,
+        port: port,
+        password: _lastPassword,
+      );
     }
   }
 
