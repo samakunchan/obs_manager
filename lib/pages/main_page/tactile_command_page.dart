@@ -139,7 +139,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
         }).toList();
 
         activeSceneName = scenesService.currentScene.value;
-        final index = scenesList.indexWhere((s) => s['name'] == activeSceneName);
+        final int index = scenesList.indexWhere((s) => s['name'] == activeSceneName);
         activeSceneIndex = index != -1 ? index : 0;
       } else {
         scenesList = List.empty(growable: true);
