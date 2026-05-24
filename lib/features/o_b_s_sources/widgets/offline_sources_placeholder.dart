@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:obs_manager/core/index.dart';
+
+/// A custom cyber-aesthetic placeholder widget displayed when OBS is disconnected
+class OfflineSourcesPlaceholder extends StatelessWidget {
+  const OfflineSourcesPlaceholder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+      decoration: BoxDecoration(
+        color: AppColors.cyberSurfaceContainerHigh.withValues(alpha: 0.2),
+        borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusQuaternary),
+        border: Border.all(
+          color: AppColors.cyberHighlight,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: .center,
+        spacing: 12,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: AppColors.cyberHighlight.withValues(alpha: 0.1),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.sensors_off_rounded,
+              color: AppColors.cyberTextMuted,
+              size: 24,
+            ),
+          ),
+          Text(
+            'SOURCES OFFLINE',
+            style: GoogleFonts.barlowCondensed(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.2,
+              color: AppColors.cyberTextMuted,
+            ),
+          ),
+          Text(
+            'Connect to the OBS server to load active scene inputs.',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.inter(
+              fontSize: 11,
+              height: 1.3,
+              color: AppColors.cyberTextMuted.withValues(alpha: 0.7),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:obs_manager/widgets/widgets.dart';
+import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 
 /// Dynamic grid displaying all preset scene buttons
 class ScenesGrid extends StatelessWidget {

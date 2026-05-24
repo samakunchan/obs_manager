@@ -46,54 +46,62 @@ class BottomNavButton extends StatelessWidget {
 /// Bottom action bar controls (CTA & horizontal navigation)
 class BottomActionBar extends StatelessWidget {
   const BottomActionBar({
-    required this.isStreaming,
+    required this.streamStatus,
     required this.onToggleStream,
     super.key,
   });
 
-  final bool isStreaming;
+  final StatusStream streamStatus;
   final VoidCallback onToggleStream;
 
   @override
   Widget build(BuildContext context) {
+    final String streamStatusMessage = switch (streamStatus) {
+      StatusStream.isStarting => 'IS STARTING',
+      StatusStream.isStopping => 'IS STOPPING',
+      StatusStream.started => 'STOP STREAM',
+      StatusStream.stopped => 'START STREAM',
+    };
+
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
         color: AppColors.cyberSurfaceContainerLow.withValues(alpha: 0.8),
         border: const Border(top: BorderSide(color: Color(0x3B00E5FF))),
       ),
-      child: SafeArea(
-        top: false,
-        child: Row(
-          mainAxisAlignment: .spaceAround,
-          children: [
-            const BottomNavButton(icon: Icons.grid_view, label: 'SCENES', isActive: true),
-            const BottomNavButton(icon: Icons.equalizer, label: 'AUDIO', isActive: false),
-            const BottomNavButton(icon: Icons.podcasts, label: 'MONITORING', isActive: false),
-            // const BottomNavButton(icon: Icons.layers, label: 'SOURCES', isActive: false),
+      child: Row(
+        mainAxisAlignment: .spaceAround,
+        children: [
+          const BottomNavButton(icon: Icons.grid_view, label: 'SCENES', isActive: true),
+          const BottomNavButton(icon: Icons.equalizer, label: 'AUDIO', isActive: false),
+          const BottomNavButton(icon: Icons.podcasts, label: 'MONITORING', isActive: false),
+          // const BottomNavButton(icon: Icons.layers, label: 'SOURCES', isActive: false),
 
-            /// Central broadcast CTA
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: isStreaming ? AppColors.cyberAlertRed : AppColors.cyberSkyBlue.withValues(alpha: 0.8),
-                  foregroundColor: Colors.black,
-                  shadowColor: isStreaming ? AppColors.cyberAlertRed : AppColors.cyberCyan,
-                  elevation: 8,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusTertiary)),
-                ),
-                onPressed: onToggleStream,
-                icon: const Icon(Icons.rocket_launch, size: 20),
-                label: Text(
-                  isStreaming ? 'STOP STREAM' : 'START STREAM',
-                  style: GoogleFonts.barlowCondensed(fontSize: 16, fontWeight: .bold, letterSpacing: 1.2),
-                ),
+          /// Central broadcast CTA
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: streamStatus == StatusStream.started || streamStatus == StatusStream.isStopping
+                    ? AppColors.cyberAlertRed
+                    : AppColors.cyberSkyBlue.withValues(alpha: 0.8),
+                foregroundColor: Colors.black,
+                shadowColor: streamStatus == StatusStream.started || streamStatus == StatusStream.isStopping
+                    ? AppColors.cyberAlertRed
+                    : AppColors.cyberCyan,
+                elevation: 8,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusTertiary)),
+              ),
+              onPressed: onToggleStream,
+              icon: const Icon(Icons.rocket_launch, size: 20),
+              label: Text(
+                streamStatusMessage,
+                style: GoogleFonts.barlowCondensed(fontSize: 16, fontWeight: .bold, letterSpacing: 1.2),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
