@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
+import 'package:obs_manager/features/o_b_s_sound/o_b_s_sound.dart';
 import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
-import 'package:obs_manager/widgets/widgets.dart';
 
 /// Dynamic Vertical Mobile Stacking Layout Widget
 class MobileLayout extends StatelessWidget {
@@ -9,9 +9,6 @@ class MobileLayout extends StatelessWidget {
     required this.isConnected,
     required this.scenes,
     required this.activeSceneIndex,
-    required this.micDb,
-    required this.bgmDb,
-    required this.discordDb,
     required this.onSceneSelected,
     super.key,
   });
@@ -19,9 +16,6 @@ class MobileLayout extends StatelessWidget {
   final bool isConnected;
   final List<Map<String, dynamic>> scenes;
   final int activeSceneIndex;
-  final double micDb;
-  final double bgmDb;
-  final double discordDb;
   final void Function(int index, String name) onSceneSelected;
 
   @override
@@ -60,7 +54,7 @@ class MobileLayout extends StatelessWidget {
         ),
 
         /// Audio
-        AudioMixPanel(micDb: micDb, bgmDb: bgmDb, discordDb: discordDb),
+        const AudioMixPanel(),
       ],
     );
   }

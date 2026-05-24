@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 import 'package:obs_manager/features/o_b_s_server/services/services.dart';
+import 'package:obs_manager/features/o_b_s_sound/o_b_s_sound.dart';
 import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
 import 'package:obs_websocket/obs_websocket.dart';
 import 'package:signals_flutter/signals_flutter.dart';
@@ -19,9 +20,9 @@ class OBSService {
   ObsWebSocket? get socket => _socket;
 
   // Reactive state signals
-  final isConnected = signal<bool>(false);
-  final statusMessage = signal<String>('Disconnected');
-  final streamStatus = signal<StatusStream>(StatusStream.stopped);
+  final Signal<bool> isConnected = signal<bool>(false);
+  final Signal<String> statusMessage = signal<String>('Disconnected');
+  final Signal<StatusStream> streamStatus = signal<StatusStream>(StatusStream.stopped);
 
   /// Attempts to connect to OBS. Enforces a singleton strategy:
   /// if a socket is already active, we close it before reconnecting.
@@ -70,6 +71,8 @@ class OBSService {
         try {
           await getIt<OBSScenesService>().fetchScenes();
           await getIt<OBSSourcesService>().fetchSources();
+          await getIt<OBSSoundService>().detectSoundConfiguration();
+          await getIt<OBSSoundService>().getStatusSound();
         } catch (_) {}
       } else {
         throw OBSServerException('SERVER_CANNOT_CONNECTED');
@@ -109,12 +112,14 @@ class OBSService {
       streamStatus.value = StatusStream.stopped;
       getIt<OBSScenesService>().clearScenes();
       getIt<OBSSourcesService>().clearSources();
+      getIt<OBSSoundService>().clearSound();
       statusMessage.value = 'Disconnected';
     } on Exception catch (_) {
       isConnected.value = false;
       streamStatus.value = StatusStream.stopped;
       getIt<OBSScenesService>().clearScenes();
       getIt<OBSSourcesService>().clearSources();
+      getIt<OBSSoundService>().clearSound();
       statusMessage.value = 'Disconnected';
       _socket = null;
       throw OBSServerException('SERVER_CANNOT_DISCONNECTED');
@@ -151,6 +156,16 @@ class OBSService {
     if (event.eventType == 'CurrentProgramSceneChanged') {
       getIt<OBSScenesService>().activeSceneName = event.eventData?['sceneName']?.toString() ?? '';
       await getIt<OBSSourcesService>().fetchSources();
+    }
+
+    if (event.eventType == 'InputMuteStateChanged') {
+      final String? name = event.eventData?['inputName']?.toString();
+      if (name == getIt<OBSSoundService>().inputName.value) {
+        final bool? isMuted = event.eventData?['inputMuted'] as bool?;
+        if (isMuted != null) {
+          getIt<OBSSoundService>().activeIsSoundMuted = isMuted;
+        }
+      }
     }
 
     if (event.eventType == 'SceneItemEnableStateChanged') {

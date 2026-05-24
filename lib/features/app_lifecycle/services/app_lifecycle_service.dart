@@ -56,11 +56,14 @@ class AppLifecycleService with WidgetsBindingObserver {
       // Automatically attempt to reconnect to OBS when WiFi is restored
       if (!obsService.isConnected.value) {
         isReconnecting.value = true;
-        obsService.reconnect().then((_) {
-          isReconnecting.value = false;
-        }).catchError((_) {
-          isReconnecting.value = false;
-        });
+        obsService
+            .reconnect()
+            .then((_) {
+              isReconnecting.value = false;
+            })
+            .catchError((_) {
+              isReconnecting.value = false;
+            });
       }
     }
   }

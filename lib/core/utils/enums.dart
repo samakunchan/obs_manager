@@ -1,7 +1,8 @@
 enum SettingsEnum {
   ip(label: 'IP'),
   port(label: 'Port'),
-  password(label: 'Password');
+  password(label: 'Password')
+  ;
 
   const SettingsEnum({required this.label});
 
@@ -20,7 +21,8 @@ enum AppText {
   isStopping(label: 'STOPPING'),
   undefined(label: 'UNDEFINED'),
   scenes(label: 'SCENES'),
-  sources(label: 'SOURCES');
+  sources(label: 'SOURCES')
+  ;
 
   const AppText({required this.label});
 
@@ -36,7 +38,8 @@ enum StatusStream {
 
 enum RouteName {
   home(label: 'home', path: '/home'),
-  settings(label: 'settings', path: '/settings');
+  settings(label: 'settings', path: '/settings')
+  ;
 
   const RouteName({required this.label, required this.path});
 
@@ -50,7 +53,8 @@ enum GoogleMessagesEnum {
   cancel(key: 'GOOGLE_INSTANCE_CANCELED'),
 
   /// Valeur : GOOGLE_INSTANCE_INTERUPT
-  interupt(key: 'GOOGLE_INSTANCE_INTERUPT');
+  interupt(key: 'GOOGLE_INSTANCE_INTERUPT')
+  ;
 
   const GoogleMessagesEnum({
     required this.key,
@@ -88,7 +92,8 @@ enum AppMessagesEnum {
   stopError(key: 'STOP_ERROR'),
 
   /// Valeur : CONNECTION_REFUSED
-  connectionRefused(key: 'CONNECTION_REFUSED');
+  connectionRefused(key: 'CONNECTION_REFUSED')
+  ;
 
   const AppMessagesEnum({
     required this.key,
