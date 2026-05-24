@@ -1,6 +1,3 @@
-import 'dart:async';
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
@@ -32,12 +29,6 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
   late AnimationController _pulseController;
   late Animation<double> _pulseAnimation;
 
-  // Live Audio VU Meter Values
-  double _micDb = -12.4;
-  double _bgmDb = -24;
-  double _discordDb = -18.2;
-  late Timer _vuMeterTimer;
-
   @override
   void initState() {
     super.initState();
@@ -48,30 +39,11 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
       duration: const Duration(seconds: 1),
     )..repeat(reverse: true);
     _pulseAnimation = Tween<double>(begin: 0.3, end: 1).animate(_pulseController);
-
-    // Audio VU Meter dynamic simulation
-    final random = math.Random();
-    _vuMeterTimer = Timer.periodic(const Duration(milliseconds: 150), (timer) {
-      if (mounted) {
-        setState(() {
-          // Add minor jitter to mic, bgm, and discord db values
-          _micDb = -12.4 + (random.nextDouble() - 0.5) * 6;
-          _bgmDb = -24 + (random.nextDouble() - 0.5) * 4;
-          _discordDb = -18.2 + (random.nextDouble() - 0.5) * 5;
-
-          // Clamping to standard limits
-          _micDb = _micDb.clamp(-60.0, 0.0);
-          _bgmDb = _bgmDb.clamp(-60.0, 0.0);
-          _discordDb = _discordDb.clamp(-60.0, 0.0);
-        });
-      }
-    });
   }
 
   @override
   void dispose() {
     _pulseController.dispose();
-    _vuMeterTimer.cancel();
     super.dispose();
   }
 
@@ -178,9 +150,6 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
                             scenes: scenesList,
                             activeSceneIndex: activeSceneIndex,
                             activeSceneName: activeSceneName,
-                            micDb: _micDb,
-                            bgmDb: _bgmDb,
-                            discordDb: _discordDb,
                             onSceneSelected: (int index, String name) {
                               if (isConnected) {
                                 getIt<OBSScenesService>().changeScene(name);
@@ -191,9 +160,6 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
                             isConnected: isConnected,
                             scenes: scenesList,
                             activeSceneIndex: activeSceneIndex,
-                            micDb: _micDb,
-                            bgmDb: _bgmDb,
-                            discordDb: _discordDb,
                             onSceneSelected: (int index, String name) {
                               if (isConnected) {
                                 getIt<OBSScenesService>().changeScene(name);

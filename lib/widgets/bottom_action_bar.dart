@@ -8,12 +8,14 @@ class BottomNavButton extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.isActive,
+    this.onTap,
     super.key,
   });
 
   final IconData icon;
   final String label;
   final bool isActive;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class BottomNavButton extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         borderRadius: BorderRadius.circular(8),
         child: Padding(
           padding: const EdgeInsets.all(8),
@@ -73,7 +75,19 @@ class BottomActionBar extends StatelessWidget {
         mainAxisAlignment: .spaceAround,
         children: [
           const BottomNavButton(icon: Icons.grid_view, label: 'SCENES', isActive: true),
-          const BottomNavButton(icon: Icons.equalizer, label: 'AUDIO', isActive: false),
+          BottomNavButton(
+            icon: Icons.equalizer,
+            label: 'AUDIO',
+            isActive: false,
+            onTap: () {
+              showModalBottomSheet<dynamic>(
+                context: context,
+                builder: (_) {
+                  return const Text('ddazdazazdaz');
+                },
+              );
+            },
+          ),
           const BottomNavButton(icon: Icons.podcasts, label: 'MONITORING', isActive: false),
           // const BottomNavButton(icon: Icons.layers, label: 'SOURCES', isActive: false),
 
