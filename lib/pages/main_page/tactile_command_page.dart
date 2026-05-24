@@ -25,6 +25,12 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
   final int _activeSceneIndex = 0;
   final String _activeSceneName = 'STARTING_SOON';
 
+  // Bottom action panel state
+  bool _showAudioPanel = false;
+  bool _showMonitoringPanel = false;
+  bool _showScenesPanel = false;
+  final Set<String> _selectedVisibleScenes = <String>{};
+
   // Animation for pulsing REC red dot
   late AnimationController _pulseController;
   late Animation<double> _pulseAnimation;
@@ -98,17 +104,27 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
           ? (obsService.streamStatus.value == StatusStream.started || obsService.streamStatus.value == StatusStream.isStarting)
           : _isStreaming;
 
-      final List<Map<String, dynamic>> scenesList;
+      List<Map<String, dynamic>> scenesList;
       final String activeSceneName;
       final int activeSceneIndex;
 
       if (isConnected) {
+        if (_selectedVisibleScenes.isEmpty && scenesService.scenes.value.isNotEmpty) {
+          _selectedVisibleScenes.addAll(
+            scenesService.scenes.value.map((s) => s.sceneName),
+          );
+        }
+
         scenesList = scenesService.scenes.value.map((Scene scene) {
           return {
             'name': scene.sceneName,
             'icon': getIconForScene(scene.sceneName),
           };
         }).toList();
+
+        scenesList = scenesList
+            .where((s) => _selectedVisibleScenes.contains(s['name']))
+            .toList();
 
         activeSceneName = scenesService.currentScene.value;
         final int index = scenesList.indexWhere((s) => s['name'] == activeSceneName);
@@ -171,14 +187,80 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
               ],
             ),
 
-            // Bottom Action Bar
+            // Bottom Action Bar & Panel stack container
             Positioned(
               bottom: 0,
               left: 0,
               right: 0,
-              child: BottomActionBar(
-                streamStatus: obsService.streamStatus.value,
-                onToggleStream: _toggleStream,
+              child: Column(
+                mainAxisSize: .min,
+                crossAxisAlignment: .stretch,
+                children: [
+                  if (_showAudioPanel)
+                    AudioActionPanel(
+                      onClose: () {
+                        setState(() {
+                          _showAudioPanel = false;
+                        });
+                      },
+                    ),
+                  if (_showMonitoringPanel)
+                    MonitoringActionPanel(
+                      onClose: () {
+                        setState(() {
+                          _showMonitoringPanel = false;
+                        });
+                      },
+                    ),
+                  if (_showScenesPanel)
+                    ScenesActionPanel(
+                      onClose: () {
+                        setState(() {
+                          _showScenesPanel = false;
+                        });
+                      },
+                      visibleScenes: _selectedVisibleScenes,
+                      onSceneVisibilityChanged: (name, {required isVisible}) {
+                        setState(() {
+                          if (isVisible) {
+                            _selectedVisibleScenes.add(name);
+                          } else {
+                            if (_selectedVisibleScenes.length > 1) {
+                              _selectedVisibleScenes.remove(name);
+                            }
+                          }
+                        });
+                      },
+                    ),
+                  BottomActionBar(
+                    streamStatus: obsService.streamStatus.value,
+                    onToggleStream: _toggleStream,
+                    isAudioActive: _showAudioPanel,
+                    onAudioTap: () {
+                      setState(() {
+                        _showAudioPanel = !_showAudioPanel;
+                        _showMonitoringPanel = false;
+                        _showScenesPanel = false;
+                      });
+                    },
+                    isMonitoringActive: _showMonitoringPanel,
+                    onMonitoringTap: () {
+                      setState(() {
+                        _showMonitoringPanel = !_showMonitoringPanel;
+                        _showAudioPanel = false;
+                        _showScenesPanel = false;
+                      });
+                    },
+                    isScenesActive: _showScenesPanel,
+                    onScenesTap: () {
+                      setState(() {
+                        _showScenesPanel = !_showScenesPanel;
+                        _showAudioPanel = false;
+                        _showMonitoringPanel = false;
+                      });
+                    },
+                  ),
+                ],
               ),
             ),
           ],

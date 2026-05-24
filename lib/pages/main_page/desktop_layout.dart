@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
-import 'package:obs_manager/features/o_b_s_sound/o_b_s_sound.dart';
 import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
 
 class DesktopLayout extends StatelessWidget {
@@ -50,10 +49,8 @@ class DesktopLayout extends StatelessWidget {
         const Expanded(
           flex: 4,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: .start,
             children: [
-              AudioMixPanel(),
-              SizedBox(height: 24),
               SourcesPanel(),
             ],
           ),
