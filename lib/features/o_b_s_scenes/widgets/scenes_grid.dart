@@ -30,7 +30,7 @@ class ScenesGrid extends StatelessWidget {
       ),
       itemBuilder: (BuildContext context, int index) {
         final Map<String, dynamic> scene = scenes[index];
-        final bool isActive = activeSceneIndex == index;
+        final bool isActive = activeSceneIndex == scenes.indexOf(scenes[index]);
 
         return TactileScenePad(
           name: scene['name'] as String,

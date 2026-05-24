@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
-import 'package:obs_manager/features/o_b_s_sound/o_b_s_sound.dart';
 import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
 
 /// Dynamic Vertical Mobile Stacking Layout Widget
@@ -54,7 +53,7 @@ class MobileLayout extends StatelessWidget {
         ),
 
         /// Audio
-        const AudioMixPanel(),
+        // const AudioMixPanel(),
       ],
     );
   }

@@ -50,11 +50,23 @@ class BottomActionBar extends StatelessWidget {
   const BottomActionBar({
     required this.streamStatus,
     required this.onToggleStream,
+    required this.isAudioActive,
+    required this.onAudioTap,
+    required this.isMonitoringActive,
+    required this.onMonitoringTap,
+    required this.isScenesActive,
+    required this.onScenesTap,
     super.key,
   });
 
   final StatusStream streamStatus;
   final VoidCallback onToggleStream;
+  final bool isAudioActive;
+  final VoidCallback onAudioTap;
+  final bool isMonitoringActive;
+  final VoidCallback onMonitoringTap;
+  final bool isScenesActive;
+  final VoidCallback onScenesTap;
 
   @override
   Widget build(BuildContext context) {
@@ -74,21 +86,24 @@ class BottomActionBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: .spaceAround,
         children: [
-          const BottomNavButton(icon: Icons.grid_view, label: 'SCENES', isActive: true),
+          BottomNavButton(
+            icon: Icons.grid_view,
+            label: 'SCENES',
+            isActive: isScenesActive,
+            onTap: onScenesTap,
+          ),
           BottomNavButton(
             icon: Icons.equalizer,
             label: 'AUDIO',
-            isActive: false,
-            onTap: () {
-              showModalBottomSheet<dynamic>(
-                context: context,
-                builder: (_) {
-                  return const Text('ddazdazazdaz');
-                },
-              );
-            },
+            isActive: isAudioActive,
+            onTap: onAudioTap,
           ),
-          const BottomNavButton(icon: Icons.podcasts, label: 'MONITORING', isActive: false),
+          BottomNavButton(
+            icon: Icons.podcasts,
+            label: 'MONITORING',
+            isActive: isMonitoringActive,
+            onTap: onMonitoringTap,
+          ),
           // const BottomNavButton(icon: Icons.layers, label: 'SOURCES', isActive: false),
 
           /// Central broadcast CTA

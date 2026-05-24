@@ -48,15 +48,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-const aaa = [
-  {"inputKind": "coreaudio_input_capture", "inputName": "Mic/Aux", "unversionedInputKind": "coreaudio_input_capture"},
-  {"inputKind": "text_ft2_source_v2", "inputName": "Je reviens", "unversionedInputKind": "text_ft2_source"},
-  {"inputKind": "macos-avcapture", "inputName": "Ma Webcam", "unversionedInputKind": "macos-avcapture"},
-  {"inputKind": "browser_source", "inputName": "Alerte Twich", "unversionedInputKind": "browser_source"},
-  {"inputKind": "screen_capture", "inputName": "Android Studio", "unversionedInputKind": "screen_capture"},
-  {"inputKind": "screen_capture", "inputName": "OPMacos", "unversionedInputKind": "screen_capture"},
-  {"inputKind": "screen_capture", "inputName": "Capture d'écran macOS", "unversionedInputKind": "screen_capture"},
-  {"inputKind": "ffmpeg_source", "inputName": "Canva twitch video accueil", "unversionedInputKind": "ffmpeg_source"},
-  {"inputKind": "ffmpeg_source", "inputName": "Canva twitch video fin", "unversionedInputKind": "ffmpeg_source"},
-];
