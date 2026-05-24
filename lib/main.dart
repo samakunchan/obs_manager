@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:obs_manager/core/index.dart';
+import 'package:obs_manager/features/app_lifecycle/app_lifecycle.dart';
 import 'package:obs_manager/features/o_b_s_server/services/dependency_injection.dart';
 import 'package:obs_manager/l10n/app_localizations.dart';
 import 'package:obs_manager/pages/pages.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
+  getIt<AppLifecycleService>().init();
   runApp(const MyApp());
 }
 
@@ -32,7 +35,11 @@ class MyApp extends StatelessWidget {
         }
         return supportedLocales.first;
       },
-      home: const SafeArea(child: ObsTactileCommandPage()),
+      home: const SafeArea(
+        child: AppLifecycleGate(
+          child: ObsTactileCommandPage(),
+        ),
+      ),
     );
   }
 }
