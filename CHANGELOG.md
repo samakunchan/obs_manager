@@ -1,5 +1,22 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.6.0 - 24/05/2026
+
+### Added
+- Created `BottomActionPanelWrapper`: a highly reusable glassmorphic overlay widget that standardizes entrance/exit animations (`SizeTransition` and `FadeTransition` with `easeOutCubic` curve), glow border styles, and neon shadows.
+- Created `AudioActionPanel`: a re-engineered audio controller that delegates its structure, animations, and transitions directly to `BottomActionPanelWrapper`, keeping simulated VU decibel meter bars, mute toggles, and volume control sliders intact.
+- Created `MonitoringActionPanel`: a split-column telemetry and live diagnostics panel displaying connection metadata (OBS socket address, active scene name, audio capture source name, live/muted status, stream status) and a scrolling monospaced terminal logs interface styled exactly like the terminal in `my_home_page.dart`.
+- Created `ScenesActionPanel`: a compact tactile directory list grid displaying all OBS scenes with checkbox-based visibilities, letting users customize exactly which scene pads are visible on the main tactile command screen.
+
+### Changed
+- Refactored `bottom_action_bar.dart` and `tactile_command_page.dart` to support three-way exclusive toggling across Scenes, Audio, and Monitoring action panels.
+- Configured dynamic scenes grid filtering inside `ObsTactileCommandPage` using the checked visibility set, including a safety fallback enforcing at least one scene to remain visible.
+- Re-designed `ScenesActionPanel` so that tapping anywhere on the scene tile (the whole area) reactively toggles its checkbox visibility state, and stripped all OBS scene-changing callbacks from this view.
+
+### Fixed
+- Fixed an active scene highlight borders alignment bug (`isActive` index mismatch) by re-ordering the list filtering sequence to compute `activeSceneIndex` strictly on the filtered list.
+- Resolved and cleaned up unused helper method declarations, redundant properties (avoid `avoid_redundant_argument_values`), and double literal constraints to maintain a 100% clean `flutter analyze` score.
+
 ## 🚀 0.5.0 - 24/05/2026
 
 ### Added
