@@ -37,7 +37,8 @@ class VolumeMeterRow extends StatelessWidget {
             ),
           ],
         ),
-        // Stylized bar meter with glowing active parts
+
+        /// Stylized bar meter with glowing active parts
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
           child: Container(
@@ -50,11 +51,7 @@ class VolumeMeterRow extends StatelessWidget {
               child: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [
-                      AppColors.cyberCyan,
-                      AppColors.cyberSkyBlue,
-                      AppColors.cyberAlertRed,
-                    ],
+                    colors: [AppColors.cyberCyan, AppColors.cyberSkyBlue, AppColors.cyberAlertRed],
                     stops: [0.6, 0.85, 1],
                   ),
                   boxShadow: [

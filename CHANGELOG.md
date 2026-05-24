@@ -1,5 +1,22 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.3.0 - 24/05/2026
+
+### Added
+- Created `o_b_s_scenes` feature module with `OBSScenesService` to reactively hold and switch active OBS program scenes.
+- Created `o_b_s_sources` feature module with `OBSSourcesService` to query, sync, and toggle source (scene item) enablement and visibility.
+- Created custom premium cyberpunk offline widgets `OfflineScenesPlaceholder` and `OfflineSourcesPlaceholder` to handle disconnected states elegantly.
+- Integrated `StatusStream` enum signal inside `OBSService` to reactively track Starting, Started, Stopping, and Stopped streaming states.
+- Integrated `WakelockPlus` to dynamically enable wakelocks during active streams (`StatusStream.started`) and disable them when stopped (`StatusStream.stopped`).
+- Created stateless layout widgets `DesktopLayout` and `MobileLayout` in separate files under `lib/pages/main_page/` to confined widget rebuild scopes.
+
+### Changed
+- Refactored `tactile_command_page.dart` and `sources_panel.dart` to consume scenes and sources services, providing real-time, event-driven synchronization with the OBS WebSocket.
+- Standardized dependency injection registrations in `dependency_injection.dart` using cascade operator chains.
+
+### Fixed
+- Fixed and resolved all linter warnings (`avoid_void_async`, `noop_primitive_operations`, `directives_ordering`, `avoid_setters_without_getters`, `always_use_package_imports`) achieving a 100% clean flutter analysis score.
+
 ## 🚀 0.2.0 - 23/05/2026
 
 ### Added

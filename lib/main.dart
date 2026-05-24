@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:obs_manager/core/index.dart';
+import 'package:obs_manager/features/o_b_s_server/services/dependency_injection.dart';
 import 'package:obs_manager/l10n/app_localizations.dart';
 import 'package:obs_manager/pages/pages.dart';
 
 void main() {
+  setupLocator();
   runApp(const MyApp());
 }
 

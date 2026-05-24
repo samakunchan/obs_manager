@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
-import 'package:obs_manager/pages/my_home_page.dart';
+import 'package:obs_manager/features/o_b_s_server/o_b_s_server.dart';
 
-/// Top app header featuring high-tech statuses
 class MissionControlAppBar extends StatelessWidget {
   const MissionControlAppBar({
     required this.isStreaming,
@@ -25,35 +24,34 @@ class MissionControlAppBar extends StatelessWidget {
         color: AppColors.cyberSurfaceContainer.withValues(alpha: 0.6),
         border: const Border(bottom: BorderSide(color: Color(0x1F3B494C))),
       ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          mainAxisAlignment: .spaceBetween,
-          spacing: 12,
-          children: [
-            Row(
-              spacing: 12,
-              children: [
-                IconButton(
-                  onPressed: onDrawerPressed,
-                  icon: const Icon(Icons.settings_input_component, color: AppColors.cyberCyan),
-                  tooltip: 'Open Station Drawer',
+      child: Row(
+        mainAxisAlignment: .spaceBetween,
+        spacing: 12,
+        children: [
+          Row(
+            spacing: 12,
+            children: [
+              IconButton(
+                onPressed: onDrawerPressed,
+                icon: const Icon(Icons.settings_input_component, color: AppColors.cyberCyan),
+                tooltip: 'Open Station Drawer',
+              ),
+              Text(
+                'MISSION CONTROL',
+                style: GoogleFonts.barlowCondensed(
+                  fontSize: 20,
+                  fontWeight: .bold,
+                  letterSpacing: 1.5,
+                  color: AppColors.cyberCyan,
                 ),
-                Text(
-                  'MISSION CONTROL',
-                  style: GoogleFonts.barlowCondensed(
-                    fontSize: 20,
-                    fontWeight: .bold,
-                    letterSpacing: 1.5,
-                    color: AppColors.cyberCyan,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              spacing: 16,
-              children: [
-                // REC Status Badge
+              ),
+            ],
+          ),
+          Row(
+            spacing: 16,
+            children: [
+              /// REC Status Badge
+              if (getIt<OBSService>().isConnected.value)
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
@@ -89,23 +87,22 @@ class MissionControlAppBar extends StatelessWidget {
                     ],
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    // Switch directly to the Localization Showcase Page
-                    Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (_) => const MyHomePage(),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons.swap_horizontal_circle_outlined),
-                  color: AppColors.cyberTextMuted,
-                  tooltip: 'Switch to Localization Showcase',
-                ),
-              ],
-            ),
-          ],
-        ),
+              // IconButton(
+              //   onPressed: () {
+              //     // Switch directly to the Localization Showcase Page
+              //     Navigator.of(context).push(
+              //       MaterialPageRoute<void>(
+              //         builder: (_) => const MyHomePage(),
+              //       ),
+              //     );
+              //   },
+              //   icon: const Icon(Icons.swap_horizontal_circle_outlined),
+              //   color: AppColors.cyberTextMuted,
+              //   tooltip: 'Switch to Localization Showcase',
+              // ),
+            ],
+          ),
+        ],
       ),
     );
   }
