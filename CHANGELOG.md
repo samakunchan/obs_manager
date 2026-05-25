@@ -1,5 +1,24 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.7.0 - 25/05/2026
+
+### Added
+- Created `PersistancesService` to securely persist OBS IP, Port, and Password using `shared_preferences`.
+- Created `PersistancesLogsService` to record connection successes, failures, clean disconnections, and obsolete credential clears reactively with a cap of 100 entries.
+- Created `PersistancesScenesService` to securely persist scene visibility selections across app re-launches.
+- Created `ConnectToOBSDialog` featuring a cyberpunk terminal aesthetic and a mobile camera scanner using the `mobile_scanner` package.
+- Integrated a clear logs `delete_sweep_outlined` icon button in `MonitoringActionPanel` utilizing the new `trailingHeader` parameter in `BottomActionPanelWrapper`.
+
+### Changed
+- Refactored `OBSService` to support `autoConnectOnStartup()` triggered on app startup, with automatic obsolete credentials clearing on handshake failure.
+- Refactored `MonitoringActionPanel` to reactively render persistent logs using GetIt, Signals (`Watch`), and a single background layout scroll-to-end `effect`.
+- Refactored `TactileCommandPage` scenes mapping to load and persist custom layouts, including a dynamic overlap fallback validation to prevent empty scene grids on different OBS servers.
+- Decoupled scene lay-out filtering from credential persistence following the Single Responsibility Principle.
+
+### Fixed
+- Fixed and re-ordered `LogEntry` constructor declarations to adhere strictly to the `sort_constructors_first` rule.
+- Fixed `TactileCommandPage` visibility set clears using the cascade operator `..` to comply with the strict `cascade_invocations` rule.
+
 ## 🚀 0.6.0 - 24/05/2026
 
 ### Added
