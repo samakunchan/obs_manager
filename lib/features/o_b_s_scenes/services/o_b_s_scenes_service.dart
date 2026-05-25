@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_server/services/services.dart';
+import 'package:obs_manager/features/persistances/persistances.dart';
 import 'package:obs_websocket/obs_websocket.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
@@ -38,10 +39,18 @@ class OBSScenesService {
     try {
       await socket.scenes.setCurrentProgramScene(sceneName);
       currentScene.value = sceneName;
+      await getIt<PersistancesLogsService>().addLog(
+        code: 'info',
+        message: 'Switch to scene: $sceneName',
+      );
     } on Exception catch (e) {
       if (kDebugMode) {
         print('Error changing scene: $e');
       }
+      await getIt<PersistancesLogsService>().addLog(
+        code: 'error',
+        message: 'Error changing scene: $e',
+      );
       throw OBSScenesException(e.toString());
     }
   }
