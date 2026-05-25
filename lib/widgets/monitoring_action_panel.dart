@@ -59,9 +59,9 @@ class _MonitoringActionPanelState extends State<MonitoringActionPanel> {
       final List<LogEntry> logs = logsService.logs.value;
 
       final List<Widget> logWidgets = logs.map((entry) {
-        final h = entry.time.hour.toString().padLeft(2, '0');
-        final m = entry.time.minute.toString().padLeft(2, '0');
-        final s = entry.time.second.toString().padLeft(2, '0');
+        final String h = entry.time.hour.toString().padLeft(2, '0');
+        final String m = entry.time.minute.toString().padLeft(2, '0');
+        final String s = entry.time.second.toString().padLeft(2, '0');
         final timestamp = '[$h:$m:$s]';
 
         Color codeColor;

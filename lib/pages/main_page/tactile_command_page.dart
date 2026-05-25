@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 import 'package:obs_manager/features/o_b_s_server/o_b_s_server.dart';
+import 'package:obs_manager/features/persistances/persistances.dart';
 import 'package:obs_manager/pages/main_page/desktop_layout.dart';
 import 'package:obs_manager/pages/main_page/mobile_layout.dart';
 import 'package:obs_manager/widgets/widgets.dart';
@@ -45,6 +46,14 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
       duration: const Duration(seconds: 1),
     )..repeat(reverse: true);
     _pulseAnimation = Tween<double>(begin: 0.3, end: 1).animate(_pulseController);
+
+    // Load saved visible scenes from persistent storage
+    try {
+      final List<String>? savedScenes = getIt<PersistancesScenesService>().visibleScenes;
+      if (savedScenes != null) {
+        _selectedVisibleScenes.addAll(savedScenes);
+      }
+    } catch (_) {}
   }
 
   @override
@@ -113,6 +122,9 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
           _selectedVisibleScenes.addAll(
             scenesService.scenes.value.map((s) => s.sceneName),
           );
+          try {
+            getIt<PersistancesScenesService>().saveVisibleScenes(_selectedVisibleScenes.toList());
+          } catch (_) {}
         }
 
         scenesList = scenesService.scenes.value.map((Scene scene) {
@@ -122,9 +134,18 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
           };
         }).toList();
 
-        scenesList = scenesList
-            .where((s) => _selectedVisibleScenes.contains(s['name']))
-            .toList();
+        // Fallback: If cached selection has no overlap with the current scenes, reset and show all.
+        final hasOverlap = scenesList.any((s) => _selectedVisibleScenes.contains(s['name']));
+        if (!hasOverlap && scenesList.isNotEmpty) {
+          _selectedVisibleScenes
+            ..clear()
+            ..addAll(scenesList.map((s) => s['name'] as String));
+          try {
+            getIt<PersistancesScenesService>().saveVisibleScenes(_selectedVisibleScenes.toList());
+          } catch (_) {}
+        }
+
+        scenesList = scenesList.where((s) => _selectedVisibleScenes.contains(s['name'])).toList();
 
         activeSceneName = scenesService.currentScene.value;
         final int index = scenesList.indexWhere((s) => s['name'] == activeSceneName);
@@ -229,6 +250,10 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
                               _selectedVisibleScenes.remove(name);
                             }
                           }
+                          // Persist the updated list
+                          try {
+                            getIt<PersistancesScenesService>().saveVisibleScenes(_selectedVisibleScenes.toList());
+                          } catch (_) {}
                         });
                       },
                     ),
