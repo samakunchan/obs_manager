@@ -109,9 +109,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
 
     return Watch((_) {
       final bool isConnected = obsService.isConnected.value;
-      final bool liveStreaming = isConnected
-          ? (obsService.streamStatus.value == StatusStream.started || obsService.streamStatus.value == StatusStream.isStarting)
-          : _isStreaming;
+      final bool liveStreaming = isConnected ? (obsService.streamStatus.value == StatusStream.started) : _isStreaming;
 
       List<Map<String, dynamic>> scenesList;
       final String activeSceneName;

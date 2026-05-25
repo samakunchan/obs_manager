@@ -37,7 +37,7 @@ class MissionControlAppBar extends StatelessWidget {
                 tooltip: 'Open Station Drawer',
               ),
               Text(
-                'MISSION CONTROL',
+                'PANEL CONTROL',
                 style: GoogleFonts.barlowCondensed(
                   fontSize: 20,
                   fontWeight: .bold,
@@ -57,7 +57,11 @@ class MissionControlAppBar extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: const Color(0x1AFF1744), // cyberAlertRed 10%
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColors.cyberAlertRed.withValues(alpha: 0.3)),
+                    border: Border.all(
+                      color: isStreaming
+                          ? AppColors.successColor.withValues(alpha: 0.3)
+                          : AppColors.cyberAlertRed.withValues(alpha: 0.3),
+                    ),
                   ),
                   child: Row(
                     mainAxisSize: .min,
@@ -71,17 +75,20 @@ class MissionControlAppBar extends StatelessWidget {
                             child: Container(
                               width: 8,
                               height: 8,
-                              decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.cyberAlertRed),
+                              decoration: BoxDecoration(
+                                shape: .circle,
+                                color: isStreaming ? AppColors.successColor : AppColors.cyberAlertRed,
+                              ),
                             ),
                           );
                         },
                       ),
                       Text(
-                        isStreaming ? 'REC: 00:04:12' : 'REC: STANDBY',
+                        isStreaming ? 'ON AIR' : 'REC: STANDBY',
                         style: GoogleFonts.jetBrainsMono(
                           fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.cyberAlertRed,
+                          fontWeight: .bold,
+                          color: isStreaming ? AppColors.successColor : AppColors.cyberAlertRed,
                         ),
                       ),
                     ],

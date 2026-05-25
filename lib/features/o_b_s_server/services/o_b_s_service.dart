@@ -135,6 +135,10 @@ class OBSService {
           await getIt<OBSSoundService>().getStatusSound();
         } catch (_) {}
       } else {
+        await getIt<PersistancesLogsService>().addLog(
+          code: 'error',
+          message: 'Failed to connect to OBS. Default profile not found.',
+        );
         throw OBSServerException('SERVER_CANNOT_CONNECTED');
       }
     } on Exception catch (e) {
