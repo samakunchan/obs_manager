@@ -79,10 +79,6 @@ class OBSSoundService {
       await inputs.toggleMute(inputName: inputName.value);
       final bool isReallyMuted = await inputs.getMute(inputName.value);
       isSoundMuted.value = isReallyMuted;
-      await getIt<PersistancesLogsService>().addLog(
-        code: 'info',
-        message: isReallyMuted ? 'Sound muted' : 'Sound activated',
-      );
     } on Exception catch (e) {
       if (kDebugMode) {
         print('Error toggling sound mute state: $e');

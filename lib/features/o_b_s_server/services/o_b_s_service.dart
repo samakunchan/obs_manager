@@ -256,6 +256,10 @@ class OBSService {
       if (kDebugMode) {
         print('Error starting stream: $e');
       }
+      await getIt<PersistancesLogsService>().addLog(
+        code: 'error',
+        message: 'Error starting stream: $e',
+      );
       throw OBSStatusException(e.toString());
     }
   }
@@ -269,6 +273,10 @@ class OBSService {
       if (kDebugMode) {
         print('Error stopping stream: $e');
       }
+      await getIt<PersistancesLogsService>().addLog(
+        code: 'error',
+        message: 'Error stopping stream: $e',
+      );
       throw OBSStatusException(e.toString());
     }
   }
@@ -276,6 +284,10 @@ class OBSService {
   Future<void> _fallbackEventHandler(Event event) async {
     if (event.eventType == 'CurrentProgramSceneChanged') {
       getIt<OBSScenesService>().activeSceneName = event.eventData?['sceneName']?.toString() ?? '';
+      await getIt<PersistancesLogsService>().addLog(
+        code: 'info',
+        message: 'Switch to scene: ${getIt<OBSScenesService>().activeSceneName}',
+      );
       await getIt<OBSSourcesService>().fetchSources();
     }
 
@@ -285,6 +297,10 @@ class OBSService {
         final bool? isMuted = event.eventData?['inputMuted'] as bool?;
         if (isMuted != null) {
           getIt<OBSSoundService>().activeIsSoundMuted = isMuted;
+          await getIt<PersistancesLogsService>().addLog(
+            code: 'info',
+            message: isMuted ? 'Sound muted' : 'Sound activated',
+          );
         }
       }
     }
@@ -299,6 +315,10 @@ class OBSService {
         streamStatus.value = StatusStream.isStarting;
       } else if (state == 'OBS_WEBSOCKET_OUTPUT_STARTED') {
         streamStatus.value = StatusStream.started;
+        await getIt<PersistancesLogsService>().addLog(
+          code: 'info',
+          message: 'Stream is started successfully...',
+        );
         try {
           await WakelockPlus.enable();
         } catch (_) {}
@@ -306,6 +326,10 @@ class OBSService {
         streamStatus.value = StatusStream.isStopping;
       } else if (state == 'OBS_WEBSOCKET_OUTPUT_STOPPED') {
         streamStatus.value = StatusStream.stopped;
+        await getIt<PersistancesLogsService>().addLog(
+          code: 'info',
+          message: 'Stream is stopped successfully...',
+        );
         try {
           await WakelockPlus.disable();
         } catch (_) {}

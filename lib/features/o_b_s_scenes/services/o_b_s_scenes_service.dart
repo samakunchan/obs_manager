@@ -39,10 +39,6 @@ class OBSScenesService {
     try {
       await socket.scenes.setCurrentProgramScene(sceneName);
       currentScene.value = sceneName;
-      await getIt<PersistancesLogsService>().addLog(
-        code: 'info',
-        message: 'Switch to scene: $sceneName',
-      );
     } on Exception catch (e) {
       if (kDebugMode) {
         print('Error changing scene: $e');
