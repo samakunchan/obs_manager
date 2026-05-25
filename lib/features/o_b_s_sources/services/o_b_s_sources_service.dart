@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 import 'package:obs_manager/features/o_b_s_server/services/services.dart';
+import 'package:obs_manager/features/persistances/persistances.dart';
 import 'package:obs_websocket/event.dart';
 import 'package:obs_websocket/obs_websocket.dart';
 import 'package:signals_flutter/signals_flutter.dart';
@@ -37,7 +38,7 @@ class OBSSourcesService {
     if (currentSceneName.isEmpty) return;
 
     try {
-      final request = SceneItemEnableStateChanged(
+      final SceneItemEnableStateChanged request = SceneItemEnableStateChanged(
         sceneName: currentSceneName,
         sceneItemId: source.sceneItemId,
         sceneItemEnabled: !source.sceneItemEnabled,
@@ -49,6 +50,10 @@ class OBSSourcesService {
       if (kDebugMode) {
         print('Error toggling source: $e');
       }
+      await getIt<PersistancesLogsService>().addLog(
+        code: 'error',
+        message: 'Error toggling source: $e',
+      );
       throw OBSSourcesException(e.toString());
     }
   }
