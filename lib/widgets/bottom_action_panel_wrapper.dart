@@ -11,6 +11,7 @@ class BottomActionPanelWrapper extends StatefulWidget {
     required this.onClose,
     this.glowColor = AppColors.cyberCyan,
     this.leadingHeader,
+    this.trailingHeader,
     super.key,
   });
 
@@ -28,6 +29,9 @@ class BottomActionPanelWrapper extends StatefulWidget {
 
   /// Optional leading widget next to the title (e.g., status indicator, icon).
   final Widget? leadingHeader;
+
+  /// Optional trailing widget in the header (e.g. action buttons).
+  final Widget? trailingHeader;
 
   @override
   State<BottomActionPanelWrapper> createState() => _BottomActionPanelWrapperState();
@@ -113,11 +117,20 @@ class _BottomActionPanelWrapperState extends State<BottomActionPanelWrapper> wit
                       ),
                     ],
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.cyberTextMuted, size: 20),
-                    onPressed: _animateClose,
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (widget.trailingHeader != null) ...[
+                        widget.trailingHeader!,
+                        const SizedBox(width: 12),
+                      ],
+                      IconButton(
+                        icon: const Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.cyberTextMuted, size: 20),
+                        onPressed: _animateClose,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                      ),
+                    ],
                   ),
                 ],
               ),

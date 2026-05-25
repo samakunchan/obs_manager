@@ -1,8 +1,6 @@
 /// Centralized OBS Server Feature Exports
 library;
 
-/// Services
 export 'services/services.dart';
-
-/// Widgets
+export 'utils/utils.dart';
 export 'widgets/widgets.dart';

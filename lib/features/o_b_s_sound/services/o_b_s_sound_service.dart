@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_server/services/services.dart';
+import 'package:obs_manager/features/persistances/persistances.dart';
 import 'package:obs_websocket/obs_websocket.dart';
 import 'package:obs_websocket/request.dart';
 import 'package:signals_flutter/signals_flutter.dart';
@@ -40,6 +41,10 @@ class OBSSoundService {
       if (kDebugMode) {
         print('Error detecting sound configuration: $e');
       }
+      await getIt<PersistancesLogsService>().addLog(
+        code: 'error',
+        message: 'Error detecting sound configuration: $e',
+      );
     }
   }
 
@@ -56,6 +61,10 @@ class OBSSoundService {
       if (kDebugMode) {
         print('Error getting sound status: $e');
       }
+      await getIt<PersistancesLogsService>().addLog(
+        code: 'error',
+        message: 'Error getting sound status: $e',
+      );
       throw OBSSoundException(e.toString());
     }
   }
@@ -74,6 +83,10 @@ class OBSSoundService {
       if (kDebugMode) {
         print('Error toggling sound mute state: $e');
       }
+      await getIt<PersistancesLogsService>().addLog(
+        code: 'error',
+        message: 'Error toggling sound mute state: $e',
+      );
       throw OBSSoundException(e.toString());
     }
   }
