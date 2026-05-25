@@ -4,15 +4,17 @@ import 'package:obs_manager/features/app_lifecycle/app_lifecycle.dart';
 import 'package:obs_manager/features/o_b_s_server/services/dependency_injection.dart';
 import 'package:obs_manager/l10n/app_localizations.dart';
 import 'package:obs_manager/pages/pages.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:signals_flutter/signals_core.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   /// Disable signals logs.
   SignalsObserver.instance = null;
 
-  setupLocator();
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  setupLocator(prefs);
   getIt<AppLifecycleService>().init();
   runApp(const MyApp());
 }
