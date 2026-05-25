@@ -107,26 +107,28 @@ class BottomActionBar extends StatelessWidget {
           // const BottomNavButton(icon: Icons.layers, label: 'SOURCES', isActive: false),
 
           /// Central broadcast CTA
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: streamStatus == StatusStream.started || streamStatus == StatusStream.isStopping
-                    ? AppColors.cyberAlertRed
-                    : AppColors.cyberSkyBlue.withValues(alpha: 0.8),
-                foregroundColor: Colors.black,
-                shadowColor: streamStatus == StatusStream.started || streamStatus == StatusStream.isStopping
-                    ? AppColors.cyberAlertRed
-                    : AppColors.cyberCyan,
-                elevation: 8,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusTertiary)),
-              ),
-              onPressed: onToggleStream,
-              icon: const Icon(Icons.rocket_launch, size: 20),
-              label: Text(
-                streamStatusMessage,
-                style: GoogleFonts.barlowCondensed(fontSize: 16, fontWeight: .bold, letterSpacing: 1.2),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: streamStatus == StatusStream.started || streamStatus == StatusStream.isStopping
+                      ? AppColors.cyberAlertRed
+                      : AppColors.cyberSkyBlue.withValues(alpha: 0.8),
+                  foregroundColor: Colors.black,
+                  shadowColor: streamStatus == StatusStream.started || streamStatus == StatusStream.isStopping
+                      ? AppColors.cyberAlertRed
+                      : AppColors.cyberCyan,
+                  elevation: 8,
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusTertiary)),
+                ),
+                onPressed: onToggleStream,
+                icon: const Icon(Icons.rocket_launch, size: 20),
+                label: Text(
+                  streamStatusMessage,
+                  style: GoogleFonts.barlowCondensed(fontSize: 16, fontWeight: .bold, letterSpacing: 1.2),
+                ),
               ),
             ),
           ),

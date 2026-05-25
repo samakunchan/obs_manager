@@ -69,36 +69,36 @@ class ScenesActionPanel extends StatelessWidget {
               Expanded(
                 child: isConnected
                     ? (allScenes.isEmpty
-                        ? Center(
-                            child: Text(
-                              'NO SCENES DETECTED IN OBS',
-                              style: GoogleFonts.jetBrainsMono(fontSize: 10, color: AppColors.cyberTextMuted),
-                            ),
-                          )
-                        : GridView.builder(
-                            itemCount: allScenes.length,
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10,
-                              childAspectRatio: 2,
-                            ),
-                            itemBuilder: (context, index) {
-                              final scene = allScenes[index];
-                              final isChecked = visibleScenes.contains(scene.sceneName);
+                          ? Center(
+                              child: Text(
+                                'NO SCENES DETECTED IN OBS',
+                                style: GoogleFonts.jetBrainsMono(fontSize: 10, color: AppColors.cyberTextMuted),
+                              ),
+                            )
+                          : GridView.builder(
+                              itemCount: allScenes.length,
+                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                                childAspectRatio: 2,
+                              ),
+                              itemBuilder: (context, index) {
+                                final scene = allScenes[index];
+                                final isChecked = visibleScenes.contains(scene.sceneName);
 
-                              return _buildSceneTile(
-                                context: context,
-                                name: scene.sceneName,
-                                isVisible: isChecked,
-                                onVisibleChanged: (val) {
-                                  if (val != null) {
-                                    onSceneVisibilityChanged(scene.sceneName, isVisible: val);
-                                  }
-                                },
-                              );
-                            },
-                          ))
+                                return _buildSceneTile(
+                                  context: context,
+                                  name: scene.sceneName,
+                                  isVisible: isChecked,
+                                  onVisibleChanged: (val) {
+                                    if (val != null) {
+                                      onSceneVisibilityChanged(scene.sceneName, isVisible: val);
+                                    }
+                                  },
+                                );
+                              },
+                            ))
                     : Center(
                         child: Text(
                           'CONNECT TO OBS TO LIST SCENES',

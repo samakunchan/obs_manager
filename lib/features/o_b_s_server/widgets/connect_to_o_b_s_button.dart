@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
-import 'package:obs_manager/features/o_b_s_server/services/services.dart';
+import 'package:obs_manager/features/o_b_s_server/widgets/connect_to_o_b_s_dialog.dart';
 
 class ConnectToOBSButton extends StatelessWidget {
   const ConnectToOBSButton({super.key});
@@ -10,11 +10,10 @@ class ConnectToOBSButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: () {
-        // Parameters to connect can be filled in by the user
-        getIt<OBSService>().connect(
-          ip: '192.168.0.140',
-          port: '4456',
-          password: 'password123A&',
+        showDialog<void>(
+          context: context,
+          barrierColor: Colors.black87,
+          builder: (BuildContext context) => const ConnectToOBSDialog(),
         );
       },
       icon: const Icon(Icons.power, color: Colors.white, size: 16),
