@@ -43,4 +43,207 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get timeoutError => 'Délai de connexion dépassé';
+
+  @override
+  String get audio => 'Audio';
+
+  @override
+  String get monitoring => 'Surveillance';
+
+  @override
+  String get isStarting => 'Démarrage en cours';
+
+  @override
+  String get isStopping => 'Arrêt en cours';
+
+  @override
+  String get quickAudioControl => 'Contrôle Audio Rapide';
+
+  @override
+  String get obsOffline => 'OBS Hors ligne';
+
+  @override
+  String get muted => 'Muet';
+
+  @override
+  String get recordingDecibelsLive => 'Enregistrement des décibels en direct';
+
+  @override
+  String get connectToActiveObsServer => 'Connecter à un serveur OBS actif';
+
+  @override
+  String get scenesDirectory => 'Répertoire des scènes';
+
+  @override
+  String get chooseVisibleMainScenes => 'Choisir les scènes principales visibles';
+
+  @override
+  String selected(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count SÉLECTIONNÉS',
+      one: '1 SÉLECTIONNÉ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get noScenesDetected => 'Aucune scène détectée dans OBS';
+
+  @override
+  String get connectToObsToListScenes => 'Se connecter à OBS pour lister les scènes';
+
+  @override
+  String get systemLogsAndMetadata => 'Journaux Système & Métadonnées';
+
+  @override
+  String get clearLogs => 'Effacer les journaux';
+
+  @override
+  String get systemOnlineStandby => 'Système en ligne. En attente.';
+
+  @override
+  String get cacheClear => 'Vider le cache';
+
+  @override
+  String get systemPurgeRequest => 'Demande de Purge Système';
+
+  @override
+  String get purgeWarningText =>
+      'ATTENTION : Cette opération effacera définitivement tous les registres de la base de données locale, les identifiants mis en cache et l\'historique des journaux système.\n\nVous serez déconnecté de la station. Êtes-vous sûr de vouloir continuer ?';
+
+  @override
+  String get cancel => 'Annuler';
+
+  @override
+  String get purge => 'Purger';
+
+  @override
+  String get cachePurgedSuccess => 'Cache entièrement vidé et déconnecté proprement';
+
+  @override
+  String get closeConsole => 'Fermer la Console';
+
+  @override
+  String get connect => 'Se connecter';
+
+  @override
+  String get disconnect => 'Se déconnecter';
+
+  @override
+  String get connectionConsole => 'Console de connexion';
+
+  @override
+  String get obsWebsocketV5Configuration => 'Configuration OBS WebSocket v5';
+
+  @override
+  String get obsWebSocketIp => 'I.P. de l\'OBS WebSocket';
+
+  @override
+  String get ipRequired => 'L\'adresse IP est requise';
+
+  @override
+  String get obsWebSocketPort => 'Port de l\'OBS WebSocket';
+
+  @override
+  String get portRequired => 'Le port est requis';
+
+  @override
+  String get obsAuthenticationKey => 'Clé d\'authentification OBS';
+
+  @override
+  String get obsPassword => 'Mot de passe OBS';
+
+  @override
+  String get orConnectViaQrCode => 'Ou se connecter via Code QR';
+
+  @override
+  String get scanQr => 'Scanner QR';
+
+  @override
+  String get obsStationConfiguredSuccess => 'Station OBS configurée et sécurisée en ligne';
+
+  @override
+  String get qrCodeScanner => 'Scanner de Code QR';
+
+  @override
+  String get alignObsConsoleQrCode => 'Aligner le Code QR de la console OBS';
+
+  @override
+  String get enterManually => 'Saisir Manuellement';
+
+  @override
+  String get panelControl => 'Panneau de Contrôle';
+
+  @override
+  String get onAir => 'En Direct';
+
+  @override
+  String get recStandby => 'Enr : En attente';
+
+  @override
+  String presetsLoaded(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count PRÉRÉGLAGES CHARGÉS',
+      one: '1 PRÉRÉGLAGE CHARGÉ',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get noSourcesDetected => 'Aucune source détectée';
+
+  @override
+  String get sourcesOffline => 'Sources Hors ligne';
+
+  @override
+  String get connectObsToLoadInputs => 'Connectez-vous au serveur OBS pour charger les entrées de scène actives.';
+
+  @override
+  String get obsDisconnected => 'OBS Déconnecté';
+
+  @override
+  String get sceneCommandCenterOffline =>
+      'Le centre de commande des scènes est hors ligne. Veuillez initialiser votre connexion à l\'aide de la console de contrôle de la station dans la barre latérale.';
+
+  @override
+  String get openControlConsole => 'Ouvrir la console de contrôle';
+
+  @override
+  String get coreInitializationShowcase => 'Vitrine d\'initialisation de base';
+
+  @override
+  String get selectLanguage => 'Sélectionner la langue (Test de localisation)';
+
+  @override
+  String get activeTranslations => 'Traductions actives';
+
+  @override
+  String get mappedErrorsAlerts => 'Erreurs & Alertes mappées';
+
+  @override
+  String get clientServiceTitle => 'Service Client (OBS WebSocket)';
+
+  @override
+  String get clientServiceDescription =>
+      'Intègre un mappage de domaine exception-vers-échec fonctionnel utilisant les limites Either de dartz.';
+
+  @override
+  String get simulateObsFailure => 'Simuler un échec OBS';
+
+  @override
+  String get apiServiceTitle => 'Service API (Client REST Dio)';
+
+  @override
+  String get apiServiceDescription =>
+      'Client SOLID gérant les requêtes HTTP génériques, les interceptions personnalisées et les réponses d\'erreur structurées.';
+
+  @override
+  String get simulateHttpError => 'Simuler une erreur HTTP';
+
+  @override
+  String get simulationLogsMetadata => 'Journaux de Simulation & Métadonnées';
 }

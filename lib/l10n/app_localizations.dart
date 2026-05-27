@@ -166,6 +166,372 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Connection timed out'**
   String get timeoutError;
+
+  /// Audio label
+  ///
+  /// In en, this message translates to:
+  /// **'Audio'**
+  String get audio;
+
+  /// Monitoring label
+  ///
+  /// In en, this message translates to:
+  /// **'Monitoring'**
+  String get monitoring;
+
+  /// Stream is starting status
+  ///
+  /// In en, this message translates to:
+  /// **'Is Starting'**
+  String get isStarting;
+
+  /// Stream is stopping status
+  ///
+  /// In en, this message translates to:
+  /// **'Is Stopping'**
+  String get isStopping;
+
+  /// Quick audio control panel title
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Audio Control'**
+  String get quickAudioControl;
+
+  /// OBS offline status label
+  ///
+  /// In en, this message translates to:
+  /// **'OBS Offline'**
+  String get obsOffline;
+
+  /// Muted audio status label
+  ///
+  /// In en, this message translates to:
+  /// **'Muted'**
+  String get muted;
+
+  /// Recording decibels status label
+  ///
+  /// In en, this message translates to:
+  /// **'Recording decibels live'**
+  String get recordingDecibelsLive;
+
+  /// Connect prompt description
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to active OBS server'**
+  String get connectToActiveObsServer;
+
+  /// Scenes directory panel title
+  ///
+  /// In en, this message translates to:
+  /// **'Scenes Directory'**
+  String get scenesDirectory;
+
+  /// Hint to choose visible scenes
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Visible Main Scenes'**
+  String get chooseVisibleMainScenes;
+
+  /// Selected state indicator
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 SELECTED} other{{count} SELECTED}}'**
+  String selected(int count);
+
+  /// Placeholder when no scenes are found
+  ///
+  /// In en, this message translates to:
+  /// **'No scenes detected in OBS'**
+  String get noScenesDetected;
+
+  /// Placeholder prompt when OBS disconnected in scenes
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to OBS to list scenes'**
+  String get connectToObsToListScenes;
+
+  /// System logs panel title
+  ///
+  /// In en, this message translates to:
+  /// **'System Logs & Metadata'**
+  String get systemLogsAndMetadata;
+
+  /// Tooltip to clear system logs
+  ///
+  /// In en, this message translates to:
+  /// **'Clear Logs'**
+  String get clearLogs;
+
+  /// Default terminal online system message
+  ///
+  /// In en, this message translates to:
+  /// **'System online. Standby.'**
+  String get systemOnlineStandby;
+
+  /// Drawer option to clear cache
+  ///
+  /// In en, this message translates to:
+  /// **'Cache clear'**
+  String get cacheClear;
+
+  /// Title of the cache clear warning dialog
+  ///
+  /// In en, this message translates to:
+  /// **'System Purge Request'**
+  String get systemPurgeRequest;
+
+  /// Warning text shown in the purge dialog
+  ///
+  /// In en, this message translates to:
+  /// **'WARNING: This operation will permanently wipe all local database registries, cached credentials, and system log history.\n\nYou will be logged out of the station. Are you sure you want to proceed?'**
+  String get purgeWarningText;
+
+  /// Generic cancel button text
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// Purge action button text
+  ///
+  /// In en, this message translates to:
+  /// **'Purge'**
+  String get purge;
+
+  /// Snackbar success message after clearing cache
+  ///
+  /// In en, this message translates to:
+  /// **'Cache fully purged and logged out cleanly'**
+  String get cachePurgedSuccess;
+
+  /// Drawer close button text
+  ///
+  /// In en, this message translates to:
+  /// **'Close Console'**
+  String get closeConsole;
+
+  /// OBS connect action button text
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get connect;
+
+  /// OBS disconnect action button text
+  ///
+  /// In en, this message translates to:
+  /// **'Disconnect'**
+  String get disconnect;
+
+  /// OBS connection dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Connection Console'**
+  String get connectionConsole;
+
+  /// OBS connection dialog subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'OBS WebSocket v5 Configuration'**
+  String get obsWebsocketV5Configuration;
+
+  /// Input field label for IP address
+  ///
+  /// In en, this message translates to:
+  /// **'OBS WebSocket I.P.'**
+  String get obsWebSocketIp;
+
+  /// Validation error for IP address field
+  ///
+  /// In en, this message translates to:
+  /// **'IP address is required'**
+  String get ipRequired;
+
+  /// Input field label for port
+  ///
+  /// In en, this message translates to:
+  /// **'OBS WebSocket Port'**
+  String get obsWebSocketPort;
+
+  /// Validation error for port field
+  ///
+  /// In en, this message translates to:
+  /// **'Port is required'**
+  String get portRequired;
+
+  /// Input field label for password
+  ///
+  /// In en, this message translates to:
+  /// **'OBS Authentication Key'**
+  String get obsAuthenticationKey;
+
+  /// Input field hint for password
+  ///
+  /// In en, this message translates to:
+  /// **'OBS Password'**
+  String get obsPassword;
+
+  /// Divider text for QR connection alternative
+  ///
+  /// In en, this message translates to:
+  /// **'Or Connect Via QR Code'**
+  String get orConnectViaQrCode;
+
+  /// Scan QR button text
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR'**
+  String get scanQr;
+
+  /// Snackbar success message after connection
+  ///
+  /// In en, this message translates to:
+  /// **'OBS Station configured and secured online'**
+  String get obsStationConfiguredSuccess;
+
+  /// Scanner dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'QR Code Scanner'**
+  String get qrCodeScanner;
+
+  /// Scanner instruction subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Align OBS Console QR Code'**
+  String get alignObsConsoleQrCode;
+
+  /// Cancel scanning button text
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Manually'**
+  String get enterManually;
+
+  /// Main screen control bar title
+  ///
+  /// In en, this message translates to:
+  /// **'Panel Control'**
+  String get panelControl;
+
+  /// Streaming live status badge label
+  ///
+  /// In en, this message translates to:
+  /// **'On Air'**
+  String get onAir;
+
+  /// Streaming standby status badge label
+  ///
+  /// In en, this message translates to:
+  /// **'REC: Standby'**
+  String get recStandby;
+
+  /// Count of presets loaded in scenes header
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}'**
+  String presetsLoaded(int count);
+
+  /// Placeholder when no sources are detected in connected OBS
+  ///
+  /// In en, this message translates to:
+  /// **'No sources detected'**
+  String get noSourcesDetected;
+
+  /// Placeholder header when sources are offline
+  ///
+  /// In en, this message translates to:
+  /// **'Sources Offline'**
+  String get sourcesOffline;
+
+  /// Placeholder hint when sources are offline
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to the OBS server to load active scene inputs.'**
+  String get connectObsToLoadInputs;
+
+  /// Placeholder header when scenes are offline
+  ///
+  /// In en, this message translates to:
+  /// **'OBS Disconnected'**
+  String get obsDisconnected;
+
+  /// Placeholder description when scenes are offline
+  ///
+  /// In en, this message translates to:
+  /// **'Scene command center is offline. Please initialize your connection using the Station Control Console in the sidebar.'**
+  String get sceneCommandCenterOffline;
+
+  /// Action button in offline scenes placeholder
+  ///
+  /// In en, this message translates to:
+  /// **'Open Control Console'**
+  String get openControlConsole;
+
+  /// MyHomePage showcase subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Core Initialization Showcase'**
+  String get coreInitializationShowcase;
+
+  /// Language selector header in MyHomePage
+  ///
+  /// In en, this message translates to:
+  /// **'Select Language (Localization Test)'**
+  String get selectLanguage;
+
+  /// Showcase card title for active translations
+  ///
+  /// In en, this message translates to:
+  /// **'Active Translations'**
+  String get activeTranslations;
+
+  /// Showcase card title for errors & alerts
+  ///
+  /// In en, this message translates to:
+  /// **'Mapped Errors & Alerts'**
+  String get mappedErrorsAlerts;
+
+  /// Showcase card title for client service
+  ///
+  /// In en, this message translates to:
+  /// **'ClientService (OBS WebSocket)'**
+  String get clientServiceTitle;
+
+  /// Showcase card description for client service
+  ///
+  /// In en, this message translates to:
+  /// **'Integrates functional exception-to-failure domain mapping using dartz Either boundaries.'**
+  String get clientServiceDescription;
+
+  /// Showcase button to simulate failure
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate OBS Failure'**
+  String get simulateObsFailure;
+
+  /// Showcase card title for API service
+  ///
+  /// In en, this message translates to:
+  /// **'ApiService (Dio REST Client)'**
+  String get apiServiceTitle;
+
+  /// Showcase card description for API service
+  ///
+  /// In en, this message translates to:
+  /// **'SOLID client managing generic HTTP requests, custom intercepts, and structured error responses.'**
+  String get apiServiceDescription;
+
+  /// Showcase button to simulate HTTP error
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate HTTP Error'**
+  String get simulateHttpError;
+
+  /// Showcase header for simulation logs
+  ///
+  /// In en, this message translates to:
+  /// **'Simulation Logs & Metadata'**
+  String get simulationLogsMetadata;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

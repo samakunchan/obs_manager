@@ -51,7 +51,7 @@ class SourcesPanel extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Center(
                 child: Text(
-                  'NO SOURCES DETECTED',
+                  context.localization.noSourcesDetected.toUpperCase(),
                   style: Theme.of(
                     context,
                   ).textTheme.bodySmall?.copyWith(fontSize: 12, color: AppColors.cyberTextMuted, fontWeight: .bold),
@@ -88,7 +88,7 @@ class SourcesPanel extends StatelessWidget {
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [
-                Text('SOURCES', style: AppTextTheme.barlowCondensed),
+                Text(context.localization.sources.toUpperCase(), style: AppTextTheme.barlowCondensed),
               ],
             ),
 

@@ -150,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       style: Theme.of(context).textTheme.headlineMedium,
                                     ),
                                     Text(
-                                      'Core Initialization Showcase',
+                                      context.localization.coreInitializationShowcase,
                                       style: Theme.of(context).textTheme.bodySmall,
                                     ),
                                   ],
@@ -189,7 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         // Language Selection Row
                         Text(
-                          'SELECT LANGUAGE (LOCALIZATION TEST)',
+                          context.localization.selectLanguage.toUpperCase(),
                           style: Theme.of(context).textTheme.labelMedium,
                         ),
                         const SizedBox(height: 8),
@@ -242,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: [
                               // Localized Keys list card
                               ShowcaseCard(
-                                title: 'Active Translations',
+                                title: context.localization.activeTranslations,
                                 icon: Icons.translate,
                                 color: AppColors.primary,
                                 child: ListView(
@@ -261,7 +261,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                               // Mapped Localization Errors card
                               ShowcaseCard(
-                                title: 'Mapped Errors & Alerts',
+                                title: context.localization.mappedErrorsAlerts,
                                 icon: Icons.warning_amber_rounded,
                                 color: AppColors.warningColor,
                                 child: ListView(
@@ -279,14 +279,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
                               // ClientService simulation card
                               ShowcaseCard(
-                                title: 'ClientService (OBS WebSocket)',
+                                title: context.localization.clientServiceTitle,
                                 icon: Icons.swap_calls_rounded,
-                                color: AppColors.successColor,
+                                color: AppColors.primary,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Integrates functional exception-to-failure domain mapping using dartz Either boundaries.',
+                                      context.localization.clientServiceDescription,
                                       style: Theme.of(context).textTheme.bodySmall,
                                     ),
                                     const Spacer(),
@@ -296,7 +296,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         style: kElevatedButtonDarkSuccess,
                                         onPressed: _isLoading ? null : _simulateObsConnection,
                                         icon: const Icon(Icons.play_arrow),
-                                        label: const Text('Simulate OBS Failure'),
+                                        label: Text(context.localization.simulateObsFailure),
                                       ),
                                     ),
                                   ],
@@ -305,14 +305,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
                               // ApiService (Dio REST) simulation card
                               ShowcaseCard(
-                                title: 'ApiService (Dio REST Client)',
+                                title: context.localization.apiServiceTitle,
                                 icon: Icons.cloud_done_outlined,
                                 color: AppColors.infoColor,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'SOLID client managing generic HTTP requests, custom intercepts, and structured error responses.',
+                                      context.localization.apiServiceDescription,
                                       style: Theme.of(context).textTheme.bodySmall,
                                     ),
                                     const Spacer(),
@@ -321,7 +321,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       child: ElevatedButton.icon(
                                         onPressed: _isLoading ? null : _simulateApiCall,
                                         icon: const Icon(Icons.play_arrow),
-                                        label: const Text('Simulate HTTP Error'),
+                                        label: Text(context.localization.simulateHttpError),
                                       ),
                                     ),
                                   ],
@@ -334,7 +334,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         // Simulation Logs terminal
                         Text(
-                          'SIMULATION LOGS & METADATA',
+                          context.localization.simulationLogsMetadata.toUpperCase(),
                           style: Theme.of(context).textTheme.labelMedium,
                         ),
                         const SizedBox(height: 8),

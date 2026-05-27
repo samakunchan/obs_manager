@@ -22,11 +22,11 @@ class ScenesActionPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scenesService = getIt<OBSScenesService>();
-    final obsService = getIt<OBSService>();
+    final OBSScenesService scenesService = getIt<OBSScenesService>();
+    final OBSService obsService = getIt<OBSService>();
 
     return BottomActionPanelWrapper(
-      title: 'SCENES DIRECTORY',
+      title: context.localization.scenesDirectory.toUpperCase(),
       onClose: onClose,
       leadingHeader: const Icon(Icons.grid_view_rounded, color: AppColors.cyberCyan, size: 16),
       child: SizedBox(
@@ -36,23 +36,23 @@ class ScenesActionPanel extends StatelessWidget {
           final allScenes = scenesService.scenes.value;
 
           return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: .stretch,
             children: [
               /// Header Info Text
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: .spaceBetween,
                 children: [
                   Text(
-                    'CHOOSE VISIBLE MAIN SCENES',
+                    context.localization.chooseVisibleMainScenes.toUpperCase(),
                     style: GoogleFonts.barlowCondensed(
                       fontSize: 10,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: .bold,
                       letterSpacing: 1,
                       color: AppColors.cyberTextMuted,
                     ),
                   ),
                   Text(
-                    '${visibleScenes.length} SELECTED',
+                    context.localization.selected(visibleScenes.length),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 9,
                       fontWeight: .bold,
@@ -71,7 +71,7 @@ class ScenesActionPanel extends StatelessWidget {
                     ? (allScenes.isEmpty
                           ? Center(
                               child: Text(
-                                'NO SCENES DETECTED IN OBS',
+                                context.localization.noScenesDetected.toUpperCase(),
                                 style: Theme.of(
                                   context,
                                 ).textTheme.bodySmall?.copyWith(fontSize: 10, color: AppColors.cyberTextMuted),
@@ -103,7 +103,7 @@ class ScenesActionPanel extends StatelessWidget {
                             ))
                     : Center(
                         child: Text(
-                          'CONNECT TO OBS TO LIST SCENES',
+                          context.localization.connectToObsToListScenes.toUpperCase(),
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10, color: AppColors.cyberTextMuted),
                         ),
                       ),

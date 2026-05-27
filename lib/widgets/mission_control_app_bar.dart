@@ -30,7 +30,7 @@ class MissionControlAppBar extends StatelessWidget {
               //6SJQ9CcKwxBqfp3FY16n
               Expanded(
                 child: Text(
-                  'PANEL CONTROL',
+                  context.localization.panelControl.toUpperCase(),
                   style: GoogleFonts.barlowCondensed(
                     fontSize: 20,
                     fontWeight: .bold,
