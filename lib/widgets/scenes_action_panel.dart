@@ -53,9 +53,9 @@ class ScenesActionPanel extends StatelessWidget {
                   ),
                   Text(
                     '${visibleScenes.length} SELECTED',
-                    style: GoogleFonts.jetBrainsMono(
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 9,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: .bold,
                       color: AppColors.cyberCyan,
                     ),
                   ),
@@ -72,7 +72,9 @@ class ScenesActionPanel extends StatelessWidget {
                           ? Center(
                               child: Text(
                                 'NO SCENES DETECTED IN OBS',
-                                style: GoogleFonts.jetBrainsMono(fontSize: 10, color: AppColors.cyberTextMuted),
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall?.copyWith(fontSize: 10, color: AppColors.cyberTextMuted),
                               ),
                             )
                           : GridView.builder(
@@ -102,7 +104,7 @@ class ScenesActionPanel extends StatelessWidget {
                     : Center(
                         child: Text(
                           'CONNECT TO OBS TO LIST SCENES',
-                          style: GoogleFonts.jetBrainsMono(fontSize: 10, color: AppColors.cyberTextMuted),
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10, color: AppColors.cyberTextMuted),
                         ),
                       ),
               ),

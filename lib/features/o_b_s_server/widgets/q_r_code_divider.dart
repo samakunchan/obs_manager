@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/theme/constantes.dart';
 
 class QRCodeDivider extends StatelessWidget {
@@ -13,7 +12,7 @@ class QRCodeDivider extends StatelessWidget {
         const Expanded(child: Divider(color: AppColors.darkCardBorder)),
         Text(
           'OR CONNECT VIA QR CODE',
-          style: GoogleFonts.jetBrainsMono(
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
             fontSize: 9,
             fontWeight: .bold,
             color: AppColors.cyberTextMuted,

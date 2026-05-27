@@ -86,4 +86,9 @@ class PersistancesLogsService {
     logs.value = [];
     await _prefs.remove(_keyLogs);
   }
+
+  /// Wipes all data managed by this service from persistent storage.
+  Future<void> clear() async {
+    await clearLogs();
+  }
 }

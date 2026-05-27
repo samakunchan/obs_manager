@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/theme/constantes.dart';
 
 class LabelInfoStatusConnection extends StatelessWidget {
@@ -9,14 +8,15 @@ class LabelInfoStatusConnection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Row(
       mainAxisAlignment: .spaceBetween,
       children: [
         Text(
           'OBS CONNECTION:',
-          style: GoogleFonts.jetBrainsMono(
+          style: textTheme.bodySmall?.copyWith(
             fontSize: 10,
-            fontWeight: FontWeight.bold,
+            fontWeight: .bold,
             color: AppColors.cyberTextLight,
           ),
         ),
@@ -31,9 +31,9 @@ class LabelInfoStatusConnection extends StatelessWidget {
           ),
           child: Text(
             status.toUpperCase(),
-            style: GoogleFonts.jetBrainsMono(
+            style: textTheme.bodySmall?.copyWith(
               fontSize: 9,
-              fontWeight: FontWeight.bold,
+              fontWeight: .bold,
               color: isConnected ? AppColors.successColor : AppColors.cyberAlertRed,
             ),
           ),

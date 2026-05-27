@@ -45,9 +45,12 @@ class MyApp extends StatelessWidget {
         }
         return supportedLocales.first;
       },
-      home: const SafeArea(
-        child: AppLifecycleGate(
-          child: ObsTactileCommandPage(),
+      home: ColoredBox(
+        color: Theme.of(context).appBarTheme.backgroundColor ?? AppColors.cyberSurface,
+        child: const SafeArea(
+          child: AppLifecycleGate(
+            child: MainPage(),
+          ),
         ),
       ),
     );

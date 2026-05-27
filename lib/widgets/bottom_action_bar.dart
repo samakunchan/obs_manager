@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 
 /// Individual navigation button in the bottom action bar
@@ -35,7 +34,7 @@ class BottomNavButton extends StatelessWidget {
               Icon(icon, size: 20, color: color),
               Text(
                 label,
-                style: GoogleFonts.jetBrainsMono(fontSize: 9, fontWeight: .bold, color: color),
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9, fontWeight: .bold, color: color),
               ),
             ],
           ),
@@ -104,7 +103,6 @@ class BottomActionBar extends StatelessWidget {
             isActive: isMonitoringActive,
             onTap: onMonitoringTap,
           ),
-          // const BottomNavButton(icon: Icons.layers, label: 'SOURCES', isActive: false),
 
           /// Central broadcast CTA
           Expanded(
@@ -120,14 +118,12 @@ class BottomActionBar extends StatelessWidget {
                       ? AppColors.cyberAlertRed
                       : AppColors.cyberCyan,
                   elevation: 8,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusTertiary)),
                 ),
                 onPressed: onToggleStream,
                 icon: const Icon(Icons.rocket_launch, size: 20),
                 label: Text(
                   streamStatusMessage,
-                  style: GoogleFonts.barlowCondensed(fontSize: 16, fontWeight: .bold, letterSpacing: 1.2),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.cyberSurface),
                 ),
               ),
             ),

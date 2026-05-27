@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 import 'package:obs_manager/features/o_b_s_server/o_b_s_server.dart';
 import 'package:obs_manager/features/persistances/persistances.dart';
-import 'package:obs_manager/pages/main_page/desktop_layout.dart';
-import 'package:obs_manager/pages/main_page/mobile_layout.dart';
+import 'package:obs_manager/pages/layouts/desktop_layout.dart';
+import 'package:obs_manager/pages/layouts/mobile_layout.dart';
 import 'package:obs_manager/widgets/widgets.dart';
 import 'package:obs_websocket/obs_websocket.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
 /// State-of-the-art OBS Manager Tactile Command Center.
-class ObsTactileCommandPage extends StatefulWidget {
-  const ObsTactileCommandPage({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  State<ObsTactileCommandPage> createState() => _ObsTactileCommandPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with SingleTickerProviderStateMixin {
+class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   // Live streaming states
@@ -77,10 +76,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: AppColors.cyberAlertRed,
-              content: Text(
-                '🛑 ERROR: $e',
-                style: GoogleFonts.jetBrainsMono(color: Colors.white, fontWeight: .bold),
-              ),
+              content: Text('🛑 ERROR: $e', style: Theme.of(context).textTheme.bodyMedium),
               duration: const Duration(seconds: 2),
             ),
           );
@@ -90,10 +86,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: AppColors.cyberAlertRed,
-          content: Text(
-            '🚨 OBS IS NOT CONNECTED',
-            style: GoogleFonts.jetBrainsMono(color: Colors.white, fontWeight: .bold),
-          ),
+          content: Text('🚨 OBS IS NOT CONNECTED', style: Theme.of(context).textTheme.bodyMedium),
           duration: const Duration(seconds: 2),
         ),
       );
@@ -109,9 +102,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
 
     return Watch((_) {
       final bool isConnected = obsService.isConnected.value;
-      final bool liveStreaming = isConnected
-          ? (obsService.streamStatus.value == StatusStream.started || obsService.streamStatus.value == StatusStream.isStarting)
-          : _isStreaming;
+      final bool liveStreaming = isConnected ? (obsService.streamStatus.value == StatusStream.started) : _isStreaming;
 
       List<Map<String, dynamic>> scenesList;
       final String activeSceneName;
@@ -135,7 +126,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
         }).toList();
 
         // Fallback: If cached selection has no overlap with the current scenes, reset and show all.
-        final hasOverlap = scenesList.any((s) => _selectedVisibleScenes.contains(s['name']));
+        final bool hasOverlap = scenesList.any((s) => _selectedVisibleScenes.contains(s['name']));
         if (!hasOverlap && scenesList.isNotEmpty) {
           _selectedVisibleScenes
             ..clear()
@@ -160,6 +151,8 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
         key: _scaffoldKey,
         backgroundColor: AppColors.cyberSurface,
         drawer: const StationDrawer(),
+        floatingActionButton: MenuBurgerSidebar(onDrawerPressed: () => _scaffoldKey.currentState?.openDrawer()),
+        floatingActionButtonLocation: .startTop,
         body: Stack(
           children: [
             /// Cyber Ambient Background Glows
@@ -168,11 +161,10 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
             /// Main Screen Scaffold Container
             Column(
               children: [
-                MissionControlAppBar(
-                  isStreaming: liveStreaming,
-                  pulseAnimation: _pulseAnimation,
-                  onDrawerPressed: () => _scaffoldKey.currentState?.openDrawer(),
-                ),
+                /// App bar
+                MissionControlAppBar(isStreaming: liveStreaming, pulseAnimation: _pulseAnimation),
+
+                /// Body
                 Expanded(
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.only(
@@ -208,7 +200,7 @@ class _ObsTactileCommandPageState extends State<ObsTactileCommandPage> with Sing
               ],
             ),
 
-            // Bottom Action Bar & Panel stack container
+            /// Bottom Action Bar & Panel stack container
             Positioned(
               bottom: 0,
               left: 0,
