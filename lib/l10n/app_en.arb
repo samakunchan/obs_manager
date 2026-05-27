@@ -109,7 +109,7 @@
   "@connectToObsToListScenes": {
     "description": "Placeholder prompt when OBS disconnected in scenes"
   },
-  "systemLogsAndMetadata": "System Logs & Metadata",
+  "systemLogsAndMetadata": "System Logs",
   "@systemLogsAndMetadata": {
     "description": "System logs panel title"
   },
@@ -181,7 +181,7 @@
   "@portRequired": {
     "description": "Validation error for port field"
   },
-  "obsAuthenticationKey": "OBS Authentication Key",
+  "obsAuthenticationKey": "Password",
   "@obsAuthenticationKey": {
     "description": "Input field label for password"
   },
@@ -250,11 +250,11 @@
   "@obsDisconnected": {
     "description": "Placeholder header when scenes are offline"
   },
-  "sceneCommandCenterOffline": "Scene command center is offline. Please initialize your connection using the Station Control Console in the sidebar.",
+  "sceneCommandCenterOffline": "Scene manager is offline. Please initialize your connection using the Station Control Console in the sidebar.",
   "@sceneCommandCenterOffline": {
     "description": "Placeholder description when scenes are offline"
   },
-  "openControlConsole": "Open Control Console",
+  "openControlConsole": "Open Connection",
   "@openControlConsole": {
     "description": "Action button in offline scenes placeholder"
   },
@@ -301,5 +301,29 @@
   "simulationLogsMetadata": "Simulation Logs & Metadata",
   "@simulationLogsMetadata": {
     "description": "Showcase header for simulation logs"
+  },
+  "systemOffline": "SYSTEM OFFLINE",
+  "@systemOffline": {
+    "description": "System offline warning status label"
+  },
+  "noWifiMessage": "A local WiFi network connection is required to communicate with the OBS Broadcaster Studio over local WebSocket.\n\nPlease check your system settings and connect to WiFi.",
+  "@noWifiMessage": {
+    "description": "Detailed warning message when WiFi is disconnected"
+  },
+  "scanningSystem": "SCANNING SYSTEM...",
+  "@scanningSystem": {
+    "description": "Connection status during a network retry scan"
+  },
+  "rescanConnection": "RESCAN CONNECTION",
+  "@rescanConnection": {
+    "description": "Retry scan button label"
+  },
+  "linkRestoration": "LINK RESTORATION",
+  "@linkRestoration": {
+    "description": "Cyber reconnection screen header"
+  },
+  "reconnectingMessage": "WiFi network connection detected.\n\nRe-establishing secure local WebSocket links and synchronizing scene pipelines with OBS Studio...",
+  "@reconnectingMessage": {
+    "description": "Reconnection progress descriptive details message"
   }
 }

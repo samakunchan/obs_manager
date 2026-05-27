@@ -254,7 +254,7 @@ abstract class AppLocalizations {
   /// System logs panel title
   ///
   /// In en, this message translates to:
-  /// **'System Logs & Metadata'**
+  /// **'System Logs'**
   String get systemLogsAndMetadata;
 
   /// Tooltip to clear system logs
@@ -362,7 +362,7 @@ abstract class AppLocalizations {
   /// Input field label for password
   ///
   /// In en, this message translates to:
-  /// **'OBS Authentication Key'**
+  /// **'Password'**
   String get obsAuthenticationKey;
 
   /// Input field hint for password
@@ -458,13 +458,13 @@ abstract class AppLocalizations {
   /// Placeholder description when scenes are offline
   ///
   /// In en, this message translates to:
-  /// **'Scene command center is offline. Please initialize your connection using the Station Control Console in the sidebar.'**
+  /// **'Scene manager is offline. Please initialize your connection using the Station Control Console in the sidebar.'**
   String get sceneCommandCenterOffline;
 
   /// Action button in offline scenes placeholder
   ///
   /// In en, this message translates to:
-  /// **'Open Control Console'**
+  /// **'Open Connection'**
   String get openControlConsole;
 
   /// MyHomePage showcase subtitle
@@ -532,6 +532,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Simulation Logs & Metadata'**
   String get simulationLogsMetadata;
+
+  /// System offline warning status label
+  ///
+  /// In en, this message translates to:
+  /// **'SYSTEM OFFLINE'**
+  String get systemOffline;
+
+  /// Detailed warning message when WiFi is disconnected
+  ///
+  /// In en, this message translates to:
+  /// **'A local WiFi network connection is required to communicate with the OBS Broadcaster Studio over local WebSocket.\n\nPlease check your system settings and connect to WiFi.'**
+  String get noWifiMessage;
+
+  /// Connection status during a network retry scan
+  ///
+  /// In en, this message translates to:
+  /// **'SCANNING SYSTEM...'**
+  String get scanningSystem;
+
+  /// Retry scan button label
+  ///
+  /// In en, this message translates to:
+  /// **'RESCAN CONNECTION'**
+  String get rescanConnection;
+
+  /// Cyber reconnection screen header
+  ///
+  /// In en, this message translates to:
+  /// **'LINK RESTORATION'**
+  String get linkRestoration;
+
+  /// Reconnection progress descriptive details message
+  ///
+  /// In en, this message translates to:
+  /// **'WiFi network connection detected.\n\nRe-establishing secure local WebSocket links and synchronizing scene pipelines with OBS Studio...'**
+  String get reconnectingMessage;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

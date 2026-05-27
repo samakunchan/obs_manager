@@ -99,7 +99,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get connectToObsToListScenes => 'الاتصل بـ OBS لعرض المشاهد';
 
   @override
-  String get systemLogsAndMetadata => 'سجلات النظام والبيانات الوصفية';
+  String get systemLogsAndMetadata => 'سجلات النظام';
 
   @override
   String get clearLogs => 'مسح السجلات';
@@ -154,7 +154,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get portRequired => 'المنفذ مطلوب';
 
   @override
-  String get obsAuthenticationKey => 'مفتاح مصادقة OBS';
+  String get obsAuthenticationKey => 'كلمة المرور';
 
   @override
   String get obsPassword => 'كلمة مرور OBS';
@@ -215,10 +215,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get sceneCommandCenterOffline =>
-      'مركز التحكم في المشهد غير متصل. يرجى تهيئة الاتصال الخاص بك باستخدام وحدة تحكم المحطة في الشريط الجانبي.';
+      'مدير المشاهد غير متصل. يرجى تهيئة الاتصال الخاص بك باستخدام وحدة تحكم المحطة في الشريط الجانبي.';
 
   @override
-  String get openControlConsole => 'افتح وحدة التحكم';
+  String get openControlConsole => 'افتح الاتصال';
 
   @override
   String get coreInitializationShowcase => 'عرض التهيئة الأساسي';
@@ -252,4 +252,24 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get simulationLogsMetadata => 'سجلات المحاكاة والبيانات الوصفية';
+
+  @override
+  String get systemOffline => 'النظام غير متصل';
+
+  @override
+  String get noWifiMessage =>
+      'يلزم وجود اتصال بشبكة WiFi المحلية للتواصل مع OBS Broadcaster Studio عبر WebSocket المحلي.\n\nيرجى التحقق من إعدادات النظام والاتصال بشبكة WiFi.';
+
+  @override
+  String get scanningSystem => 'جاري فحص النظام...';
+
+  @override
+  String get rescanConnection => 'إعادة فحص الاتصال';
+
+  @override
+  String get linkRestoration => 'استعادة الاتصال';
+
+  @override
+  String get reconnectingMessage =>
+      'تم اكتشاف اتصال بشبكة WiFi.\n\nجاري إعادة إنشاء روابط WebSocket المحلية الآمنة ومزامنة خطوط المشهد مع OBS Studio...';
 }

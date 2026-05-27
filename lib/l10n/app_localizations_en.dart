@@ -95,7 +95,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get connectToObsToListScenes => 'Connect to OBS to list scenes';
 
   @override
-  String get systemLogsAndMetadata => 'System Logs & Metadata';
+  String get systemLogsAndMetadata => 'System Logs';
 
   @override
   String get clearLogs => 'Clear Logs';
@@ -150,7 +150,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get portRequired => 'Port is required';
 
   @override
-  String get obsAuthenticationKey => 'OBS Authentication Key';
+  String get obsAuthenticationKey => 'Password';
 
   @override
   String get obsPassword => 'OBS Password';
@@ -207,10 +207,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sceneCommandCenterOffline =>
-      'Scene command center is offline. Please initialize your connection using the Station Control Console in the sidebar.';
+      'Scene manager is offline. Please initialize your connection using the Station Control Console in the sidebar.';
 
   @override
-  String get openControlConsole => 'Open Control Console';
+  String get openControlConsole => 'Open Connection';
 
   @override
   String get coreInitializationShowcase => 'Core Initialization Showcase';
@@ -246,4 +246,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get simulationLogsMetadata => 'Simulation Logs & Metadata';
+
+  @override
+  String get systemOffline => 'SYSTEM OFFLINE';
+
+  @override
+  String get noWifiMessage =>
+      'A local WiFi network connection is required to communicate with the OBS Broadcaster Studio over local WebSocket.\n\nPlease check your system settings and connect to WiFi.';
+
+  @override
+  String get scanningSystem => 'SCANNING SYSTEM...';
+
+  @override
+  String get rescanConnection => 'RESCAN CONNECTION';
+
+  @override
+  String get linkRestoration => 'LINK RESTORATION';
+
+  @override
+  String get reconnectingMessage =>
+      'WiFi network connection detected.\n\nRe-establishing secure local WebSocket links and synchronizing scene pipelines with OBS Studio...';
 }
