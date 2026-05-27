@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:obs_manager/core/theme/constantes.dart';
+import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_server/o_b_s_server.dart';
 import 'package:obs_manager/features/persistances/persistances.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -88,7 +88,7 @@ class StationDrawer extends StatelessWidget {
                               spacing: 2,
                               children: [
                                 Text(
-                                  'OBS MANAGER',
+                                  context.localization.mainTitle.toUpperCase(),
                                   overflow: .ellipsis,
                                   style:
                                       Theme.of(
@@ -131,7 +131,7 @@ class StationDrawer extends StatelessWidget {
                   children: [
                     StationDrawerOption(
                       icon: Icons.delete,
-                      label: 'Cache clear',
+                      label: context.localization.cacheClear,
                       isSelected: false,
                       onTap: () {
                         showDialog<void>(
@@ -169,7 +169,7 @@ class StationDrawer extends StatelessWidget {
                                         ),
                                         Expanded(
                                           child: Text(
-                                            'SYSTEM PURGE REQUEST',
+                                            context.localization.systemPurgeRequest.toUpperCase(),
                                             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                               fontWeight: .bold,
                                               color: AppColors.cyberAlertRed,
@@ -181,7 +181,7 @@ class StationDrawer extends StatelessWidget {
                                     ),
                                     const Divider(color: AppColors.cyberAlertRed, thickness: 1),
                                     Text(
-                                      'WARNING: This operation will permanently wipe all local database registries, cached credentials, and system log history.\n\nYou will be logged out of the station. Are you sure you want to proceed?',
+                                      context.localization.purgeWarningText,
                                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                         color: AppColors.cyberTextLight,
                                         height: 1.5,
@@ -202,7 +202,7 @@ class StationDrawer extends StatelessWidget {
                                             ),
                                           ),
                                           child: Text(
-                                            'CANCEL',
+                                            context.localization.cancel.toUpperCase(),
                                             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                               fontWeight: .bold,
                                             ),
@@ -228,7 +228,7 @@ class StationDrawer extends StatelessWidget {
                                                 SnackBar(
                                                   backgroundColor: AppColors.successColor,
                                                   content: Text(
-                                                    '🤖 CACHE FULLY PURGED AND LOGGED OUT CLEANLY',
+                                                    '🤖 ${context.localization.cachePurgedSuccess.toUpperCase()}',
                                                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                                       color: Colors.white,
                                                       fontWeight: .bold,
@@ -248,7 +248,7 @@ class StationDrawer extends StatelessWidget {
                                             ),
                                           ),
                                           child: Text(
-                                            'PURGE',
+                                            context.localization.purge.toUpperCase(),
                                             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                               fontWeight: .bold,
                                               color: Colors.white,
@@ -289,13 +289,12 @@ class StationDrawer extends StatelessWidget {
               }),
             ),
 
-            /// Close Button
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: OutlinedButton(
                 onPressed: Navigator.of(context).pop,
                 child: Text(
-                  'CLOSE CONSOLE',
+                  context.localization.closeConsole.toUpperCase(),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 11, fontWeight: .bold),
                 ),
               ),

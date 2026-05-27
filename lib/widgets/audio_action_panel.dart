@@ -60,7 +60,7 @@ class _AudioActionPanelState extends State<AudioActionPanel> {
     final OBSService obsService = getIt<OBSService>();
 
     return BottomActionPanelWrapper(
-      title: 'QUICK AUDIO CONTROL',
+      title: context.localization.quickAudioControl.toUpperCase(),
       onClose: widget.onClose,
       leadingHeader: Watch((_) {
         final bool isMuted = soundService.isSoundMuted.value;
@@ -116,7 +116,7 @@ class _AudioActionPanelState extends State<AudioActionPanel> {
                     spacing: 2,
                     children: [
                       Text(
-                        isConnected ? micName : 'OBS OFFLINE',
+                        isConnected ? micName : context.localization.obsOffline.toUpperCase(),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           fontSize: 12,
                           fontWeight: .bold,
@@ -126,7 +126,9 @@ class _AudioActionPanelState extends State<AudioActionPanel> {
                         overflow: .ellipsis,
                       ),
                       Text(
-                        isConnected ? (isMuted ? 'Muted' : 'Recording decibels live') : 'Connect to active OBS server',
+                        isConnected
+                            ? (isMuted ? context.localization.muted : context.localization.recordingDecibelsLive)
+                            : context.localization.connectToActiveObsServer,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9, color: AppColors.cyberTextMuted),
                       ),
                     ],

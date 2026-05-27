@@ -93,13 +93,14 @@ class _BottomActionPanelWrapperState extends State<BottomActionPanelWrapper> wit
             ],
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: .min,
+            crossAxisAlignment: .stretch,
             children: [
               /// Header Row
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: .spaceBetween,
                 children: [
+                  /// Text header
                   Row(
                     children: [
                       if (widget.leadingHeader != null) ...[
@@ -114,20 +115,24 @@ class _BottomActionPanelWrapperState extends State<BottomActionPanelWrapper> wit
                           letterSpacing: 1.1,
                           color: widget.glowColor,
                         ),
+                        overflow: .ellipsis,
                       ),
                     ],
                   ),
                   Row(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: .min,
                     children: [
+                      /// Clear logs
                       if (widget.trailingHeader != null) ...[
                         widget.trailingHeader!,
-                        const SizedBox(width: 12),
+                        // const SizedBox(width: 12),
                       ],
+
+                      /// Close panel
                       IconButton(
                         icon: const Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.cyberTextMuted, size: 20),
                         onPressed: _animateClose,
-                        padding: EdgeInsets.zero,
+                        padding: .zero,
                         constraints: const BoxConstraints(),
                       ),
                     ],

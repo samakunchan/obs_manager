@@ -67,7 +67,7 @@ class _ConnectToOBSScannerViewState extends State<ConnectToOBSScannerView> {
                 spacing: 2,
                 children: [
                   Text(
-                    'QR_CODE_SCANNER',
+                    context.localization.qrCodeScanner.toUpperCase(),
                     style: GoogleFonts.barlowCondensed(
                       fontSize: 20,
                       fontWeight: .bold,
@@ -76,7 +76,7 @@ class _ConnectToOBSScannerViewState extends State<ConnectToOBSScannerView> {
                     ),
                   ),
                   Text(
-                    'ALIGN OBS CONSOLE QR CODE',
+                    context.localization.alignObsConsoleQrCode.toUpperCase(),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 9,
                       fontWeight: .bold,
@@ -170,7 +170,7 @@ class _ConnectToOBSScannerViewState extends State<ConnectToOBSScannerView> {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           ),
           label: Text(
-            'ENTER MANUALLY',
+            context.localization.enterManually.toUpperCase(),
             style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 11, fontWeight: .bold, letterSpacing: 1),
           ),
         ),

@@ -61,11 +61,11 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
               ),
               Expanded(
                 child: Column(
-                  crossAxisAlignment: .start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   spacing: 2,
                   children: [
                     Text(
-                      'CONNECTION_CONSOLE',
+                      context.localization.connectionConsole.toUpperCase(),
                       style: GoogleFonts.barlowCondensed(
                         fontSize: 20,
                         fontWeight: .bold,
@@ -74,7 +74,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                       ),
                     ),
                     Text(
-                      'OBS WEBSOCKET V5 CONFIGURATION',
+                      context.localization.obsWebsocketV5Configuration.toUpperCase(),
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         fontSize: 9,
                         fontWeight: .bold,
@@ -98,13 +98,13 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
             cursorColor: AppColors.cyberCyan,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextLight, fontSize: 13),
             decoration: _buildInputDecoration(
-              label: 'OBS WEB SOCKET I.P.',
+              label: context.localization.obsWebSocketIp.toUpperCase(),
               hint: 'e.g., 192.168.0.140',
               prefixIcon: Icons.leak_add,
             ),
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
-                return 'IP address is required';
+                return context.localization.ipRequired;
               }
               return null;
             },
@@ -119,13 +119,13 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
             keyboardType: .number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             decoration: _buildInputDecoration(
-              label: 'OBS WEB SOCKET PORT',
+              label: context.localization.obsWebSocketPort.toUpperCase(),
               hint: 'e.g., 4456',
               prefixIcon: Icons.developer_board,
             ),
             validator: (value) {
               if (value == null || value.trim().isEmpty) {
-                return 'Port is required';
+                return context.localization.portRequired;
               }
               return null;
             },
@@ -139,8 +139,8 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextLight, fontSize: 13),
             obscureText: _obscurePassword,
             decoration: _buildInputDecoration(
-              label: 'OBS AUTHENTICATION KEY',
-              hint: 'OBS password',
+              label: context.localization.obsAuthenticationKey.toUpperCase(),
+              hint: context.localization.obsPassword,
               prefixIcon: Icons.key,
               suffixIcon: IconButton(
                 icon: Icon(
@@ -160,7 +160,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
             children: [
               const Expanded(child: Divider(color: AppColors.darkCardBorder)),
               Text(
-                'OR CONNECT VIA QR CODE',
+                context.localization.orConnectViaQrCode.toUpperCase(),
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontSize: 9,
                   fontWeight: .bold,
@@ -205,7 +205,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                       size: 36,
                     ),
                     Text(
-                      'SCAN QR',
+                      context.localization.scanQr.toUpperCase(),
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: AppColors.cyberCyan,
                         fontSize: 8,
@@ -259,7 +259,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                   child: Text(
-                    'CANCEL',
+                    context.localization.cancel.toUpperCase(),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 11, fontWeight: .bold, letterSpacing: 1),
                   ),
                 ),
@@ -285,7 +285,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                           ),
                         )
                       : Text(
-                          'CONNECT',
+                          context.localization.connect.toUpperCase(),
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             fontSize: 11,
                             fontWeight: .bold,

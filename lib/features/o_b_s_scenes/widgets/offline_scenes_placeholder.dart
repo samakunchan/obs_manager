@@ -40,7 +40,7 @@ class OfflineScenesPlaceholder extends StatelessWidget {
             ),
           ),
           Text(
-            'OBS DISCONNECTED',
+            context.localization.obsDisconnected.toUpperCase(),
             style: GoogleFonts.barlowCondensed(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class OfflineScenesPlaceholder extends StatelessWidget {
             ),
           ),
           Text(
-            'Scene command center is offline. Please initialize your connection using the Station Control Console in the sidebar.',
+            context.localization.sceneCommandCenterOffline,
             textAlign: TextAlign.center,
             style: GoogleFonts.inter(
               fontSize: 13,
@@ -64,7 +64,7 @@ class OfflineScenesPlaceholder extends StatelessWidget {
             },
             icon: const Icon(Icons.settings_ethernet, size: 16),
             label: Text(
-              'OPEN CONTROL CONSOLE',
+              context.localization.openControlConsole.toUpperCase(),
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontSize: 12,
                 fontWeight: .bold,
