@@ -11,12 +11,11 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: .dark,
-      colorScheme: const ColorScheme.dark(
-        primary: AppColors.primary,
-        secondary: AppColors.accent,
-        surface: AppColors.darkCardBg,
-      ),
+      colorScheme: const ColorScheme.dark(primary: AppColors.primary, secondary: AppColors.accent, surface: AppColors.darkCardBg),
       scaffoldBackgroundColor: AppColors.darkScaffoldBg,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.cyberSurface,
+      ),
       cardTheme: const CardThemeData(
         color: AppColors.darkCardBg,
         elevation: AppDefaultValues.kElevationPrimary,
@@ -48,38 +47,39 @@ class AppTheme {
           side: const BorderSide(color: AppColors.darkChipBorder),
         ),
       ),
-      textTheme: const TextTheme(
-        headlineMedium: TextStyle(
+      textTheme: TextTheme(
+        headlineMedium: const TextStyle(
           fontSize: 24,
           fontWeight: .bold,
           letterSpacing: 0.5,
           color: AppColors.textLight,
         ),
-        titleMedium: TextStyle(
+        titleMedium: const TextStyle(
           fontSize: 15,
           fontWeight: .bold,
           color: AppColors.textLight,
         ),
-        bodyMedium: TextStyle(
-          fontSize: 12.5,
-          fontWeight: .w500,
-          color: AppColors.textLight,
-        ),
-        bodySmall: TextStyle(
+        bodyMedium: GoogleFonts.jetBrainsMono(color: Colors.white, fontWeight: .bold),
+        bodySmall: GoogleFonts.jetBrainsMono(
           fontSize: 12,
-          color: AppColors.textHintLight,
-        ),
-        labelMedium: TextStyle(
-          fontSize: 11,
-          fontWeight: .bold,
+          fontWeight: FontWeight.bold,
           color: AppColors.textHintLight,
           letterSpacing: 1,
         ),
+        labelMedium: GoogleFonts.jetBrainsMono(fontSize: 11, fontWeight: .w500, color: AppColors.textHintLight),
         labelSmall: kDefaultlTextStyle,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(style: kElevatedButtonDarkPrimary),
-      iconButtonTheme: IconButtonThemeData(style: kElevatedButtonDarkPrimary),
+      iconButtonTheme: IconButtonThemeData(style: kIconButtonDarkPrimary),
+      outlinedButtonTheme: OutlinedButtonThemeData(style: kOutlinedButtonDarkPrimary),
       iconTheme: kIconTheme,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: AppColors.cyberSkyBlue.withValues(alpha: 0.8),
+        foregroundColor: AppColors.cyberSurface,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(AppDefaultValues.kBorderRadiusQuaternary)),
+        ),
+      ),
     );
   }
 
@@ -111,70 +111,61 @@ class AppTheme {
         selectedColor: AppColors.selectedChip,
         secondarySelectedColor: AppColors.selectedChip,
         disabledColor: AppColors.lightChipBg.withAlpha(128),
-        labelStyle: const TextStyle(
-          color: AppColors.textHintDark,
-          fontWeight: .normal,
-        ),
-        secondaryLabelStyle: const TextStyle(
-          color: AppColors.textLight,
-          fontWeight: .bold,
-        ),
+        labelStyle: const TextStyle(color: AppColors.textHintDark, fontWeight: .normal),
+        secondaryLabelStyle: const TextStyle(color: AppColors.textLight, fontWeight: .bold),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusPrimary),
           side: const BorderSide(color: AppColors.lightChipBorder),
         ),
       ),
       textTheme: TextTheme(
-        headlineMedium: const TextStyle(
-          fontSize: 24,
-          fontWeight: .bold,
-          letterSpacing: 0.5,
-          color: AppColors.textDark,
-        ),
-        titleMedium: const TextStyle(
-          fontSize: 15,
-          fontWeight: .bold,
-          color: AppColors.textDark,
-        ),
+        headlineMedium: const TextStyle(fontSize: 24, fontWeight: .bold, letterSpacing: 0.5, color: AppColors.textDark),
+        titleMedium: const TextStyle(fontSize: 15, fontWeight: .bold, color: AppColors.textDark),
         bodyLarge: GoogleFonts.barlowCondensed(fontSize: 20, fontWeight: .bold, letterSpacing: 1, color: Colors.white),
-        bodyMedium: const TextStyle(
-          fontSize: 12.5,
-          fontWeight: .w500,
-          color: AppColors.textDark,
-        ),
-        bodySmall: const TextStyle(
-          fontSize: 12,
-          color: AppColors.textHintDark,
-        ),
-        labelMedium: const TextStyle(
-          fontSize: 11,
-          fontWeight: .bold,
-          color: AppColors.textHintDark,
-          letterSpacing: 1,
-        ),
+        bodyMedium: const TextStyle(fontSize: 12.5, fontWeight: .w500, color: AppColors.textDark),
+        bodySmall: const TextStyle(fontSize: 12, color: AppColors.textHintDark),
+        labelMedium: const TextStyle(fontSize: 11, fontWeight: .bold, color: AppColors.textHintDark, letterSpacing: 1),
         labelSmall: kDefaultlTextStyle,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(style: kElevatedButtonDarkPrimary),
-      iconButtonTheme: IconButtonThemeData(style: kElevatedButtonDarkPrimary),
+      iconButtonTheme: IconButtonThemeData(style: kIconButtonDarkPrimary),
       outlinedButtonTheme: OutlinedButtonThemeData(style: kOutlinedButtonDarkPrimary),
       iconTheme: kIconTheme,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: AppColors.cyberSkyBlue.withValues(alpha: 0.8),
+        foregroundColor: AppColors.cyberSurface,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(AppDefaultValues.kBorderRadiusQuaternary)),
+        ),
+      ),
     );
   }
 }
 
 ButtonStyle kOutlinedButtonDarkPrimary = OutlinedButton.styleFrom(
   side: const BorderSide(color: AppColors.textHintLight),
-  foregroundColor: AppColors.cyberTextLight,
-  padding: const EdgeInsets.symmetric(vertical: 14),
-  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-);
-
-ButtonStyle kElevatedButtonDarkPrimary = ElevatedButton.styleFrom(
-  backgroundColor: AppColors.primary,
-  foregroundColor: AppColors.textLight,
+  padding: const EdgeInsets.symmetric(vertical: 12),
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(AppDefaultValues.kBorderRadiusQuaternary)),
   ),
+);
+
+ButtonStyle kIconButtonDarkPrimary = ElevatedButton.styleFrom(
+  backgroundColor: AppColors.cyberSkyBlue.withValues(alpha: 0.8),
+  foregroundColor: AppColors.cyberSurface,
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(AppDefaultValues.kBorderRadiusQuaternary)),
+  ),
+);
+
+ButtonStyle kElevatedButtonDarkPrimary = ElevatedButton.styleFrom(
+  backgroundColor: AppColors.cyberSkyBlue.withValues(alpha: 0.8),
+  foregroundColor: AppColors.cyberSurface,
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(AppDefaultValues.kBorderRadiusQuaternary)),
+  ),
+  elevation: 0,
+  padding: const EdgeInsets.symmetric(vertical: 12),
 );
 
 ButtonStyle kElevatedButtonDarkSuccess = ElevatedButton.styleFrom(

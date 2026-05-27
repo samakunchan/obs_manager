@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_server/o_b_s_server.dart';
 import 'package:obs_manager/features/o_b_s_sound/o_b_s_sound.dart';
@@ -118,7 +117,7 @@ class _AudioActionPanelState extends State<AudioActionPanel> {
                     children: [
                       Text(
                         isConnected ? micName : 'OBS OFFLINE',
-                        style: GoogleFonts.jetBrainsMono(
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           fontSize: 12,
                           fontWeight: .bold,
                           color: isConnected ? AppColors.cyberTextLight : AppColors.cyberTextMuted,
@@ -128,7 +127,7 @@ class _AudioActionPanelState extends State<AudioActionPanel> {
                       ),
                       Text(
                         isConnected ? (isMuted ? 'Muted' : 'Recording decibels live') : 'Connect to active OBS server',
-                        style: GoogleFonts.jetBrainsMono(fontSize: 9, color: AppColors.cyberTextMuted),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 9, color: AppColors.cyberTextMuted),
                       ),
                     ],
                   ),

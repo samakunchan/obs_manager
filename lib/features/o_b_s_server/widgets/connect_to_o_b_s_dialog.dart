@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_server/services/services.dart';
@@ -77,7 +76,7 @@ class _ConnectToOBSDialogState extends State<ConnectToOBSDialog> {
               backgroundColor: AppColors.successColor,
               content: Text(
                 '🤖 OBS STATION CONFIGURED AND SECURED ONLINE',
-                style: GoogleFonts.jetBrainsMono(
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: Colors.white,
                   fontWeight: .bold,
                   fontSize: 12,

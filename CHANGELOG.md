@@ -1,5 +1,20 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.7.1 - 27/05/2026
+
+### Added
+- Added a highly polished, cyber-themed warning confirmation dialog (`SYSTEM PURGE REQUEST`) prompting the user before deleting persistent data.
+- Implemented unified `clear()` methods in all three persistent service singletons (`PersistancesService`, `PersistancesScenesService`, and `PersistancesLogsService`) to wipe credentials, visible scenes layout configurations, and recorded logs.
+
+### Changed
+- Refactored `StationDrawerOption` inside `station_drawer.dart` to support a customizable, dynamic `onTap` callback.
+- Orchestrated the cache purge action to cleanly logout the active OBS session and purge all SharedPreferences cache keys simultaneously.
+- Rename "tactile_command_page" to "main_page".
+- Create "layouts" folder for all layouts. 
+
+### Fixed
+- Resolved deprecated color `withOpacity` usages in `StationDrawer` using modern `withValues` under the latest Flutter SDK to maintain a 100% clean static analysis score.
+
 ## 🚀 0.7.0 - 25/05/2026
 
 ### Added

@@ -44,4 +44,9 @@ class PersistancesService {
     await _prefs.remove(_keyPort);
     await _prefs.remove(_keyPassword);
   }
+
+  /// Wipes all data managed by this service from persistent storage.
+  Future<void> clear() async {
+    await clearCredentials();
+  }
 }

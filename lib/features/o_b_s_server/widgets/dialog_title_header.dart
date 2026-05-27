@@ -35,7 +35,7 @@ class DialogTitleHeader extends StatelessWidget {
               ),
               Text(
                 'OBS WEBSOCKET V5 CONFIGURATION',
-                style: GoogleFonts.jetBrainsMono(
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontSize: 9,
                   fontWeight: .bold,
                   color: AppColors.cyberTextMuted,

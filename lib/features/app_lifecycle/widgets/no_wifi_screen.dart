@@ -124,7 +124,7 @@ class _NoWifiScreenState extends State<NoWifiScreen> with SingleTickerProviderSt
                     child: Text(
                       'A local WiFi network connection is required to communicate with the OBS Broadcaster Studio over local WebSocket.\n\nPlease check your system settings and connect to WiFi.',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.jetBrainsMono(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppColors.cyberTextMuted,
                         fontSize: 13,
                         height: 1.6,
@@ -170,7 +170,7 @@ class _NoWifiScreenState extends State<NoWifiScreen> with SingleTickerProviderSt
                               ),
                             Text(
                               _isChecking ? 'SCANNING SYSTEM...' : 'RESCAN CONNECTION',
-                              style: GoogleFonts.jetBrainsMono(
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                 color: _isChecking ? AppColors.cyberTextMuted : AppColors.cyberAlertRed,
                                 fontWeight: .bold,
                                 fontSize: 12,
