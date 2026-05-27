@@ -47,5 +47,259 @@
   "timeoutError": "Connection timed out",
   "@timeoutError": {
     "description": "Error message when request times out"
+  },
+  "audio": "Audio",
+  "@audio": {
+    "description": "Audio label"
+  },
+  "monitoring": "Monitoring",
+  "@monitoring": {
+    "description": "Monitoring label"
+  },
+  "isStarting": "Is Starting",
+  "@isStarting": {
+    "description": "Stream is starting status"
+  },
+  "isStopping": "Is Stopping",
+  "@isStopping": {
+    "description": "Stream is stopping status"
+  },
+  "quickAudioControl": "Quick Audio Control",
+  "@quickAudioControl": {
+    "description": "Quick audio control panel title"
+  },
+  "obsOffline": "OBS Offline",
+  "@obsOffline": {
+    "description": "OBS offline status label"
+  },
+  "muted": "Muted",
+  "@muted": {
+    "description": "Muted audio status label"
+  },
+  "recordingDecibelsLive": "Recording decibels live",
+  "@recordingDecibelsLive": {
+    "description": "Recording decibels status label"
+  },
+  "connectToActiveObsServer": "Connect to active OBS server",
+  "@connectToActiveObsServer": {
+    "description": "Connect prompt description"
+  },
+  "scenesDirectory": "Scenes Directory",
+  "@scenesDirectory": {
+    "description": "Scenes directory panel title"
+  },
+  "chooseVisibleMainScenes": "Choose Visible Main Scenes",
+  "@chooseVisibleMainScenes": {
+    "description": "Hint to choose visible scenes"
+  },
+  "selected": "{count, plural, =1{1 SELECTED} other{{count} SELECTED}}",
+  "@selected": {
+    "description": "Selected state indicator",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noScenesDetected": "No scenes detected in OBS",
+  "@noScenesDetected": {
+    "description": "Placeholder when no scenes are found"
+  },
+  "connectToObsToListScenes": "Connect to OBS to list scenes",
+  "@connectToObsToListScenes": {
+    "description": "Placeholder prompt when OBS disconnected in scenes"
+  },
+  "systemLogsAndMetadata": "System Logs & Metadata",
+  "@systemLogsAndMetadata": {
+    "description": "System logs panel title"
+  },
+  "clearLogs": "Clear Logs",
+  "@clearLogs": {
+    "description": "Tooltip to clear system logs"
+  },
+  "systemOnlineStandby": "System online. Standby.",
+  "@systemOnlineStandby": {
+    "description": "Default terminal online system message"
+  },
+  "cacheClear": "Cache clear",
+  "@cacheClear": {
+    "description": "Drawer option to clear cache"
+  },
+  "systemPurgeRequest": "System Purge Request",
+  "@systemPurgeRequest": {
+    "description": "Title of the cache clear warning dialog"
+  },
+  "purgeWarningText": "WARNING: This operation will permanently wipe all local database registries, cached credentials, and system log history.\n\nYou will be logged out of the station. Are you sure you want to proceed?",
+  "@purgeWarningText": {
+    "description": "Warning text shown in the purge dialog"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Generic cancel button text"
+  },
+  "purge": "Purge",
+  "@purge": {
+    "description": "Purge action button text"
+  },
+  "cachePurgedSuccess": "Cache fully purged and logged out cleanly",
+  "@cachePurgedSuccess": {
+    "description": "Snackbar success message after clearing cache"
+  },
+  "closeConsole": "Close Console",
+  "@closeConsole": {
+    "description": "Drawer close button text"
+  },
+  "connect": "Connect",
+  "@connect": {
+    "description": "OBS connect action button text"
+  },
+  "disconnect": "Disconnect",
+  "@disconnect": {
+    "description": "OBS disconnect action button text"
+  },
+  "connectionConsole": "Connection Console",
+  "@connectionConsole": {
+    "description": "OBS connection dialog title"
+  },
+  "obsWebsocketV5Configuration": "OBS WebSocket v5 Configuration",
+  "@obsWebsocketV5Configuration": {
+    "description": "OBS connection dialog subtitle"
+  },
+  "obsWebSocketIp": "OBS WebSocket I.P.",
+  "@obsWebSocketIp": {
+    "description": "Input field label for IP address"
+  },
+  "ipRequired": "IP address is required",
+  "@ipRequired": {
+    "description": "Validation error for IP address field"
+  },
+  "obsWebSocketPort": "OBS WebSocket Port",
+  "@obsWebSocketPort": {
+    "description": "Input field label for port"
+  },
+  "portRequired": "Port is required",
+  "@portRequired": {
+    "description": "Validation error for port field"
+  },
+  "obsAuthenticationKey": "OBS Authentication Key",
+  "@obsAuthenticationKey": {
+    "description": "Input field label for password"
+  },
+  "obsPassword": "OBS Password",
+  "@obsPassword": {
+    "description": "Input field hint for password"
+  },
+  "orConnectViaQrCode": "Or Connect Via QR Code",
+  "@orConnectViaQrCode": {
+    "description": "Divider text for QR connection alternative"
+  },
+  "scanQr": "Scan QR",
+  "@scanQr": {
+    "description": "Scan QR button text"
+  },
+  "obsStationConfiguredSuccess": "OBS Station configured and secured online",
+  "@obsStationConfiguredSuccess": {
+    "description": "Snackbar success message after connection"
+  },
+  "qrCodeScanner": "QR Code Scanner",
+  "@qrCodeScanner": {
+    "description": "Scanner dialog title"
+  },
+  "alignObsConsoleQrCode": "Align OBS Console QR Code",
+  "@alignObsConsoleQrCode": {
+    "description": "Scanner instruction subtitle"
+  },
+  "enterManually": "Enter Manually",
+  "@enterManually": {
+    "description": "Cancel scanning button text"
+  },
+  "panelControl": "Panel Control",
+  "@panelControl": {
+    "description": "Main screen control bar title"
+  },
+  "onAir": "On Air",
+  "@onAir": {
+    "description": "Streaming live status badge label"
+  },
+  "recStandby": "REC: Standby",
+  "@recStandby": {
+    "description": "Streaming standby status badge label"
+  },
+  "presetsLoaded": "{count, plural, =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}",
+  "@presetsLoaded": {
+    "description": "Count of presets loaded in scenes header",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noSourcesDetected": "No sources detected",
+  "@noSourcesDetected": {
+    "description": "Placeholder when no sources are detected in connected OBS"
+  },
+  "sourcesOffline": "Sources Offline",
+  "@sourcesOffline": {
+    "description": "Placeholder header when sources are offline"
+  },
+  "connectObsToLoadInputs": "Connect to the OBS server to load active scene inputs.",
+  "@connectObsToLoadInputs": {
+    "description": "Placeholder hint when sources are offline"
+  },
+  "obsDisconnected": "OBS Disconnected",
+  "@obsDisconnected": {
+    "description": "Placeholder header when scenes are offline"
+  },
+  "sceneCommandCenterOffline": "Scene command center is offline. Please initialize your connection using the Station Control Console in the sidebar.",
+  "@sceneCommandCenterOffline": {
+    "description": "Placeholder description when scenes are offline"
+  },
+  "openControlConsole": "Open Control Console",
+  "@openControlConsole": {
+    "description": "Action button in offline scenes placeholder"
+  },
+  "coreInitializationShowcase": "Core Initialization Showcase",
+  "@coreInitializationShowcase": {
+    "description": "MyHomePage showcase subtitle"
+  },
+  "selectLanguage": "Select Language (Localization Test)",
+  "@selectLanguage": {
+    "description": "Language selector header in MyHomePage"
+  },
+  "activeTranslations": "Active Translations",
+  "@activeTranslations": {
+    "description": "Showcase card title for active translations"
+  },
+  "mappedErrorsAlerts": "Mapped Errors & Alerts",
+  "@mappedErrorsAlerts": {
+    "description": "Showcase card title for errors & alerts"
+  },
+  "clientServiceTitle": "ClientService (OBS WebSocket)",
+  "@clientServiceTitle": {
+    "description": "Showcase card title for client service"
+  },
+  "clientServiceDescription": "Integrates functional exception-to-failure domain mapping using dartz Either boundaries.",
+  "@clientServiceDescription": {
+    "description": "Showcase card description for client service"
+  },
+  "simulateObsFailure": "Simulate OBS Failure",
+  "@simulateObsFailure": {
+    "description": "Showcase button to simulate failure"
+  },
+  "apiServiceTitle": "ApiService (Dio REST Client)",
+  "@apiServiceTitle": {
+    "description": "Showcase card title for API service"
+  },
+  "apiServiceDescription": "SOLID client managing generic HTTP requests, custom intercepts, and structured error responses.",
+  "@apiServiceDescription": {
+    "description": "Showcase card description for API service"
+  },
+  "simulateHttpError": "Simulate HTTP Error",
+  "@simulateHttpError": {
+    "description": "Showcase button to simulate HTTP error"
+  },
+  "simulationLogsMetadata": "Simulation Logs & Metadata",
+  "@simulationLogsMetadata": {
+    "description": "Showcase header for simulation logs"
   }
 }

@@ -1,5 +1,19 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.8.0 - 27/05/2026
+
+### Added
+- Integrated full application localization support utilizing the `flutter_localizations` package and modular ARB templates.
+- Synchronized translations across five languages: English (`app_en.arb`), French (`app_fr.arb`), Spanish (`app_es.arb`), Chinese (`app_zh.arb`), and Arabic (`app_ar.arb`).
+- Implemented robust pluralization support using standard ICU formats for the `selected` scenes count and `presetsLoaded` scenes count across all five languages (handling complex Arabic dual/plural forms and Chinese single forms).
+- Refactored more than 15 UI widgets, views, and dialogs to reactively access translations using `context.localization.[KEY]` via the BuildContext extension.
+
+### Changed
+- Standardized text capitalization and layouts across control headers and button pads dynamically to support translated widths and RTL Arabic contexts.
+
+### Fixed
+- Fixed all string literals and quote usages to strictly enforce single-quote analysis rules, achieving a 100% clean `flutter analyze` score.
+
 ## 🚀 0.7.1 - 27/05/2026
 
 ### Added

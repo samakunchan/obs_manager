@@ -70,10 +70,10 @@ class BottomActionBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String streamStatusMessage = switch (streamStatus) {
-      StatusStream.isStarting => 'IS STARTING',
-      StatusStream.isStopping => 'IS STOPPING',
-      StatusStream.started => 'STOP STREAM',
-      StatusStream.stopped => 'START STREAM',
+      StatusStream.isStarting => context.localization.isStarting.toUpperCase(),
+      StatusStream.isStopping => context.localization.isStopping.toUpperCase(),
+      StatusStream.started => context.localization.stopStream.toUpperCase(),
+      StatusStream.stopped => context.localization.startStream.toUpperCase(),
     };
 
     return Container(
@@ -87,19 +87,19 @@ class BottomActionBar extends StatelessWidget {
         children: [
           BottomNavButton(
             icon: Icons.grid_view,
-            label: 'SCENES',
+            label: context.localization.scenes.toUpperCase(),
             isActive: isScenesActive,
             onTap: onScenesTap,
           ),
           BottomNavButton(
             icon: Icons.equalizer,
-            label: 'AUDIO',
+            label: context.localization.audio.toUpperCase(),
             isActive: isAudioActive,
             onTap: onAudioTap,
           ),
           BottomNavButton(
             icon: Icons.podcasts,
-            label: 'MONITORING',
+            label: context.localization.monitoring.toUpperCase(),
             isActive: isMonitoringActive,
             onTap: onMonitoringTap,
           ),

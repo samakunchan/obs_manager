@@ -35,23 +35,23 @@ class OfflineSourcesPlaceholder extends StatelessWidget {
             ),
           ),
           Text(
-            'SOURCES OFFLINE',
+            context.localization.sourcesOffline.toUpperCase(),
             style: GoogleFonts.barlowCondensed(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.2,
-              color: AppColors.cyberTextMuted,
-            ),
-          ),
-          Text(
-            'Connect to the OBS server to load active scene inputs.',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.inter(
-              fontSize: 11,
-              height: 1.3,
-              color: AppColors.cyberTextMuted.withValues(alpha: 0.7),
-            ),
-          ),
+               fontSize: 14,
+               fontWeight: FontWeight.bold,
+               letterSpacing: 1.2,
+               color: AppColors.cyberTextMuted,
+             ),
+           ),
+           Text(
+            context.localization.connectObsToLoadInputs,
+             textAlign: TextAlign.center,
+             style: GoogleFonts.inter(
+               fontSize: 11,
+               height: 1.3,
+               color: AppColors.cyberTextMuted.withValues(alpha: 0.7),
+             ),
+           ),
         ],
       ),
     );

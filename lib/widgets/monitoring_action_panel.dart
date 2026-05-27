@@ -84,7 +84,7 @@ class _MonitoringActionPanelState extends State<MonitoringActionPanel> {
       }).toList();
 
       return BottomActionPanelWrapper(
-        title: 'SYSTEM LOGS & METADATA',
+        title: context.localization.systemLogsAndMetadata.toUpperCase(),
         onClose: widget.onClose,
         glowColor: AppColors.accent,
         leadingHeader: Container(
@@ -109,7 +109,7 @@ class _MonitoringActionPanelState extends State<MonitoringActionPanel> {
             color: AppColors.cyberAlertRed,
             size: 20,
           ),
-          tooltip: 'Clear Logs',
+          tooltip: context.localization.clearLogs,
           onPressed: logs.isEmpty
               ? null
               : () async {
@@ -147,7 +147,7 @@ class _MonitoringActionPanelState extends State<MonitoringActionPanel> {
                           children: logWidgets.isEmpty
                               ? [
                                   Text(
-                                    '>> SYSTEM ONLINE. STANDBY.',
+                                    '>> ${context.localization.systemOnlineStandby.toUpperCase()}',
                                     style: kTerminalTextStyle.copyWith(color: AppColors.cyberTextMuted),
                                   ),
                                 ]

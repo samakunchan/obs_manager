@@ -46,7 +46,7 @@ class RecStatusBadge extends StatelessWidget {
                   },
                 ),
                 Text(
-                  isStreaming ? 'ON AIR' : 'REC: STANDBY',
+                  isStreaming ? context.localization.onAir.toUpperCase() : context.localization.recStandby.toUpperCase(),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     fontSize: 11,
                     fontWeight: .bold,

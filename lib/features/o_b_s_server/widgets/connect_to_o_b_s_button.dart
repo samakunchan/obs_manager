@@ -17,7 +17,7 @@ class ConnectToOBSButton extends StatelessWidget {
       },
       icon: const Icon(Icons.power, size: 16),
       label: Text(
-        'CONNECT',
+        context.localization.connect.toUpperCase(),
         style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.cyberSurface),
       ),
     );
