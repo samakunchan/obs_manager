@@ -1,5 +1,18 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.8.1 - 27/05/2026
+
+### Added
+- Configured local static assets for all font families (`Inter`, `JetBrainsMono`, and `BarlowCondensed`) inside `pubspec.yaml` with correct weight, style, and file path mappings.
+
+### Changed
+- Refactored `AppTheme` textThemes (both light and dark theme modes) to use standard, compile-time `const TextTheme` and `TextStyle` referencing static local font families, completely replacing the dynamic `GoogleFonts` package helper classes.
+- Updated `lightTheme`'s textTheme to fully utilize local font families for `titleSmall`, `bodyLarge`, `bodyMedium`, `bodySmall`, and `labelMedium`, aligning its typography perfectly with `darkTheme`.
+- Decoupled the project from the `google_fonts` package and removed the dependency completely.
+
+### Fixed
+- Fixed inconsistent typography in the Light Theme where default system fallback fonts were used instead of the unified cyber/monospace typography.
+
 ## 🚀 0.8.0 - 27/05/2026
 
 ### Added
