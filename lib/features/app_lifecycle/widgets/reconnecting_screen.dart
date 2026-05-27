@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/widgets/widgets.dart';
 
@@ -88,9 +87,8 @@ class _ReconnectingScreenState extends State<ReconnectingScreen> with SingleTick
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Text(
                       'LINK RESTORATION',
-                      style: GoogleFonts.barlowCondensed(
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 32,
-                        fontWeight: .bold,
                         letterSpacing: 2,
                         color: AppColors.cyberCyan,
                       ),

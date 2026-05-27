@@ -2,7 +2,7 @@ name: obs_manager
 description: "A new Flutter project to manage OBS (replaces obs_for_sama)."
 publish_to: "none"
 
-version: 0.8.0+9
+version: 0.8.1+10
 
 environment:
   sdk: ^3.10.1
@@ -18,8 +18,7 @@ dependencies:
   # Icons
   font_awesome_flutter: ^10.9.1
 
-  # Fonts
-  google_fonts: ^6.2.1
+
 
   # Core / State Management
   signals_flutter: ^5.2.0
@@ -58,3 +57,24 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter/Inter-VariableFont_opsz,wght.ttf
+        - asset: fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf
+          style: italic
+    - family: JetBrainsMono
+      fonts:
+        - asset: fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf
+        - asset: fonts/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf
+          style: italic
+    - family: BarlowCondensed
+      fonts:
+        - asset: fonts/Barlow_Condensed/BarlowCondensed-Regular.ttf
+        - asset: fonts/Barlow_Condensed/BarlowCondensed-Italic.ttf
+          style: italic
+        - asset: fonts/Barlow_Condensed/BarlowCondensed-Bold.ttf
+          weight: 700
+        - asset: fonts/Barlow_Condensed/BarlowCondensed-BoldItalic.ttf
+          weight: 700
+          style: italic

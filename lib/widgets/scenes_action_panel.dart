@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 import 'package:obs_manager/features/o_b_s_server/o_b_s_server.dart';
@@ -44,9 +43,8 @@ class ScenesActionPanel extends StatelessWidget {
                 children: [
                   Text(
                     context.localization.chooseVisibleMainScenes.toUpperCase(),
-                    style: GoogleFonts.barlowCondensed(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontSize: 10,
-                      fontWeight: .bold,
                       letterSpacing: 1,
                       color: AppColors.cyberTextMuted,
                     ),
@@ -166,9 +164,8 @@ class ScenesActionPanel extends StatelessWidget {
               Expanded(
                 child: Text(
                   name,
-                  style: GoogleFonts.barlowCondensed(
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontSize: 12,
-                    fontWeight: FontWeight.bold,
                     color: isVisible ? Colors.white : AppColors.cyberTextMuted,
                   ),
                   maxLines: 1,
