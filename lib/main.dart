@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/app_lifecycle/app_lifecycle.dart';
@@ -19,7 +21,17 @@ void main() async {
   getIt<AppLifecycleService>().init();
   // Auto-connect to OBS on startup using persisted credentials if available
   await getIt<OBSService>().autoConnectOnStartup();
-  runApp(const MyApp());
+
+  if (kIsWeb) {
+    runApp(
+      DevicePreview(
+        enabled: kIsWeb,
+        builder: (BuildContext context) => const MyApp(),
+      ),
+    );
+  } else {
+    runApp(const MyApp());
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -28,6 +40,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: kIsWeb ? DevicePreview.locale(context) : null,
+      builder: kIsWeb ? DevicePreview.appBuilder : null,
       title: 'OBS Manager',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

@@ -94,7 +94,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get connectToObsToListScenes => '连接到 OBS 以列出场景';
 
   @override
-  String get systemLogsAndMetadata => '系统日志与元数据';
+  String get systemLogsAndMetadata => '系统日志';
 
   @override
   String get clearLogs => '清除日志';
@@ -148,7 +148,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get portRequired => '端口是必需的';
 
   @override
-  String get obsAuthenticationKey => 'OBS 身份验证密钥';
+  String get obsAuthenticationKey => '密码';
 
   @override
   String get obsPassword => 'OBS 密码';
@@ -203,10 +203,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get obsDisconnected => 'OBS 已断开连接';
 
   @override
-  String get sceneCommandCenterOffline => '场景指挥中心已离线。请使用侧边栏中的控制台初始化您的连接。';
+  String get sceneCommandCenterOffline => '场景管理器已离线。请使用侧边栏中的控制台初始化您的连接。';
 
   @override
-  String get openControlConsole => '打开控制面板';
+  String get openControlConsole => '打开连接';
 
   @override
   String get coreInitializationShowcase => '核心初始化展示';
@@ -240,4 +240,22 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get simulationLogsMetadata => '模拟日志与元数据';
+
+  @override
+  String get systemOffline => '系统已离线';
+
+  @override
+  String get noWifiMessage => '需要本地 WiFi 网络连接才能通过本地 WebSocket 与 OBS Broadcaster Studio 进行通信。\n\n请检查您的系统设置并连接到 WiFi。';
+
+  @override
+  String get scanningSystem => '正在扫描系统...';
+
+  @override
+  String get rescanConnection => '重新扫描连接';
+
+  @override
+  String get linkRestoration => '链接恢复';
+
+  @override
+  String get reconnectingMessage => '已检测到 WiFi 网络连接。\n\n正在重新建立安全的本地 WebSocket 链接并与 OBS Studio 同步场景管道...';
 }
