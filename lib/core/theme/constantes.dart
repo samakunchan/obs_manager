@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppDefaultValues {
   AppDefaultValues._();
@@ -103,15 +102,4 @@ class AppChipsTheme {
   AppChipsTheme._();
 
   static const double borderWidth = 1;
-}
-
-class AppTextTheme {
-  AppTextTheme._();
-
-  static TextStyle barlowCondensed = GoogleFonts.barlowCondensed(
-    fontSize: 20,
-    fontWeight: .bold,
-    letterSpacing: 1,
-    color: Colors.white,
-  );
 }

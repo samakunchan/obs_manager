@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_server/widgets/scanner_laser_line.dart';
@@ -68,9 +67,8 @@ class _ConnectToOBSScannerViewState extends State<ConnectToOBSScannerView> {
                 children: [
                   Text(
                     context.localization.qrCodeScanner.toUpperCase(),
-                    style: GoogleFonts.barlowCondensed(
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontSize: 20,
-                      fontWeight: .bold,
                       color: AppColors.cyberCyan,
                       letterSpacing: 1.5,
                     ),

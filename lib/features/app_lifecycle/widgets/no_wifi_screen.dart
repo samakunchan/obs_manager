@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/app_lifecycle/services/services.dart';
 import 'package:obs_manager/features/o_b_s_server/services/dependency_injection.dart';
@@ -101,9 +100,8 @@ class _NoWifiScreenState extends State<NoWifiScreen> with SingleTickerProviderSt
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Text(
                       'SYSTEM OFFLINE',
-                      style: GoogleFonts.barlowCondensed(
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 32,
-                        fontWeight: .bold,
                         letterSpacing: 2,
                         color: AppColors.cyberAlertRed,
                       ),

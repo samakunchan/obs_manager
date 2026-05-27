@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 
 /// manual credentials connection form widget.
@@ -66,9 +65,8 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                   children: [
                     Text(
                       context.localization.connectionConsole.toUpperCase(),
-                      style: GoogleFonts.barlowCondensed(
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 20,
-                        fontWeight: .bold,
                         color: AppColors.cyberCyan,
                         letterSpacing: 1.5,
                       ),

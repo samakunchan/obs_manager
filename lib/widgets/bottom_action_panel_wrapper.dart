@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 
 /// A reusable, premium glassmorphic wrapper for overlays positioned just above the BottomActionBar.
@@ -109,9 +108,8 @@ class _BottomActionPanelWrapperState extends State<BottomActionPanelWrapper> wit
                       ],
                       Text(
                         widget.title.toUpperCase(),
-                        style: GoogleFonts.barlowCondensed(
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           fontSize: 14,
-                          fontWeight: FontWeight.bold,
                           letterSpacing: 1.1,
                           color: widget.glowColor,
                         ),
