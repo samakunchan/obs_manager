@@ -31,9 +31,9 @@ class _ConnectToOBSDialogState extends State<ConnectToOBSDialog> {
     super.initState();
     final PersistancesService persistances = getIt<PersistancesService>();
     // Prefill from persistances, or use original hardcoded broadcaster defaults
-    _ipController = TextEditingController(text: persistances.ip ?? '192.168.0.140');
-    _portController = TextEditingController(text: persistances.port ?? '4456');
-    _passwordController = TextEditingController(text: persistances.password ?? 'password123A&');
+    _ipController = TextEditingController(text: persistances.ip ?? '');
+    _portController = TextEditingController(text: persistances.port ?? '');
+    _passwordController = TextEditingController(text: persistances.password ?? '');
   }
 
   @override

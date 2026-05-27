@@ -1,5 +1,21 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.8.2 - 27/05/2026
+
+### Added
+- Integrated full application localization support for cyberpunk full-screen status warning pages `NoWifiScreen` and `ReconnectingScreen`, extracting all remaining hardcoded string literals into standard multi-language ARB templates.
+- Added translation keys (`systemOffline`, `noWifiMessage`, `scanningSystem`, `rescanConnection`, `linkRestoration`, `reconnectingMessage`) across all five locales: English, French, Spanish, Chinese, and Arabic.
+
+### Changed
+- Conditionalized the high-fidelity `DevicePreview` wrapper inside `main.dart` to activate only when running or building the application specifically for the Web platform (utilizing the compile-time `kIsWeb` constant) to optimize performance and prevent interference on native mobile/desktop platforms.
+- Refactored all localized sentence structures in the app translation files:
+  - Updated `"Le centre de commande des scènes"` to `"Le gestionnaire de scènes"` (and equivalent versions in English, Spanish, Chinese, and Arabic).
+  - Updated `"Ouvrir la console de contrôle"` to `"Ouvrir la connexion"` (and equivalents).
+  - Updated `"Journaux Système & Métadonnées"` to `"Journaux Système"` (and equivalents).
+
+### Fixed
+- Fixed localization coverage inside core system lifecycle screens (`NoWifiScreen` and `ReconnectingScreen`), cleanly replacing all remaining hardcoded labels with reactive extensions from `context.localizations`.
+
 ## 🚀 0.8.1 - 27/05/2026
 
 ### Added

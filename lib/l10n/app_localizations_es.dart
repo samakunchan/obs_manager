@@ -95,7 +95,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get connectToObsToListScenes => 'Conectar a OBS para listar escenas';
 
   @override
-  String get systemLogsAndMetadata => 'Registros del Sistema y Metadatos';
+  String get systemLogsAndMetadata => 'Registros del Sistema';
 
   @override
   String get clearLogs => 'Limpiar Registros';
@@ -150,7 +150,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get portRequired => 'Se requiere el puerto';
 
   @override
-  String get obsAuthenticationKey => 'Clave de Autenticación OBS';
+  String get obsAuthenticationKey => 'Contraseña';
 
   @override
   String get obsPassword => 'Contraseña OBS';
@@ -207,10 +207,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sceneCommandCenterOffline =>
-      'El centro de comando de escenas está fuera de línea. Inicialice su conexión utilizando la Consola de Control de Estaciones en la barra lateral.';
+      'El gestor de escenas está fuera de línea. Inicialice su conexión utilizando la Consola de Control de Estaciones en la barra lateral.';
 
   @override
-  String get openControlConsole => 'Abrir Consola de Control';
+  String get openControlConsole => 'Abrir Conexión';
 
   @override
   String get coreInitializationShowcase => 'Vitrina de Inicialización del Núcleo';
@@ -246,4 +246,24 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get simulationLogsMetadata => 'Registros de Simulación y Metadatos';
+
+  @override
+  String get systemOffline => 'SISTEMA FUERA DE LÍNEA';
+
+  @override
+  String get noWifiMessage =>
+      'Se requiere una conexión de red WiFi local para comunicarse con el OBS Broadcaster Studio a través del WebSocket local.\n\nPor favor, verifique los ajustes de su sistema y conéctese a la red WiFi.';
+
+  @override
+  String get scanningSystem => 'ESCANEANDO SISTEMA...';
+
+  @override
+  String get rescanConnection => 'REESCANEAR CONEXIÓN';
+
+  @override
+  String get linkRestoration => 'RESTAURACIÓN DEL ENLACE';
+
+  @override
+  String get reconnectingMessage =>
+      'Conexión de red WiFi detectada.\n\nReestableciendo enlaces locales seguros de WebSocket y sincronizando los canales de escenas con OBS Studio...';
 }

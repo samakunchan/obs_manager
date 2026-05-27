@@ -86,7 +86,7 @@ class _ReconnectingScreenState extends State<ReconnectingScreen> with SingleTick
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Text(
-                      'LINK RESTORATION',
+                      context.localizations.linkRestoration,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 32,
                         letterSpacing: 2,
@@ -107,7 +107,7 @@ class _ReconnectingScreenState extends State<ReconnectingScreen> with SingleTick
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 24),
                     child: Text(
-                      'WiFi network connection detected.\n\nRe-establishing secure local WebSocket links and synchronizing scene pipelines with OBS Studio...',
+                      context.localizations.reconnectingMessage,
                       textAlign: .center,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppColors.cyberTextMuted,
