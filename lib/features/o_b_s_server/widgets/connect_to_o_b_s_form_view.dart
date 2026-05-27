@@ -97,7 +97,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextLight, fontSize: 13),
             decoration: _buildInputDecoration(
               label: context.localization.obsWebSocketIp.toUpperCase(),
-              hint: 'e.g., 192.168.0.140',
+              hint: 'e.g., 192.xxx.x.xxx',
               prefixIcon: Icons.leak_add,
             ),
             validator: (value) {
@@ -118,7 +118,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             decoration: _buildInputDecoration(
               label: context.localization.obsWebSocketPort.toUpperCase(),
-              hint: 'e.g., 4456',
+              hint: 'e.g., 1122',
               prefixIcon: Icons.developer_board,
             ),
             validator: (value) {
