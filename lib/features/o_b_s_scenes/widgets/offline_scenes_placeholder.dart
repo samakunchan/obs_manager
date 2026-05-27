@@ -65,9 +65,9 @@ class OfflineScenesPlaceholder extends StatelessWidget {
             icon: const Icon(Icons.settings_ethernet, size: 16),
             label: Text(
               'OPEN CONTROL CONSOLE',
-              style: GoogleFonts.jetBrainsMono(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontSize: 12,
-                fontWeight: FontWeight.bold,
+                fontWeight: .bold,
               ),
             ),
             style: ElevatedButton.styleFrom(

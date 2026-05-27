@@ -111,7 +111,7 @@ class _ReconnectingScreenState extends State<ReconnectingScreen> with SingleTick
                     child: Text(
                       'WiFi network connection detected.\n\nRe-establishing secure local WebSocket links and synchronizing scene pipelines with OBS Studio...',
                       textAlign: .center,
-                      style: GoogleFonts.jetBrainsMono(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppColors.cyberTextMuted,
                         fontSize: 13,
                         height: 1.6,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 
 /// Clean header display for the Scene selector area
@@ -19,7 +18,7 @@ class ScenesHeader extends StatelessWidget {
         Text('SCENES', style: AppTextTheme.barlowCondensed),
         Text(
           '$presetsCount PRESETS LOADED',
-          style: GoogleFonts.jetBrainsMono(
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
             fontSize: 11,
             fontWeight: .w500,
             color: AppColors.cyberTextMuted,

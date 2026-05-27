@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/core/utils/utils.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
@@ -49,7 +48,7 @@ class TactileScenePad extends StatelessWidget {
                         name,
                         maxLines: 2,
                         overflow: .ellipsis,
-                        style: GoogleFonts.jetBrainsMono(fontSize: 11, fontWeight: .w500, color: textColor),
+                        style: Theme.of(context).textTheme.labelMedium?.copyWith(color: textColor),
                       ),
                     ],
                   ),
@@ -66,7 +65,9 @@ class TactileScenePad extends StatelessWidget {
                       ),
                       child: Text(
                         'LIVE',
-                        style: GoogleFonts.jetBrainsMono(fontSize: 8, fontWeight: .w900, color: AppColors.cyberSurface),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.labelMedium?.copyWith(fontSize: 8, fontWeight: .w900, color: AppColors.cyberSurface),
                       ),
                     ),
                   ),

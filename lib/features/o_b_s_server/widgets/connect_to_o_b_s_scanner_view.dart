@@ -77,7 +77,7 @@ class _ConnectToOBSScannerViewState extends State<ConnectToOBSScannerView> {
                   ),
                   Text(
                     'ALIGN OBS CONSOLE QR CODE',
-                    style: GoogleFonts.jetBrainsMono(
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 9,
                       fontWeight: .bold,
                       color: AppColors.cyberTextMuted,
@@ -150,7 +150,7 @@ class _ConnectToOBSScannerViewState extends State<ConnectToOBSScannerView> {
             ),
             child: Text(
               widget.errorLog!,
-              style: GoogleFonts.jetBrainsMono(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontSize: 10,
                 height: 1.4,
                 color: AppColors.cyberAlertRed,
@@ -171,7 +171,7 @@ class _ConnectToOBSScannerViewState extends State<ConnectToOBSScannerView> {
           ),
           label: Text(
             'ENTER MANUALLY',
-            style: GoogleFonts.jetBrainsMono(fontSize: 11, fontWeight: .bold, letterSpacing: 1),
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 11, fontWeight: .bold, letterSpacing: 1),
           ),
         ),
       ],

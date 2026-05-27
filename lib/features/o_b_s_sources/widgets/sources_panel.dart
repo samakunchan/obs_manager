@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_server/services/services.dart';
 import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
@@ -53,7 +52,9 @@ class SourcesPanel extends StatelessWidget {
               child: Center(
                 child: Text(
                   'NO SOURCES DETECTED',
-                  style: GoogleFonts.jetBrainsMono(fontSize: 12, color: AppColors.cyberTextMuted, fontWeight: .bold),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(fontSize: 12, color: AppColors.cyberTextMuted, fontWeight: .bold),
                 ),
               ),
             ),

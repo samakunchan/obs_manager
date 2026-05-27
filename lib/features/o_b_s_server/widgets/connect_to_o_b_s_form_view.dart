@@ -75,7 +75,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                     ),
                     Text(
                       'OBS WEBSOCKET V5 CONFIGURATION',
-                      style: GoogleFonts.jetBrainsMono(
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         fontSize: 9,
                         fontWeight: .bold,
                         color: AppColors.cyberTextMuted,
@@ -96,7 +96,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
           TextFormField(
             controller: widget.ipController,
             cursorColor: AppColors.cyberCyan,
-            style: GoogleFonts.jetBrainsMono(color: AppColors.cyberTextLight, fontSize: 13),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextLight, fontSize: 13),
             decoration: _buildInputDecoration(
               label: 'OBS WEB SOCKET I.P.',
               hint: 'e.g., 192.168.0.140',
@@ -115,7 +115,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
           TextFormField(
             controller: widget.portController,
             cursorColor: AppColors.cyberCyan,
-            style: GoogleFonts.jetBrainsMono(color: AppColors.cyberTextLight, fontSize: 13),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextLight, fontSize: 13),
             keyboardType: .number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             decoration: _buildInputDecoration(
@@ -136,7 +136,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
           TextFormField(
             controller: widget.passwordController,
             cursorColor: AppColors.cyberCyan,
-            style: GoogleFonts.jetBrainsMono(color: AppColors.cyberTextLight, fontSize: 13),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextLight, fontSize: 13),
             obscureText: _obscurePassword,
             decoration: _buildInputDecoration(
               label: 'OBS AUTHENTICATION KEY',
@@ -161,7 +161,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
               const Expanded(child: Divider(color: AppColors.darkCardBorder)),
               Text(
                 'OR CONNECT VIA QR CODE',
-                style: GoogleFonts.jetBrainsMono(
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontSize: 9,
                   fontWeight: .bold,
                   color: AppColors.cyberTextMuted,
@@ -206,7 +206,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                     ),
                     Text(
                       'SCAN QR',
-                      style: GoogleFonts.jetBrainsMono(
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: AppColors.cyberCyan,
                         fontSize: 8,
                         fontWeight: .bold,
@@ -236,11 +236,11 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
               ),
               child: Text(
                 widget.errorLog ?? widget.statusLog!,
-                style: GoogleFonts.jetBrainsMono(
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontSize: 10,
                   height: 1.4,
                   color: widget.errorLog != null ? AppColors.cyberAlertRed : AppColors.terminalText,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: .bold,
                 ),
               ),
             ),
@@ -260,7 +260,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                   ),
                   child: Text(
                     'CANCEL',
-                    style: GoogleFonts.jetBrainsMono(fontSize: 11, fontWeight: FontWeight.bold, letterSpacing: 1),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 11, fontWeight: .bold, letterSpacing: 1),
                   ),
                 ),
               ),
@@ -286,9 +286,9 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                         )
                       : Text(
                           'CONNECT',
-                          style: GoogleFonts.jetBrainsMono(
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             fontSize: 11,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: .bold,
                             letterSpacing: 1,
                           ),
                         ),
@@ -307,14 +307,15 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
     required IconData prefixIcon,
     Widget? suffixIcon,
   }) {
+    final textTheme = Theme.of(context).textTheme;
     return InputDecoration(
       labelText: label,
       hintText: hint,
       prefixIcon: Icon(prefixIcon, color: AppColors.cyberTextMuted, size: 18),
       suffixIcon: suffixIcon,
-      labelStyle: GoogleFonts.jetBrainsMono(color: AppColors.cyberTextMuted, fontSize: 10, fontWeight: FontWeight.bold),
-      hintStyle: GoogleFonts.jetBrainsMono(color: AppColors.cyberTextMuted.withValues(alpha: 0.5), fontSize: 12),
-      floatingLabelStyle: GoogleFonts.jetBrainsMono(color: AppColors.cyberCyan, fontSize: 11, fontWeight: FontWeight.bold),
+      labelStyle: textTheme.bodySmall?.copyWith(color: AppColors.cyberTextMuted, fontSize: 10, fontWeight: .bold),
+      hintStyle: textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextMuted.withValues(alpha: 0.5), fontSize: 12),
+      floatingLabelStyle: textTheme.bodySmall?.copyWith(color: AppColors.cyberCyan, fontSize: 11, fontWeight: .bold),
       filled: true,
       fillColor: AppColors.cyberSurfaceContainerLowest,
       contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
@@ -334,7 +335,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
         borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(color: AppColors.cyberAlertRed, width: 1.5),
       ),
-      errorStyle: GoogleFonts.jetBrainsMono(color: AppColors.cyberAlertRed, fontSize: 10, fontWeight: FontWeight.bold),
+      errorStyle: textTheme.bodySmall?.copyWith(color: AppColors.cyberAlertRed, fontSize: 10, fontWeight: .bold),
     );
   }
 }
