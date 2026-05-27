@@ -88,7 +88,7 @@ class SourcesPanel extends StatelessWidget {
             Row(
               mainAxisAlignment: .spaceBetween,
               children: [
-                Text(context.localization.sources.toUpperCase(), style: AppTextTheme.barlowCondensed),
+                Text(context.localization.sources.toUpperCase(), style: Theme.of(context).textTheme.bodyLarge),
               ],
             ),
 

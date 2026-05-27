@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/widgets/rec_status_badge.dart';
 
@@ -27,13 +26,11 @@ class MissionControlAppBar extends StatelessWidget {
           child: Row(
             spacing: 12,
             children: [
-              //6SJQ9CcKwxBqfp3FY16n
               Expanded(
                 child: Text(
                   context.localization.panelControl.toUpperCase(),
-                  style: GoogleFonts.barlowCondensed(
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontSize: 20,
-                    fontWeight: .bold,
                     letterSpacing: 1.5,
                     color: AppColors.cyberCyan,
                   ),

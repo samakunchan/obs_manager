@@ -15,7 +15,7 @@ class ScenesHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: .spaceBetween,
       children: [
-        Text(context.localization.scenes.toUpperCase(), style: AppTextTheme.barlowCondensed),
+        Text(context.localization.scenes.toUpperCase(), style: Theme.of(context).textTheme.bodyLarge),
         Text(
           context.localization.presetsLoaded(presetsCount),
           style: Theme.of(context).textTheme.labelMedium?.copyWith(

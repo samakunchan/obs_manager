@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 
 /// A custom cyber-aesthetic placeholder widget displayed when OBS is disconnected
@@ -41,9 +40,8 @@ class OfflineScenesPlaceholder extends StatelessWidget {
           ),
           Text(
             context.localization.obsDisconnected.toUpperCase(),
-            style: GoogleFonts.barlowCondensed(
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontSize: 22,
-              fontWeight: FontWeight.bold,
               letterSpacing: 1.5,
               color: AppColors.cyberAlertRed,
             ),
@@ -51,8 +49,7 @@ class OfflineScenesPlaceholder extends StatelessWidget {
           Text(
             context.localization.sceneCommandCenterOffline,
             textAlign: TextAlign.center,
-            style: GoogleFonts.inter(
-              fontSize: 13,
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
               height: 1.4,
               color: AppColors.cyberTextMuted,
             ),

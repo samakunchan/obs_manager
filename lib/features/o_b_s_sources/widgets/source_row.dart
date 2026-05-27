@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/index.dart';
 
 /// List element inside sources
@@ -41,7 +40,10 @@ class SourceRow extends StatelessWidget {
                   Icon(icon, size: 18, color: AppColors.cyberCyan),
                   Text(
                     label,
-                    style: GoogleFonts.inter(fontSize: 13, fontWeight: .w500, color: AppColors.cyberTextLight),
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      fontWeight: .w500,
+                      color: AppColors.cyberTextLight,
+                    ),
                   ),
                 ],
               ),

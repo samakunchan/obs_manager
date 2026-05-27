@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:obs_manager/core/theme/constantes.dart';
 
 /// Centralized application theme provider defining Light and Dark themes.
@@ -47,26 +46,14 @@ class AppTheme {
           side: const BorderSide(color: AppColors.darkChipBorder),
         ),
       ),
-      textTheme: TextTheme(
-        headlineMedium: const TextStyle(
-          fontSize: 24,
-          fontWeight: .bold,
-          letterSpacing: 0.5,
-          color: AppColors.textLight,
-        ),
-        titleMedium: const TextStyle(
-          fontSize: 15,
-          fontWeight: .bold,
-          color: AppColors.textLight,
-        ),
-        bodyMedium: GoogleFonts.jetBrainsMono(color: Colors.white, fontWeight: .bold),
-        bodySmall: GoogleFonts.jetBrainsMono(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-          color: AppColors.textHintLight,
-          letterSpacing: 1,
-        ),
-        labelMedium: GoogleFonts.jetBrainsMono(fontSize: 11, fontWeight: .w500, color: AppColors.textHintLight),
+      textTheme: const TextTheme(
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: .bold, letterSpacing: 0.5, color: AppColors.textLight),
+        titleMedium: TextStyle(fontSize: 15, fontWeight: .bold, color: AppColors.textLight),
+        titleSmall: TextStyle(fontFamily: 'Inter', fontSize: 13, color: Colors.white),
+        bodyLarge: TextStyle(fontFamily: 'BarlowCondensed', fontSize: 20, fontWeight: .bold, letterSpacing: 1, color: Colors.white),
+        bodyMedium: TextStyle(fontFamily: 'JetBrainsMono', color: Colors.white, fontWeight: .bold),
+        bodySmall: TextStyle(fontFamily: 'JetBrainsMono', fontSize: 12, fontWeight: .bold, color: AppColors.textHintLight, letterSpacing: 1),
+        labelMedium: TextStyle(fontFamily: 'JetBrainsMono', fontSize: 11, fontWeight: .w500, color: AppColors.textHintLight),
         labelSmall: kDefaultlTextStyle,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(style: kElevatedButtonDarkPrimary),
@@ -118,13 +105,14 @@ class AppTheme {
           side: const BorderSide(color: AppColors.lightChipBorder),
         ),
       ),
-      textTheme: TextTheme(
-        headlineMedium: const TextStyle(fontSize: 24, fontWeight: .bold, letterSpacing: 0.5, color: AppColors.textDark),
-        titleMedium: const TextStyle(fontSize: 15, fontWeight: .bold, color: AppColors.textDark),
-        bodyLarge: GoogleFonts.barlowCondensed(fontSize: 20, fontWeight: .bold, letterSpacing: 1, color: Colors.white),
-        bodyMedium: const TextStyle(fontSize: 12.5, fontWeight: .w500, color: AppColors.textDark),
-        bodySmall: const TextStyle(fontSize: 12, color: AppColors.textHintDark),
-        labelMedium: const TextStyle(fontSize: 11, fontWeight: .bold, color: AppColors.textHintDark, letterSpacing: 1),
+      textTheme: const TextTheme(
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: .bold, letterSpacing: 0.5, color: AppColors.textDark),
+        titleMedium: TextStyle(fontSize: 15, fontWeight: .bold, color: AppColors.textDark),
+        titleSmall: TextStyle(fontFamily: 'Inter', fontSize: 13, color: AppColors.textDark),
+        bodyLarge: TextStyle(fontFamily: 'BarlowCondensed', fontSize: 20, fontWeight: .bold, letterSpacing: 1, color: AppColors.textDark),
+        bodyMedium: TextStyle(fontFamily: 'JetBrainsMono', fontSize: 12.5, fontWeight: .w500, color: AppColors.textDark),
+        bodySmall: TextStyle(fontFamily: 'JetBrainsMono', fontSize: 12, color: AppColors.textHintDark),
+        labelMedium: TextStyle(fontFamily: 'JetBrainsMono', fontSize: 11, fontWeight: .bold, color: AppColors.textHintDark, letterSpacing: 1),
         labelSmall: kDefaultlTextStyle,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(style: kElevatedButtonDarkPrimary),
