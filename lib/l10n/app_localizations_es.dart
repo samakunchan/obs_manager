@@ -189,6 +189,7 @@ class AppLocalizationsEs extends AppLocalizations {
       locale: localeName,
       other: '$count PREAJUSTES CARGADOS',
       one: '1 PREAJUSTE CARGADO',
+      zero: '0 PREAJUSTES CARGADOS',
     );
     return '$_temp0';
   }

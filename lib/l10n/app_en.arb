@@ -225,7 +225,7 @@
   "@recStandby": {
     "description": "Streaming standby status badge label"
   },
-  "presetsLoaded": "{count, plural, =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}",
+  "presetsLoaded": "{count, plural, =0{0 PRESETS LOADED} =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}",
   "@presetsLoaded": {
     "description": "Count of presets loaded in scenes header",
     "placeholders": {

@@ -189,6 +189,7 @@ class AppLocalizationsFr extends AppLocalizations {
       locale: localeName,
       other: '$count PRÉRÉGLAGES CHARGÉS',
       one: '1 PRÉRÉGLAGE CHARGÉ',
+      zero: '0 PRÉRÉGLAGE CHARGÉ',
     );
     return '$_temp0';
   }

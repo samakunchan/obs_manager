@@ -55,7 +55,7 @@
   "panelControl": "Panel de Control",
   "onAir": "En Vivo",
   "recStandby": "Grabando: En espera",
-  "presetsLoaded": "{count, plural, =1{1 PREAJUSTE CARGADO} other{{count} PREAJUSTES CARGADOS}}",
+  "presetsLoaded": "{count, plural, =0{0 PREAJUSTES CARGADOS} =1{1 PREAJUSTE CARGADO} other{{count} PREAJUSTES CARGADOS}}",
   "noSourcesDetected": "Ninguna fuente detectada",
   "sourcesOffline": "Fuentes Fuera de Línea",
   "connectObsToLoadInputs": "Conéctese al servidor OBS para cargar las entradas de escena activas.",

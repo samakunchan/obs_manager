@@ -189,6 +189,7 @@ class AppLocalizationsEn extends AppLocalizations {
       locale: localeName,
       other: '$count PRESETS LOADED',
       one: '1 PRESET LOADED',
+      zero: '0 PRESETS LOADED',
     );
     return '$_temp0';
   }

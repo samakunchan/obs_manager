@@ -55,7 +55,7 @@
   "panelControl": "Panneau de Contrôle",
   "onAir": "En Direct",
   "recStandby": "Enr : En attente",
-  "presetsLoaded": "{count, plural, =1{1 PRÉRÉGLAGE CHARGÉ} other{{count} PRÉRÉGLAGES CHARGÉS}}",
+  "presetsLoaded": "{count, plural, =0{0 PRÉRÉGLAGE CHARGÉ} =1{1 PRÉRÉGLAGE CHARGÉ} other{{count} PRÉRÉGLAGES CHARGÉS}}",
   "noSourcesDetected": "Aucune source détectée",
   "sourcesOffline": "Sources Hors ligne",
   "connectObsToLoadInputs": "Connectez-vous au serveur OBS pour charger les entrées de scène actives.",

@@ -428,7 +428,7 @@ abstract class AppLocalizations {
   /// Count of presets loaded in scenes header
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}'**
+  /// **'{count, plural, =0{0 PRESETS LOADED} =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}'**
   String presetsLoaded(int count);
 
   /// Placeholder when no sources are detected in connected OBS
