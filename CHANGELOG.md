@@ -1,5 +1,33 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.8.4 - 28/05/2026
+
+### Added
+- N/A
+
+### Changed
+- N/A
+
+### Fixed
+- Fixed pluralization logic bug for the `"presetsLoaded"` key in `scenes_header.dart` where count was hardcoded to `0`, successfully passing `presetsCount` reactively.
+- Added the `=0` case to the pluralization templates inside English (`app_en.arb`), French (`app_fr.arb`), and Spanish (`app_es.arb`) to cleanly support and render zero counts.
+- Removed an obsolete debug `print(isConnected)` statement in `mobile_layout.dart` to resolve a static linter warning.
+
+## 🚀 0.8.3 - 28/05/2026
+
+### Added
+- Integrated persistent theme switching support inside the station drawer, allowing users to choose between Light, Dark, and System modes.
+- Created a reactive `ThemeService` leveraging a `signals_flutter` `Signal<ThemeMode>` and persistent storage using `SharedPreferences`.
+- Bound the root `MaterialApp`'s `themeMode` to the new `ThemeService` reactive signal using the `Watch` widget inside `main.dart`.
+- Built a beautiful cyber-styled `ThemeModeSelector` segmented control inside `station_drawer.dart` with elegant animations and micro-interactions.
+- Added full localization keys and translations for the new theme modes in English, French, Spanish, Arabic, and Chinese, and successfully regenerated localizations.
+
+### Changed
+- Updated and refined the translation for the `"recordingDecibelsLive"` localization key from `'Recording decibels live'` to `"Toggle the microphone in live"` in English, and to highly natural, native equivalents in French (`"Activer / Désactiver le micro en direct"`), Spanish (`"Activar / Desactivar el micrófono en vivo"`), Arabic (`"تفعيل / إيقاف الميكروفون مباشرة"`), and Chinese (`"开启/关闭实时麦克风"`).
+
+### Fixed
+- Fixed a minor `prefer_const_constructors` linter warning in `connect_to_o_b_s_form_view.dart` by adding `const` to the icon constructor.
+
 ## 🚀 0.8.2 - 27/05/2026
 
 ### Added
