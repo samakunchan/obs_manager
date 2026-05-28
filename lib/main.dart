@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       title: 'OBS Manager',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: .dark,
+      themeMode: .system,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       // Default to system locale, or fallback to first supported
@@ -59,13 +59,17 @@ class MyApp extends StatelessWidget {
         }
         return supportedLocales.first;
       },
-      home: ColoredBox(
-        color: Theme.of(context).appBarTheme.backgroundColor ?? AppColors.cyberSurface,
-        child: const SafeArea(
-          child: AppLifecycleGate(
-            child: MainPage(),
-          ),
-        ),
+      home: Builder(
+        builder: (BuildContext context) {
+          return ColoredBox(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: const SafeArea(
+              child: AppLifecycleGate(
+                child: MainPage(),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

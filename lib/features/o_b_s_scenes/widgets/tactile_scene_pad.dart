@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:obs_manager/core/index.dart';
-import 'package:obs_manager/core/utils/utils.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 
 /// Custom 45° Clipped Tactile Button Pad
@@ -20,22 +19,25 @@ class TactileScenePad extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color borderColor = isActive ? AppColors.cyberCyan : AppColors.cyberHighlight;
-    final Color iconColor = isActive ? AppColors.cyberCyan : AppColors.cyberTextMuted;
-    final Color textColor = isActive ? AppColors.cyberCyan : AppColors.cyberTextLight;
+    final Color borderColor = isActive ? Theme.of(context).colorScheme.secondary : AppColors.cyberHighlight;
+    final Color iconColor = isActive ? Theme.of(context).colorScheme.onSurface : AppColors.cyberTextMuted;
+    final Color textColor = isActive ? Theme.of(context).colorScheme.onSurface : AppColors.cyberTextLight;
 
     return GestureDetector(
       onTap: onTap,
       child: CustomPaint(
-        painter: ChamferBorderPainter(color: borderColor, strokeWidth: isActive ? 2.0 : 1.5),
+        painter: ChamferBorderPainter(
+          color: borderColor,
+          strokeWidth: isActive ? 2.0 : 1.5,
+          elevation: isActive ? 8.0 : 0.0,
+          mode: Theme.of(context).brightness,
+          isActive: isActive,
+        ),
         child: ClipPath(
           clipper: const ChamferClipper(),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
             padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: AppUtils.highlightColor(isActive: isActive),
-            ),
             child: Stack(
               children: [
                 Align(
@@ -60,7 +62,7 @@ class TactileScenePad extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
                       decoration: BoxDecoration(
-                        color: AppColors.cyberCyan,
+                        color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(

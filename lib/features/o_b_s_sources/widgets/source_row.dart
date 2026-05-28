@@ -23,7 +23,7 @@ class SourceRow extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         decoration: BoxDecoration(
-          color: AppColors.cyberSurfaceContainerHigh.withValues(alpha: 0.5),
+          color: Theme.of(context).colorScheme.surfaceContainerHigh.withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: const Color(0x0C3B494C),
@@ -37,13 +37,10 @@ class SourceRow extends StatelessWidget {
               Row(
                 spacing: 12,
                 children: [
-                  Icon(icon, size: 18, color: AppColors.cyberCyan),
+                  Icon(icon, size: 18, color: Theme.of(context).colorScheme.secondary),
                   Text(
                     label,
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      fontWeight: .w500,
-                      color: AppColors.cyberTextLight,
-                    ),
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: .w500),
                   ),
                 ],
               ),

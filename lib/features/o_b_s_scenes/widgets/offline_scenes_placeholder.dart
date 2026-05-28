@@ -11,10 +11,10 @@ class OfflineScenesPlaceholder extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
       decoration: BoxDecoration(
-        color: AppColors.cyberSurfaceContainer.withValues(alpha: 0.3),
+        color: Theme.of(context).colorScheme.surfaceContainer.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusSecondary),
         border: Border.all(
-          color: AppColors.cyberAlertRed.withValues(alpha: 0.2),
+          color: Theme.of(context).colorScheme.error.withValues(alpha: 0.2),
           width: 1.5,
         ),
       ),
@@ -25,16 +25,16 @@ class OfflineScenesPlaceholder extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppColors.cyberAlertRed.withValues(alpha: 0.1),
+              color: Theme.of(context).colorScheme.error.withValues(alpha: 0.1),
               shape: BoxShape.circle,
               border: Border.all(
-                color: AppColors.cyberAlertRed.withValues(alpha: 0.4),
+                color: Theme.of(context).colorScheme.error.withValues(alpha: 0.4),
                 width: 1.5,
               ),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.wifi_off_rounded,
-              color: AppColors.cyberAlertRed,
+              color: Theme.of(context).colorScheme.error,
               size: 40,
             ),
           ),
@@ -43,7 +43,7 @@ class OfflineScenesPlaceholder extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontSize: 22,
               letterSpacing: 1.5,
-              color: AppColors.cyberAlertRed,
+              color: Theme.of(context).colorScheme.error,
             ),
           ),
           Text(
@@ -62,15 +62,11 @@ class OfflineScenesPlaceholder extends StatelessWidget {
             icon: const Icon(Icons.settings_ethernet, size: 16),
             label: Text(
               context.localization.openControlConsole.toUpperCase(),
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                fontSize: 12,
-                fontWeight: .bold,
-              ),
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.cyberAlertRed,
+              backgroundColor: Theme.of(context).colorScheme.error,
               foregroundColor: Colors.white,
-              elevation: 0,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),

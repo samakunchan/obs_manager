@@ -26,17 +26,17 @@ class StationDrawerOption extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
-        color: isSelected ? const Color(0x1F00E5FF) : Colors.transparent,
+        color: isSelected ? const Color(0x1F00E5FF) : Theme.of(context).colorScheme.surfaceContainerHigh,
         borderRadius: BorderRadius.circular(8),
       ),
       child: ListTile(
-        leading: Icon(icon, color: isSelected ? AppColors.cyberCyan : AppColors.cyberTextLight),
+        leading: Icon(icon, color: isSelected ? AppColors.cyberCyan : Theme.of(context).colorScheme.secondary),
         title: Text(
           label,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             fontSize: 14,
             fontWeight: isSelected ? .bold : .normal,
-            color: isSelected ? AppColors.cyberCyan : AppColors.cyberTextLight,
+            color: isSelected ? AppColors.cyberCyan : null,
           ),
         ),
         onTap: onTap,
@@ -52,7 +52,7 @@ class StationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: AppColors.cyberSurfaceContainerHighest,
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.horizontal(right: Radius.circular(16)),
       ),
@@ -69,7 +69,10 @@ class StationDrawer extends StatelessWidget {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(color: AppColors.cyberCyan, borderRadius: BorderRadius.circular(8)),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                     child: const Icon(Icons.terminal, color: AppColors.cyberSurface),
                   ),
                   FutureBuilder(
@@ -95,14 +98,19 @@ class StationDrawer extends StatelessWidget {
                                         context,
                                       ).textTheme.titleSmall?.copyWith(
                                         fontWeight: .bold,
-                                        color: AppColors.cyberCyan,
+                                        color: Theme.of(context).colorScheme.secondary,
                                       ),
                                 ),
                                 Text(
                                   'v${snapshot.data?.version}',
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.bodySmall?.copyWith(fontSize: 10, fontWeight: .bold, color: AppColors.cyberCyan),
+                                  style:
+                                      Theme.of(
+                                        context,
+                                      ).textTheme.bodySmall?.copyWith(
+                                        fontSize: 10,
+                                        fontWeight: .bold,
+                                        color: Theme.of(context).colorScheme.secondary,
+                                      ),
                                 ),
                               ],
                             ),
@@ -112,9 +120,14 @@ class StationDrawer extends StatelessWidget {
                       if (snapshot.hasError) {
                         return Text(
                           '${snapshot.error}',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall?.copyWith(fontSize: 10, fontWeight: .bold, color: AppColors.cyberCyan),
+                          style:
+                              Theme.of(
+                                context,
+                              ).textTheme.bodySmall?.copyWith(
+                                fontSize: 10,
+                                fontWeight: .bold,
+                                color: Theme.of(context).colorScheme.error,
+                              ),
                         );
                       }
                       return const SizedBox();
@@ -139,10 +152,10 @@ class StationDrawer extends StatelessWidget {
                           barrierColor: Colors.black87,
                           builder: (BuildContext context) {
                             return Dialog(
-                              backgroundColor: AppColors.cyberSurfaceContainerLow,
+                              backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusSecondary),
-                                side: const BorderSide(color: AppColors.cyberAlertRed, width: 1.5),
+                                side: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
                               ),
                               insetPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                               child: Container(
@@ -158,12 +171,12 @@ class StationDrawer extends StatelessWidget {
                                         Container(
                                           padding: const EdgeInsets.all(8),
                                           decoration: BoxDecoration(
-                                            color: AppColors.cyberAlertRed.withValues(alpha: 0.1),
+                                            color: Theme.of(context).colorScheme.error.withValues(alpha: 0.1),
                                             borderRadius: BorderRadius.circular(8),
                                           ),
-                                          child: const Icon(
+                                          child: Icon(
                                             Icons.warning_amber_rounded,
-                                            color: AppColors.cyberAlertRed,
+                                            color: Theme.of(context).colorScheme.error,
                                             size: 28,
                                           ),
                                         ),
@@ -172,18 +185,18 @@ class StationDrawer extends StatelessWidget {
                                             context.localization.systemPurgeRequest.toUpperCase(),
                                             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                               fontWeight: .bold,
-                                              color: AppColors.cyberAlertRed,
+                                              color: Theme.of(context).colorScheme.error,
                                               letterSpacing: 1,
                                             ),
                                           ),
                                         ),
                                       ],
                                     ),
-                                    const Divider(color: AppColors.cyberAlertRed, thickness: 1),
+                                    Divider(color: Theme.of(context).colorScheme.error, thickness: 1),
                                     Text(
                                       context.localization.purgeWarningText,
                                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                        color: AppColors.cyberTextLight,
+                                        color: Theme.of(context).colorScheme.tertiary,
                                         height: 1.5,
                                       ),
                                     ),
@@ -192,22 +205,19 @@ class StationDrawer extends StatelessWidget {
                                       mainAxisAlignment: .end,
                                       spacing: 12,
                                       children: [
+                                        /// Cancel button
                                         OutlinedButton(
-                                          onPressed: () => Navigator.of(context).pop(),
-                                          style: OutlinedButton.styleFrom(
-                                            side: const BorderSide(color: AppColors.cyberTextMuted),
-                                            foregroundColor: AppColors.cyberTextLight,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(8),
-                                            ),
-                                          ),
+                                          onPressed: Navigator.of(context).pop,
                                           child: Text(
                                             context.localization.cancel.toUpperCase(),
                                             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                               fontWeight: .bold,
+                                              color: Theme.of(context).colorScheme.tertiary,
                                             ),
                                           ),
                                         ),
+
+                                        /// Purge button
                                         ElevatedButton(
                                           onPressed: () async {
                                             // 1. Logout cleanly from OBS
@@ -241,8 +251,8 @@ class StationDrawer extends StatelessWidget {
                                             }
                                           },
                                           style: ElevatedButton.styleFrom(
-                                            backgroundColor: AppColors.cyberAlertRed,
-                                            foregroundColor: Colors.white,
+                                            backgroundColor: Theme.of(context).colorScheme.error,
+                                            foregroundColor: AppColors.cyberTextLight,
                                             shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.circular(8),
                                             ),
@@ -251,7 +261,6 @@ class StationDrawer extends StatelessWidget {
                                             context.localization.purge.toUpperCase(),
                                             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                               fontWeight: .bold,
-                                              color: Colors.white,
                                             ),
                                           ),
                                         ),
@@ -282,8 +291,14 @@ class StationDrawer extends StatelessWidget {
                   spacing: 12,
                   children: [
                     LabelInfoStatusConnection(isConnected: isConnected, status: status),
-                    const ConnectToOBSButton(),
-                    const DisconnectToOBSButton(),
+                    const Row(
+                      mainAxisAlignment: .spaceBetween,
+                      spacing: 4,
+                      children: [
+                        Expanded(child: ConnectToOBSButton()),
+                        Expanded(child: DisconnectToOBSButton()),
+                      ],
+                    ),
                   ],
                 );
               }),

@@ -84,39 +84,36 @@ class _MonitoringActionPanelState extends State<MonitoringActionPanel> {
       }).toList();
 
       return BottomActionPanelWrapper(
+        glowColor: Theme.of(context).colorScheme.tertiary,
         title: context.localization.systemLogsAndMetadata.toUpperCase(),
         onClose: widget.onClose,
-        glowColor: AppColors.accent,
         leadingHeader: Container(
           width: 8,
           height: 8,
           decoration: BoxDecoration(
             shape: .circle,
-            color: isConnected ? AppColors.accent : AppColors.cyberTextMuted,
+            color: isConnected ? Theme.of(context).colorScheme.secondary : AppColors.cyberTextMuted,
             boxShadow: [
               if (isConnected)
                 BoxShadow(
-                  color: AppColors.accent.withValues(alpha: 0.6),
+                  color: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.6),
                   blurRadius: 8,
                   spreadRadius: 1,
                 ),
             ],
           ),
         ),
-        trailingHeader: IconButton(
-          icon: const Icon(
-            Icons.delete_sweep_outlined,
-            color: AppColors.cyberAlertRed,
-            size: 20,
+        trailingHeader: Padding(
+          padding: const EdgeInsets.all(8),
+          child: IconButton(
+            icon: const Icon(Icons.delete_sweep_outlined, size: 20),
+            tooltip: context.localization.clearLogs,
+            onPressed: logs.isEmpty
+                ? null
+                : () async {
+                    await logsService.clearLogs();
+                  },
           ),
-          tooltip: context.localization.clearLogs,
-          onPressed: logs.isEmpty
-              ? null
-              : () async {
-                  await logsService.clearLogs();
-                },
-          padding: EdgeInsets.zero,
-          constraints: const BoxConstraints(),
         ),
         child: SizedBox(
           height: 200,

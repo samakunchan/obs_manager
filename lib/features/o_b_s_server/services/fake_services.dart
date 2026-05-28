@@ -46,11 +46,11 @@ class FakeOBSService extends OBSService {
     isConnected.value = true;
     statusMessage.value = 'Connected';
 
-    // await getIt<PersistancesService>().saveCredentials(
-    //   ip: ip,
-    //   port: port,
-    //   password: password,
-    // );
+    await getIt<PersistancesService>().saveCredentials(
+      ip: ip,
+      port: port,
+      password: password,
+    );
 
     await getIt<PersistancesLogsService>().addLog(
       code: 'success',

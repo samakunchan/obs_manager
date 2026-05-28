@@ -3,6 +3,7 @@ import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 import 'package:obs_manager/features/o_b_s_server/o_b_s_server.dart';
 import 'package:obs_manager/widgets/widgets.dart';
+import 'package:obs_websocket/obs_websocket.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
 /// Interactive Scenes Overlay Panel wrapped inside BottomActionPanelWrapper.
@@ -25,14 +26,15 @@ class ScenesActionPanel extends StatelessWidget {
     final OBSService obsService = getIt<OBSService>();
 
     return BottomActionPanelWrapper(
+      glowColor: Theme.of(context).colorScheme.tertiary,
       title: context.localization.scenesDirectory.toUpperCase(),
       onClose: onClose,
-      leadingHeader: const Icon(Icons.grid_view_rounded, color: AppColors.cyberCyan, size: 16),
+      leadingHeader: Icon(Icons.grid_view_rounded, color: Theme.of(context).colorScheme.secondary, size: 16),
       child: SizedBox(
         height: 220, // Constrained container height for ShowcaseCard/Wrapper content
         child: Watch((_) {
-          final isConnected = obsService.isConnected.value;
-          final allScenes = scenesService.scenes.value;
+          final bool isConnected = obsService.isConnected.value;
+          final List<Scene> allScenes = scenesService.scenes.value;
 
           return Column(
             crossAxisAlignment: .stretch,
@@ -54,7 +56,7 @@ class ScenesActionPanel extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontSize: 9,
                       fontWeight: .bold,
-                      color: AppColors.cyberCyan,
+                      color: Theme.of(context).colorScheme.tertiary,
                     ),
                   ),
                 ],
@@ -84,8 +86,8 @@ class ScenesActionPanel extends StatelessWidget {
                                 childAspectRatio: 2,
                               ),
                               itemBuilder: (context, index) {
-                                final scene = allScenes[index];
-                                final isChecked = visibleScenes.contains(scene.sceneName);
+                                final Scene scene = allScenes[index];
+                                final bool isChecked = visibleScenes.contains(scene.sceneName);
 
                                 return _buildSceneTile(
                                   context: context,
@@ -129,23 +131,24 @@ class ScenesActionPanel extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
           decoration: BoxDecoration(
             color: isVisible
-                ? AppColors.cyberCyan.withValues(alpha: 0.1)
-                : AppColors.cyberSurfaceContainerLow.withValues(alpha: 0.6),
+                ? Theme.of(context).colorScheme.secondary.withValues(alpha: 0.1)
+                : Theme.of(context).colorScheme.surfaceContainerLow.withValues(alpha: 0.6),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isVisible ? AppColors.cyberCyan : const Color(0x1F4FC3F7),
+              color: isVisible ? Theme.of(context).colorScheme.secondary : const Color(0x1F4FC3F7),
               width: isVisible ? 1.5 : 1,
             ),
             boxShadow: [
               if (isVisible)
                 BoxShadow(
-                  color: AppColors.cyberCyan.withValues(alpha: 0.15),
+                  color: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.15),
                   blurRadius: 8,
                   spreadRadius: 1,
                 ),
             ],
           ),
           child: Row(
+            spacing: 4,
             children: [
               Theme(
                 data: Theme.of(context).copyWith(
@@ -154,22 +157,21 @@ class ScenesActionPanel extends StatelessWidget {
                 child: Checkbox(
                   value: isVisible,
                   onChanged: onVisibleChanged,
-                  activeColor: AppColors.cyberCyan,
+                  activeColor: Theme.of(context).colorScheme.secondary,
                   checkColor: Colors.black,
-                  visualDensity: VisualDensity.compact,
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  visualDensity: .compact,
+                  materialTapTargetSize: .shrinkWrap,
                 ),
               ),
-              const SizedBox(width: 4),
               Expanded(
                 child: Text(
                   name,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontSize: 12,
-                    color: isVisible ? Colors.white : AppColors.cyberTextMuted,
+                    color: isVisible ? Theme.of(context).colorScheme.tertiary : AppColors.cyberTextMuted,
                   ),
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  overflow: .ellipsis,
                 ),
               ),
             ],
