@@ -46,11 +46,13 @@ class TactileScenePad extends StatelessWidget {
                     spacing: 8,
                     children: [
                       Icon(icon, size: 32, color: iconColor),
-                      Text(
-                        name,
-                        maxLines: 2,
-                        overflow: .ellipsis,
-                        style: Theme.of(context).textTheme.labelMedium?.copyWith(color: textColor),
+                      Expanded(
+                        child: Text(
+                          name,
+                          maxLines: 2,
+                          overflow: .ellipsis,
+                          style: Theme.of(context).textTheme.labelMedium?.copyWith(color: textColor),
+                        ),
                       ),
                     ],
                   ),

@@ -122,11 +122,14 @@ class BottomActionBar extends StatelessWidget {
                 onPressed: onToggleStream,
                 child: Row(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Icon(Icons.rocket_launch, size: 20),
+                    const Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Icon(Icons.rocket_launch, size: 20),
+                      ),
                     ),
                     Expanded(
+                      flex: 2,
                       child: Text(
                         streamStatusMessage,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.cyberSurface),

@@ -34,15 +34,20 @@ class SourceRow extends StatelessWidget {
           child: Row(
             mainAxisAlignment: .spaceBetween,
             children: [
-              Row(
-                spacing: 12,
-                children: [
-                  Icon(icon, size: 18, color: Theme.of(context).colorScheme.secondary),
-                  Text(
-                    label,
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: .w500),
-                  ),
-                ],
+              Expanded(
+                child: Row(
+                  spacing: 12,
+                  children: [
+                    Icon(icon, size: 18, color: Theme.of(context).colorScheme.secondary),
+                    Expanded(
+                      child: Text(
+                        label,
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: .w500),
+                        overflow: .ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Icon(
                 isVisible ? Icons.visibility : Icons.visibility_off,
