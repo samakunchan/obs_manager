@@ -23,7 +23,9 @@ class LabelInfoStatusConnection extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
           decoration: BoxDecoration(
-            color: isConnected ? AppColors.successColor.withValues(alpha: 0.15) : AppColors.cyberAlertRed.withValues(alpha: 0.15),
+            color: isConnected
+                ? AppColors.successColor.withValues(alpha: 0.15)
+                : Theme.of(context).colorScheme.error.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(4),
             border: Border.all(
               color: isConnected ? AppColors.successColor : AppColors.cyberAlertRed,
@@ -34,7 +36,7 @@ class LabelInfoStatusConnection extends StatelessWidget {
             style: textTheme.bodySmall?.copyWith(
               fontSize: 9,
               fontWeight: .bold,
-              color: isConnected ? AppColors.successColor : AppColors.cyberAlertRed,
+              color: isConnected ? AppColors.successColor : Theme.of(context).colorScheme.error,
             ),
           ),
         ),

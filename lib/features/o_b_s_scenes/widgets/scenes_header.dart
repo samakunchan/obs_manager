@@ -15,13 +15,18 @@ class ScenesHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: .spaceBetween,
       children: [
-        Text(context.localization.scenes.toUpperCase(), style: Theme.of(context).textTheme.bodyLarge),
-        Text(
-          context.localization.presetsLoaded(presetsCount),
-          style: Theme.of(context).textTheme.labelMedium?.copyWith(
-            fontSize: 11,
-            fontWeight: .w500,
-            color: AppColors.cyberTextMuted,
+        Expanded(child: Text(context.localization.scenes.toUpperCase(), style: Theme.of(context).textTheme.bodyLarge)),
+        Expanded(
+          flex: 2,
+          child: Text(
+            context.localization.presetsLoaded(presetsCount),
+            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+              fontSize: 11,
+              fontWeight: .w500,
+              color: AppColors.cyberTextMuted,
+            ),
+            overflow: .ellipsis,
+            textAlign: .end,
           ),
         ),
       ],

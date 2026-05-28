@@ -66,7 +66,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get muted => '已静音';
 
   @override
-  String get recordingDecibelsLive => '实时分贝录制中';
+  String get recordingDecibelsLive => '开启/关闭实时麦克风';
 
   @override
   String get connectToActiveObsServer => '连接到活动的 OBS 服务器';
@@ -258,4 +258,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get reconnectingMessage => '已检测到 WiFi 网络连接。\n\n正在重新建立安全的本地 WebSocket 链接并与 OBS Studio 同步场景管道...';
+
+  @override
+  String get themeMode => '主题模式';
+
+  @override
+  String get themeLight => '浅色';
+
+  @override
+  String get themeDark => '深色';
+
+  @override
+  String get themeSystem => '系统';
 }

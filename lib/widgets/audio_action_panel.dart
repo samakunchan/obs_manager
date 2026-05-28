@@ -60,6 +60,7 @@ class _AudioActionPanelState extends State<AudioActionPanel> {
     final OBSService obsService = getIt<OBSService>();
 
     return BottomActionPanelWrapper(
+      glowColor: Theme.of(context).colorScheme.tertiary,
       title: context.localization.quickAudioControl.toUpperCase(),
       onClose: widget.onClose,
       leadingHeader: Watch((_) {
@@ -71,7 +72,9 @@ class _AudioActionPanelState extends State<AudioActionPanel> {
           height: 8,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: isConnected ? (isMuted ? AppColors.cyberAlertRed : AppColors.successColor) : AppColors.cyberTextMuted,
+            color: isConnected
+                ? (isMuted ? Theme.of(context).colorScheme.error : AppColors.successColor)
+                : AppColors.cyberTextMuted,
             boxShadow: [
               if (isConnected && !isMuted)
                 BoxShadow(
@@ -102,7 +105,7 @@ class _AudioActionPanelState extends State<AudioActionPanel> {
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: AppColors.cyberSurfaceContainerHighest,
+                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Icon(Icons.mic_off_rounded, color: AppColors.cyberTextMuted, size: 20),
@@ -120,7 +123,7 @@ class _AudioActionPanelState extends State<AudioActionPanel> {
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           fontSize: 12,
                           fontWeight: .bold,
-                          color: isConnected ? AppColors.cyberTextLight : AppColors.cyberTextMuted,
+                          color: isConnected ? Theme.of(context).colorScheme.secondary : AppColors.cyberTextMuted,
                         ),
                         maxLines: 1,
                         overflow: .ellipsis,

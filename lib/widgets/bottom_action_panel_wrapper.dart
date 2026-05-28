@@ -76,12 +76,9 @@ class _BottomActionPanelWrapperState extends State<BottomActionPanelWrapper> wit
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: AppColors.cyberSurfaceContainer.withValues(alpha: 0.95),
+            color: Theme.of(context).colorScheme.surfaceContainer.withValues(alpha: 0.95),
             borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusSecondary),
-            border: Border.all(
-              color: widget.glowColor.withValues(alpha: 0.4),
-              width: 1.5,
-            ),
+            border: Border.all(color: widget.glowColor.withValues(alpha: 0.4), width: 1.5),
             boxShadow: [
               BoxShadow(
                 color: widget.glowColor.withValues(alpha: 0.15),
@@ -128,10 +125,8 @@ class _BottomActionPanelWrapperState extends State<BottomActionPanelWrapper> wit
 
                       /// Close panel
                       IconButton(
-                        icon: const Icon(Icons.keyboard_arrow_down_rounded, color: AppColors.cyberTextMuted, size: 20),
+                        icon: const Icon(Icons.keyboard_arrow_down_rounded, size: 20),
                         onPressed: _animateClose,
-                        padding: .zero,
-                        constraints: const BoxConstraints(),
                       ),
                     ],
                   ),

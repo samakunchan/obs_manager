@@ -209,10 +209,10 @@ abstract class AppLocalizations {
   /// **'Muted'**
   String get muted;
 
-  /// Recording decibels status label
+  /// Toggle microphone status label
   ///
   /// In en, this message translates to:
-  /// **'Recording decibels live'**
+  /// **'Toggle the microphone in live'**
   String get recordingDecibelsLive;
 
   /// Connect prompt description
@@ -428,7 +428,7 @@ abstract class AppLocalizations {
   /// Count of presets loaded in scenes header
   ///
   /// In en, this message translates to:
-  /// **'{count, plural, =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}'**
+  /// **'{count, plural, =0{0 PRESETS LOADED} =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}'**
   String presetsLoaded(int count);
 
   /// Placeholder when no sources are detected in connected OBS
@@ -568,6 +568,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'WiFi network connection detected.\n\nRe-establishing secure local WebSocket links and synchronizing scene pipelines with OBS Studio...'**
   String get reconnectingMessage;
+
+  /// Label for the theme mode selector in the drawer
+  ///
+  /// In en, this message translates to:
+  /// **'Theme Mode'**
+  String get themeMode;
+
+  /// Light theme mode option label
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get themeLight;
+
+  /// Dark theme mode option label
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get themeDark;
+
+  /// System theme mode option label
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get themeSystem;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

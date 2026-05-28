@@ -52,22 +52,22 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: AppColors.cyberCyan.withValues(alpha: 0.15),
+                  color: Theme.of(context).colorScheme.secondary,
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: AppColors.cyberCyan),
+                  border: Border.all(color: Theme.of(context).colorScheme.secondary),
                 ),
-                child: const Icon(Icons.settings_input_component, color: AppColors.cyberCyan, size: 20),
+                child: const Icon(Icons.settings_input_component, size: 20),
               ),
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: .start,
                   spacing: 2,
                   children: [
                     Text(
                       context.localization.connectionConsole.toUpperCase(),
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 20,
-                        color: AppColors.cyberCyan,
+                        color: Theme.of(context).colorScheme.secondary,
                         letterSpacing: 1.5,
                       ),
                     ),
@@ -83,7 +83,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.close, color: AppColors.cyberTextMuted, size: 20),
+                icon: const Icon(Icons.close, size: 20),
                 onPressed: widget.onCancelPressed,
               ),
             ],
@@ -93,8 +93,8 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
           /// Connection IP Input
           TextFormField(
             controller: widget.ipController,
-            cursorColor: AppColors.cyberCyan,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextLight, fontSize: 13),
+            cursorColor: Theme.of(context).colorScheme.secondary,
+            style: Theme.of(context).textTheme.bodyMedium,
             decoration: _buildInputDecoration(
               label: context.localization.obsWebSocketIp.toUpperCase(),
               hint: 'e.g., 192.xxx.x.xxx',
@@ -112,8 +112,8 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
           /// Connection Port Input
           TextFormField(
             controller: widget.portController,
-            cursorColor: AppColors.cyberCyan,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextLight, fontSize: 13),
+            cursorColor: Theme.of(context).colorScheme.secondary,
+            style: Theme.of(context).textTheme.bodyMedium,
             keyboardType: .number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             decoration: _buildInputDecoration(
@@ -134,7 +134,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
           TextFormField(
             controller: widget.passwordController,
             cursorColor: AppColors.cyberCyan,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextLight, fontSize: 13),
+            style: Theme.of(context).textTheme.bodyMedium,
             obscureText: _obscurePassword,
             decoration: _buildInputDecoration(
               label: context.localization.obsAuthenticationKey.toUpperCase(),
@@ -143,7 +143,6 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
               suffixIcon: IconButton(
                 icon: Icon(
                   _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                  color: AppColors.cyberTextMuted,
                   size: 18,
                 ),
                 onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
@@ -179,7 +178,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                 width: 96,
                 height: 96,
                 decoration: BoxDecoration(
-                  color: AppColors.cyberSurfaceContainerLowest,
+                  color: Theme.of(context).colorScheme.surfaceContainerLowest,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     color: AppColors.cyberCyan.withValues(alpha: 0.3),
@@ -224,7 +223,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
               padding: const EdgeInsets.all(12),
               margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
-                color: AppColors.cyberSurfaceContainerLowest,
+                color: Theme.of(context).colorScheme.surfaceContainerLowest,
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
                   color: widget.errorLog != null
@@ -258,7 +257,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                   ),
                   child: Text(
                     context.localization.cancel.toUpperCase(),
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 11, fontWeight: .bold, letterSpacing: 1),
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
               ),
@@ -266,9 +265,6 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                 child: ElevatedButton(
                   onPressed: widget.isConnecting ? null : widget.onConnectPressed,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.cyberCyan,
-                    foregroundColor: AppColors.cyberSurface,
-                    elevation: 0,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                     disabledBackgroundColor: AppColors.cyberCyan.withValues(alpha: 0.3),
@@ -284,11 +280,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                         )
                       : Text(
                           context.localization.connect.toUpperCase(),
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            fontSize: 11,
-                            fontWeight: .bold,
-                            letterSpacing: 1,
-                          ),
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                 ),
               ),
@@ -309,13 +301,17 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
     return InputDecoration(
       labelText: label,
       hintText: hint,
-      prefixIcon: Icon(prefixIcon, color: AppColors.cyberTextMuted, size: 18),
+      prefixIcon: Icon(prefixIcon, color: Theme.of(context).colorScheme.secondary, size: 18),
       suffixIcon: suffixIcon,
-      labelStyle: textTheme.bodySmall?.copyWith(color: AppColors.cyberTextMuted, fontSize: 10, fontWeight: .bold),
+      labelStyle: textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.secondary, fontSize: 10, fontWeight: .bold),
       hintStyle: textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextMuted.withValues(alpha: 0.5), fontSize: 12),
-      floatingLabelStyle: textTheme.bodySmall?.copyWith(color: AppColors.cyberCyan, fontSize: 11, fontWeight: .bold),
+      floatingLabelStyle: textTheme.bodySmall?.copyWith(
+        color: Theme.of(context).colorScheme.secondary,
+        fontSize: 11,
+        fontWeight: .bold,
+      ),
       filled: true,
-      fillColor: AppColors.cyberSurfaceContainerLowest,
+      fillColor: Theme.of(context).colorScheme.surfaceContainerLowest,
       contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
@@ -323,17 +319,17 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: const BorderSide(color: AppColors.cyberCyan, width: 1.5),
+        borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary, width: 1.5),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: const BorderSide(color: AppColors.cyberAlertRed),
+        borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: const BorderSide(color: AppColors.cyberAlertRed, width: 1.5),
+        borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
       ),
-      errorStyle: textTheme.bodySmall?.copyWith(color: AppColors.cyberAlertRed, fontSize: 10, fontWeight: .bold),
+      errorStyle: textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.error, fontSize: 10, fontWeight: .bold),
     );
   }
 }

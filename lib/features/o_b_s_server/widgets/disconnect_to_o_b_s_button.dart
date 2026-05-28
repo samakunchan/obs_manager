@@ -9,12 +9,35 @@ class DisconnectToOBSButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton.icon(
       onPressed: getIt<OBSService>().logout,
-      icon: const Icon(Icons.power_off, color: AppColors.cyberAlertRed, size: 16),
+      icon: const Icon(Icons.power_off, size: 16),
       label: Text(
         context.localization.disconnect.toUpperCase(),
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.cyberAlertRed),
       ),
-      style: OutlinedButton.styleFrom(side: const BorderSide(color: AppColors.cyberAlertRed)),
+      style:
+          OutlinedButton.styleFrom(
+            side: BorderSide(color: Theme.of(context).colorScheme.error),
+          ).copyWith(
+            overlayColor: kAlertOverlayColor,
+            backgroundColor: WidgetStateColor.resolveWith((states) {
+              if (states.contains(WidgetState.hovered)) {
+                return Theme.of(context).colorScheme.error.withValues(alpha: 0.15);
+              }
+              return Colors.transparent;
+            }),
+            foregroundColor: WidgetStateColor.resolveWith((states) {
+              if (states.contains(WidgetState.hovered)) {
+                return Colors.black;
+              }
+              return AppColors.cyberAlertRed;
+            }),
+            iconColor: WidgetStateColor.resolveWith((states) {
+              if (states.contains(WidgetState.hovered)) {
+                return Colors.black;
+              }
+              return AppColors.cyberAlertRed;
+            }),
+            textStyle: kAlertTextStyle,
+          ),
     );
   }
 }

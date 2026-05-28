@@ -76,9 +76,9 @@
   "@muted": {
     "description": "Muted audio status label"
   },
-  "recordingDecibelsLive": "Recording decibels live",
+  "recordingDecibelsLive": "Toggle the microphone in live",
   "@recordingDecibelsLive": {
-    "description": "Recording decibels status label"
+    "description": "Toggle microphone status label"
   },
   "connectToActiveObsServer": "Connect to active OBS server",
   "@connectToActiveObsServer": {
@@ -225,7 +225,7 @@
   "@recStandby": {
     "description": "Streaming standby status badge label"
   },
-  "presetsLoaded": "{count, plural, =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}",
+  "presetsLoaded": "{count, plural, =0{0 PRESETS LOADED} =1{1 PRESET LOADED} other{{count} PRESETS LOADED}}",
   "@presetsLoaded": {
     "description": "Count of presets loaded in scenes header",
     "placeholders": {
@@ -325,5 +325,21 @@
   "reconnectingMessage": "WiFi network connection detected.\n\nRe-establishing secure local WebSocket links and synchronizing scene pipelines with OBS Studio...",
   "@reconnectingMessage": {
     "description": "Reconnection progress descriptive details message"
+  },
+  "themeMode": "Theme Mode",
+  "@themeMode": {
+    "description": "Label for the theme mode selector in the drawer"
+  },
+  "themeLight": "Light",
+  "@themeLight": {
+    "description": "Light theme mode option label"
+  },
+  "themeDark": "Dark",
+  "@themeDark": {
+    "description": "Dark theme mode option label"
+  },
+  "themeSystem": "System",
+  "@themeSystem": {
+    "description": "System theme mode option label"
   }
 }

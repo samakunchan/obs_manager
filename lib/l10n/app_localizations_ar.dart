@@ -66,7 +66,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get muted => 'كتم الصوت';
 
   @override
-  String get recordingDecibelsLive => 'تسجيل الديسيبل مباشرة';
+  String get recordingDecibelsLive => 'تفعيل / إيقاف الميكروفون مباشرة';
 
   @override
   String get connectToActiveObsServer => 'الاتصال بخادم OBS النشط';
@@ -272,4 +272,16 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get reconnectingMessage =>
       'تم اكتشاف اتصال بشبكة WiFi.\n\nجاري إعادة إنشاء روابط WebSocket المحلية الآمنة ومزامنة خطوط المشهد مع OBS Studio...';
+
+  @override
+  String get themeMode => 'وضع المظهر';
+
+  @override
+  String get themeLight => 'فاتح';
+
+  @override
+  String get themeDark => 'داكن';
+
+  @override
+  String get themeSystem => 'النظام';
 }

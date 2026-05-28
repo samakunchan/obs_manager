@@ -139,10 +139,10 @@ class _ConnectToOBSDialogState extends State<ConnectToOBSDialog> {
       child: Center(
         child: SingleChildScrollView(
           child: Dialog(
-            backgroundColor: AppColors.cyberSurfaceContainerLow,
+            backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusSecondary),
-              side: const BorderSide(color: AppColors.cyberCyan, width: 1.5),
+              side: BorderSide(color: Theme.of(context).colorScheme.secondary, width: 1.5),
             ),
             insetPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
             child: Container(

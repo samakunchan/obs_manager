@@ -25,7 +25,7 @@ class MobileLayout extends StatelessWidget {
         /// Scene header + count
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
-          child: ScenesHeader(presetsCount: scenes.length),
+          child: ScenesHeader(presetsCount: isConnected ? scenes.length : 0),
         ),
 
         /// Scenes
