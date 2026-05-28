@@ -18,7 +18,7 @@ class BottomNavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isActive ? AppColors.cyberCyan : AppColors.cyberTextMuted;
+    final Color color = isActive ? Theme.of(context).colorScheme.secondary : AppColors.cyberTextMuted;
 
     return Material(
       color: Colors.transparent,
@@ -28,7 +28,7 @@ class BottomNavButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             spacing: 4,
             children: [
               Icon(icon, size: 20, color: color),
@@ -79,7 +79,7 @@ class BottomActionBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
-        color: AppColors.cyberSurfaceContainerLow.withValues(alpha: 0.8),
+        color: Theme.of(context).colorScheme.surfaceContainerLow.withValues(alpha: 0.8),
         border: const Border(top: BorderSide(color: Color(0x3B00E5FF))),
       ),
       child: Row(
@@ -108,7 +108,7 @@ class BottomActionBar extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: ElevatedButton.icon(
+              child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: streamStatus == StatusStream.started || streamStatus == StatusStream.isStopping
                       ? AppColors.cyberAlertRed
@@ -120,10 +120,22 @@ class BottomActionBar extends StatelessWidget {
                   elevation: 8,
                 ),
                 onPressed: onToggleStream,
-                icon: const Icon(Icons.rocket_launch, size: 20),
-                label: Text(
-                  streamStatusMessage,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.cyberSurface),
+                child: Row(
+                  children: [
+                    const Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Icon(Icons.rocket_launch, size: 20),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Text(
+                        streamStatusMessage,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.cyberSurface),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

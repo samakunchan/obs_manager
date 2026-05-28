@@ -18,7 +18,7 @@ InputDecoration buildInputDecoration({
     hintStyle: textTheme.bodyMedium?.copyWith(color: AppColors.cyberTextMuted.withValues(alpha: 0.5), fontSize: 12),
     floatingLabelStyle: textTheme.bodySmall?.copyWith(color: AppColors.cyberCyan, fontSize: 11, fontWeight: .bold),
     filled: true,
-    fillColor: AppColors.cyberSurfaceContainerLowest,
+    fillColor: Theme.of(context).colorScheme.surfaceContainerLowest,
     contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),

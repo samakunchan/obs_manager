@@ -19,7 +19,7 @@
   "quickAudioControl": "快速音频控制",
   "obsOffline": "OBS 离线",
   "muted": "已静音",
-  "recordingDecibelsLive": "实时分贝录制中",
+  "recordingDecibelsLive": "开启/关闭实时麦克风",
   "connectToActiveObsServer": "连接到活动的 OBS 服务器",
   "scenesDirectory": "场景目录",
   "chooseVisibleMainScenes": "选择可见的主场景",
@@ -78,5 +78,9 @@
   "scanningSystem": "正在扫描系统...",
   "rescanConnection": "重新扫描连接",
   "linkRestoration": "链接恢复",
-  "reconnectingMessage": "已检测到 WiFi 网络连接。\n\n正在重新建立安全的本地 WebSocket 链接并与 OBS Studio 同步场景管道..."
+  "reconnectingMessage": "已检测到 WiFi 网络连接。\n\n正在重新建立安全的本地 WebSocket 链接并与 OBS Studio 同步场景管道...",
+  "themeMode": "主题模式",
+  "themeLight": "浅色",
+  "themeDark": "深色",
+  "themeSystem": "系统"
 }

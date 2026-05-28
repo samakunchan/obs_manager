@@ -19,7 +19,7 @@
   "quickAudioControl": "التحكم السريع في الصوت",
   "obsOffline": "OBS غير متصل",
   "muted": "كتم الصوت",
-  "recordingDecibelsLive": "تسجيل الديسيبل مباشرة",
+  "recordingDecibelsLive": "تفعيل / إيقاف الميكروفون مباشرة",
   "connectToActiveObsServer": "الاتصال بخادم OBS النشط",
   "scenesDirectory": "دليل المشاهد",
   "chooseVisibleMainScenes": "اختر المشاهد الرئيسية المرئية",
@@ -78,5 +78,9 @@
   "scanningSystem": "جاري فحص النظام...",
   "rescanConnection": "إعادة فحص الاتصال",
   "linkRestoration": "استعادة الاتصال",
-  "reconnectingMessage": "تم اكتشاف اتصال بشبكة WiFi.\n\nجاري إعادة إنشاء روابط WebSocket المحلية الآمنة ومزامنة خطوط المشهد مع OBS Studio..."
+  "reconnectingMessage": "تم اكتشاف اتصال بشبكة WiFi.\n\nجاري إعادة إنشاء روابط WebSocket المحلية الآمنة ومزامنة خطوط المشهد مع OBS Studio...",
+  "themeMode": "وضع المظهر",
+  "themeLight": "فاتح",
+  "themeDark": "داكن",
+  "themeSystem": "النظام"
 }

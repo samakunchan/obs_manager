@@ -149,9 +149,8 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
 
       return Scaffold(
         key: _scaffoldKey,
-        backgroundColor: AppColors.cyberSurface,
         drawer: const StationDrawer(),
-        floatingActionButton: MenuBurgerSidebar(onDrawerPressed: () => _scaffoldKey.currentState?.openDrawer()),
+        floatingActionButton: MenuBurgerSidebar(onDrawerPressed: _scaffoldKey.currentState?.openDrawer),
         floatingActionButtonLocation: .startTop,
         body: Stack(
           children: [

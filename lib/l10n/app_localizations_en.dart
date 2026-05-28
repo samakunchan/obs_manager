@@ -66,7 +66,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get muted => 'Muted';
 
   @override
-  String get recordingDecibelsLive => 'Recording decibels live';
+  String get recordingDecibelsLive => 'Toggle the microphone in live';
 
   @override
   String get connectToActiveObsServer => 'Connect to active OBS server';
@@ -189,6 +189,7 @@ class AppLocalizationsEn extends AppLocalizations {
       locale: localeName,
       other: '$count PRESETS LOADED',
       one: '1 PRESET LOADED',
+      zero: '0 PRESETS LOADED',
     );
     return '$_temp0';
   }
@@ -266,4 +267,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get reconnectingMessage =>
       'WiFi network connection detected.\n\nRe-establishing secure local WebSocket links and synchronizing scene pipelines with OBS Studio...';
+
+  @override
+  String get themeMode => 'Theme Mode';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
+
+  @override
+  String get themeSystem => 'System';
 }

@@ -11,7 +11,7 @@ class OfflineSourcesPlaceholder extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
       decoration: BoxDecoration(
-        color: AppColors.cyberSurfaceContainerHigh.withValues(alpha: 0.2),
+        color: Theme.of(context).colorScheme.surfaceContainerHigh.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusQuaternary),
         border: Border.all(
           color: AppColors.cyberHighlight,

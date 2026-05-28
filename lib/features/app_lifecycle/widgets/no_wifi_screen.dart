@@ -72,24 +72,20 @@ class _NoWifiScreenState extends State<NoWifiScreen> with SingleTickerProviderSt
                           padding: const EdgeInsets.all(28),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: AppColors.cyberAlertRed.withAlpha((20 * _pulseAnimation.value).toInt()),
+                            color: Theme.of(context).colorScheme.error.withAlpha((20 * _pulseAnimation.value).toInt()),
                             border: Border.all(
-                              color: AppColors.cyberAlertRed.withAlpha((100 * _pulseAnimation.value).toInt()),
+                              color: Theme.of(context).colorScheme.error.withAlpha((100 * _pulseAnimation.value).toInt()),
                               width: 2,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: AppColors.cyberAlertRed.withAlpha((40 * _pulseAnimation.value).toInt()),
+                                color: Theme.of(context).colorScheme.error.withAlpha((40 * _pulseAnimation.value).toInt()),
                                 blurRadius: 30 * _pulseAnimation.value,
                                 spreadRadius: 5 * _pulseAnimation.value,
                               ),
                             ],
                           ),
-                          child: const Icon(
-                            Icons.wifi_off_rounded,
-                            size: 72,
-                            color: AppColors.cyberAlertRed,
-                          ),
+                          child: Icon(Icons.wifi_off_rounded, size: 72, color: Theme.of(context).colorScheme.error),
                         );
                       },
                     ),
@@ -103,7 +99,7 @@ class _NoWifiScreenState extends State<NoWifiScreen> with SingleTickerProviderSt
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 32,
                         letterSpacing: 2,
-                        color: AppColors.cyberAlertRed,
+                        color: Theme.of(context).colorScheme.error,
                       ),
                     ),
                   ),
@@ -111,7 +107,7 @@ class _NoWifiScreenState extends State<NoWifiScreen> with SingleTickerProviderSt
                     width: 60,
                     height: 3,
                     decoration: BoxDecoration(
-                      color: AppColors.cyberAlertRed,
+                      color: Theme.of(context).colorScheme.error,
                       borderRadius: BorderRadius.circular(1.5),
                     ),
                   ),
@@ -139,7 +135,7 @@ class _NoWifiScreenState extends State<NoWifiScreen> with SingleTickerProviderSt
                         onPressed: _isChecking ? null : _handleRetry,
                         style: OutlinedButton.styleFrom(
                           side: BorderSide(
-                            color: _isChecking ? AppColors.cyberTextMuted.withAlpha(80) : AppColors.cyberAlertRed,
+                            color: _isChecking ? AppColors.cyberTextMuted.withAlpha(80) : Theme.of(context).colorScheme.error,
                             width: 1.5,
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -152,24 +148,24 @@ class _NoWifiScreenState extends State<NoWifiScreen> with SingleTickerProviderSt
                           spacing: 10,
                           children: [
                             if (_isChecking)
-                              const SizedBox(
+                              SizedBox(
                                 width: 18,
                                 height: 18,
                                 child: CircularProgressIndicator(
                                   strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.cyberAlertRed),
+                                  valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.error),
                                 ),
                               )
                             else
-                              const Icon(
+                              Icon(
                                 Icons.sync_rounded,
-                                color: AppColors.cyberAlertRed,
+                                color: Theme.of(context).colorScheme.error,
                                 size: 18,
                               ),
                             Text(
                               _isChecking ? context.localizations.scanningSystem : context.localizations.rescanConnection,
                               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: _isChecking ? AppColors.cyberTextMuted : AppColors.cyberAlertRed,
+                                color: _isChecking ? AppColors.cyberTextMuted : Theme.of(context).colorScheme.error,
                                 fontWeight: .bold,
                                 fontSize: 12,
                                 letterSpacing: 1,

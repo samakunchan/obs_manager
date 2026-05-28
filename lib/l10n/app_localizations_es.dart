@@ -66,7 +66,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get muted => 'Silenciado';
 
   @override
-  String get recordingDecibelsLive => 'Grabando decibelios en vivo';
+  String get recordingDecibelsLive => 'Activar / Desactivar el micrófono en vivo';
 
   @override
   String get connectToActiveObsServer => 'Conectarse al servidor OBS activo';
@@ -189,6 +189,7 @@ class AppLocalizationsEs extends AppLocalizations {
       locale: localeName,
       other: '$count PREAJUSTES CARGADOS',
       one: '1 PREAJUSTE CARGADO',
+      zero: '0 PREAJUSTES CARGADOS',
     );
     return '$_temp0';
   }
@@ -266,4 +267,16 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get reconnectingMessage =>
       'Conexión de red WiFi detectada.\n\nReestableciendo enlaces locales seguros de WebSocket y sincronizando los canales de escenas con OBS Studio...';
+
+  @override
+  String get themeMode => 'Modo de Tema';
+
+  @override
+  String get themeLight => 'Claro';
+
+  @override
+  String get themeDark => 'Oscuro';
+
+  @override
+  String get themeSystem => 'Sistema';
 }

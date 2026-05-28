@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/app_lifecycle/app_lifecycle.dart';
 import 'package:obs_manager/features/o_b_s_scenes/o_b_s_scenes.dart';
 import 'package:obs_manager/features/o_b_s_server/services/fake_services.dart';
@@ -16,7 +17,8 @@ void setupLocator(SharedPreferences prefs) {
     ..registerSingleton<SharedPreferences>(prefs)
     ..registerLazySingleton<PersistancesService>(() => PersistancesService(getIt<SharedPreferences>()))
     ..registerLazySingleton<PersistancesLogsService>(() => PersistancesLogsService(getIt<SharedPreferences>()))
-    ..registerLazySingleton<PersistancesScenesService>(() => PersistancesScenesService(getIt<SharedPreferences>()));
+    ..registerLazySingleton<PersistancesScenesService>(() => PersistancesScenesService(getIt<SharedPreferences>()))
+    ..registerLazySingleton<ThemeService>(() => ThemeService(getIt<SharedPreferences>()));
 
   if (kIsWeb) {
     getIt

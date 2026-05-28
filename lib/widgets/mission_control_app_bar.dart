@@ -20,7 +20,7 @@ class MissionControlAppBar extends StatelessWidget {
           height: 64,
           padding: const EdgeInsets.symmetric(horizontal: AppDefaultValues.kBorderRadiusPrimary),
           decoration: BoxDecoration(
-            color: AppColors.cyberSurfaceContainer.withValues(alpha: 0.6),
+            color: Theme.of(context).colorScheme.surfaceContainer.withValues(alpha: 0.6),
             border: const Border(bottom: BorderSide(color: Color(0x1F3B494C))),
           ),
           child: Row(
@@ -32,7 +32,7 @@ class MissionControlAppBar extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontSize: 20,
                     letterSpacing: 1.5,
-                    color: AppColors.cyberCyan,
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
                   textAlign: .center,
                 ),

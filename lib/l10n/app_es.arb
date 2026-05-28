@@ -19,7 +19,7 @@
   "quickAudioControl": "Control de Audio Rápido",
   "obsOffline": "OBS Fuera de Línea",
   "muted": "Silenciado",
-  "recordingDecibelsLive": "Grabando decibelios en vivo",
+  "recordingDecibelsLive": "Activar / Desactivar el micrófono en vivo",
   "connectToActiveObsServer": "Conectarse al servidor OBS activo",
   "scenesDirectory": "Directorio de Escenas",
   "chooseVisibleMainScenes": "Elegir Escenas Principales Visibles",
@@ -55,7 +55,7 @@
   "panelControl": "Panel de Control",
   "onAir": "En Vivo",
   "recStandby": "Grabando: En espera",
-  "presetsLoaded": "{count, plural, =1{1 PREAJUSTE CARGADO} other{{count} PREAJUSTES CARGADOS}}",
+  "presetsLoaded": "{count, plural, =0{0 PREAJUSTES CARGADOS} =1{1 PREAJUSTE CARGADO} other{{count} PREAJUSTES CARGADOS}}",
   "noSourcesDetected": "Ninguna fuente detectada",
   "sourcesOffline": "Fuentes Fuera de Línea",
   "connectObsToLoadInputs": "Conéctese al servidor OBS para cargar las entradas de escena activas.",
@@ -78,5 +78,9 @@
   "scanningSystem": "ESCANEANDO SISTEMA...",
   "rescanConnection": "REESCANEAR CONEXIÓN",
   "linkRestoration": "RESTAURACIÓN DEL ENLACE",
-  "reconnectingMessage": "Conexión de red WiFi detectada.\n\nReestableciendo enlaces locales seguros de WebSocket y sincronizando los canales de escenas con OBS Studio..."
+  "reconnectingMessage": "Conexión de red WiFi detectada.\n\nReestableciendo enlaces locales seguros de WebSocket y sincronizando los canales de escenas con OBS Studio...",
+  "themeMode": "Modo de Tema",
+  "themeLight": "Claro",
+  "themeDark": "Oscuro",
+  "themeSystem": "Sistema"
 }

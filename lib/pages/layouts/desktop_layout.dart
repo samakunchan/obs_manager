@@ -30,7 +30,7 @@ class DesktopLayout extends StatelessWidget {
           child: Column(
             crossAxisAlignment: .start,
             children: [
-              ScenesHeader(presetsCount: scenes.length),
+              ScenesHeader(presetsCount: isConnected ? scenes.length : 0),
               const SizedBox(height: 12),
               if (isConnected)
                 ScenesGrid(

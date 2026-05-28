@@ -1,12 +1,12 @@
-import 'dart:ui';
-
+import 'package:flutter/material.dart';
 import 'package:obs_manager/core/theme/constantes.dart';
 
 class AppUtils {
-  static Color highlightColor({required bool isActive}) {
-    return isActive
+  @Deprecated('Plus besoin')
+  static Color highlightColor({required BuildContext context, required bool isActive}) {
+    return !isActive
         ? AppColors
               .cyberHighlight // Cyber Cyan background highlight
-        : AppColors.cyberSurfaceContainerLow;
+        : Theme.of(context).colorScheme.secondary;
   }
 }

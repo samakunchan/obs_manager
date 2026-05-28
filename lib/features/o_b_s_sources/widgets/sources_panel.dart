@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:obs_manager/core/index.dart';
 import 'package:obs_manager/features/o_b_s_server/services/services.dart';
 import 'package:obs_manager/features/o_b_s_sources/o_b_s_sources.dart';
+import 'package:obs_websocket/obs_websocket.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
 /// Active video and image input sources panel
@@ -60,7 +61,7 @@ class SourcesPanel extends StatelessWidget {
             ),
           );
         } else {
-          for (final source in currentSources) {
+          for (final SceneItemDetail source in currentSources) {
             children.add(
               SourceRow(
                 icon: _getIconForSource(source.inputKind ?? ''),
@@ -76,7 +77,7 @@ class SourcesPanel extends StatelessWidget {
       return Container(
         padding: const EdgeInsets.all(AppDefaultValues.kBorderRadiusPrimary),
         decoration: BoxDecoration(
-          color: AppColors.cyberSurfaceContainer.withValues(alpha: 0.6),
+          color: Theme.of(context).colorScheme.surfaceContainer.withValues(alpha: 0.6),
           borderRadius: BorderRadius.circular(AppDefaultValues.kBorderRadiusSecondary),
           border: Border.all(color: const Color(0x1F4FC3F7)),
         ),

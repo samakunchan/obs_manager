@@ -115,7 +115,7 @@ class _ConnectToOBSScannerViewState extends State<ConnectToOBSScannerView> {
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: AppColors.cyberSurfaceContainerLow.withValues(alpha: 0.5),
+                          color: Theme.of(context).colorScheme.surfaceContainerLow.withValues(alpha: 0.5),
                           width: 12,
                         ),
                       ),
@@ -142,7 +142,7 @@ class _ConnectToOBSScannerViewState extends State<ConnectToOBSScannerView> {
             padding: const EdgeInsets.all(12),
             margin: const EdgeInsets.only(bottom: 20),
             decoration: BoxDecoration(
-              color: AppColors.cyberSurfaceContainerLowest,
+              color: Theme.of(context).colorScheme.surfaceContainerLowest,
               borderRadius: BorderRadius.circular(8),
               border: Border.all(color: AppColors.cyberAlertRed.withValues(alpha: 0.5)),
             ),

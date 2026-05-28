@@ -17,12 +17,14 @@ class RecStatusBadge extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
-              color: const Color(0x1AFF1744), // cyberAlertRed 10%
+              color: isStreaming
+                  ? AppColors.successColor.withValues(alpha: 0.3)
+                  : Theme.of(context).colorScheme.error.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: isStreaming
                     ? AppColors.successColor.withValues(alpha: 0.3)
-                    : AppColors.cyberAlertRed.withValues(alpha: 0.3),
+                    : Theme.of(context).colorScheme.error.withValues(alpha: 0.3),
               ),
             ),
             child: Row(
@@ -39,7 +41,7 @@ class RecStatusBadge extends StatelessWidget {
                         height: 8,
                         decoration: BoxDecoration(
                           shape: .circle,
-                          color: isStreaming ? AppColors.successColor : AppColors.cyberAlertRed,
+                          color: isStreaming ? AppColors.successColor : Theme.of(context).colorScheme.error,
                         ),
                       ),
                     );
@@ -50,7 +52,7 @@ class RecStatusBadge extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     fontSize: 11,
                     fontWeight: .bold,
-                    color: isStreaming ? AppColors.successColor : AppColors.cyberAlertRed,
+                    color: isStreaming ? AppColors.successColor : Theme.of(context).colorScheme.error,
                   ),
                 ),
               ],
