@@ -19,7 +19,7 @@
   "quickAudioControl": "التحكم السريع في الصوت",
   "obsOffline": "OBS غير متصل",
   "muted": "كتم الصوت",
-  "recordingDecibelsLive": "تسجيل الديسيبل مباشرة",
+  "recordingDecibelsLive": "تفعيل / إيقاف الميكروفون مباشرة",
   "connectToActiveObsServer": "الاتصال بخادم OBS النشط",
   "scenesDirectory": "دليل المشاهد",
   "chooseVisibleMainScenes": "اختر المشاهد الرئيسية المرئية",

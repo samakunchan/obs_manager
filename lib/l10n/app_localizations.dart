@@ -209,10 +209,10 @@ abstract class AppLocalizations {
   /// **'Muted'**
   String get muted;
 
-  /// Recording decibels status label
+  /// Toggle microphone status label
   ///
   /// In en, this message translates to:
-  /// **'Recording decibels live'**
+  /// **'Toggle the microphone in live'**
   String get recordingDecibelsLive;
 
   /// Connect prompt description

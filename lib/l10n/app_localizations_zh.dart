@@ -66,7 +66,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get muted => '已静音';
 
   @override
-  String get recordingDecibelsLive => '实时分贝录制中';
+  String get recordingDecibelsLive => '开启/关闭实时麦克风';
 
   @override
   String get connectToActiveObsServer => '连接到活动的 OBS 服务器';

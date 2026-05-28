@@ -66,7 +66,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get muted => 'كتم الصوت';
 
   @override
-  String get recordingDecibelsLive => 'تسجيل الديسيبل مباشرة';
+  String get recordingDecibelsLive => 'تفعيل / إيقاف الميكروفون مباشرة';
 
   @override
   String get connectToActiveObsServer => 'الاتصال بخادم OBS النشط';

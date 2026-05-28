@@ -66,7 +66,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get muted => 'Muet';
 
   @override
-  String get recordingDecibelsLive => 'Enregistrement des décibels en direct';
+  String get recordingDecibelsLive => 'Activer / Désactiver le micro en direct';
 
   @override
   String get connectToActiveObsServer => 'Connecter à un serveur OBS actif';

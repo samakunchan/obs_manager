@@ -19,7 +19,7 @@
   "quickAudioControl": "Contrôle Audio Rapide",
   "obsOffline": "OBS Hors ligne",
   "muted": "Muet",
-  "recordingDecibelsLive": "Enregistrement des décibels en direct",
+  "recordingDecibelsLive": "Activer / Désactiver le micro en direct",
   "connectToActiveObsServer": "Connecter à un serveur OBS actif",
   "scenesDirectory": "Répertoire des scènes",
   "chooseVisibleMainScenes": "Choisir les scènes principales visibles",

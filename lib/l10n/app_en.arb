@@ -76,9 +76,9 @@
   "@muted": {
     "description": "Muted audio status label"
   },
-  "recordingDecibelsLive": "Recording decibels live",
+  "recordingDecibelsLive": "Toggle the microphone in live",
   "@recordingDecibelsLive": {
-    "description": "Recording decibels status label"
+    "description": "Toggle microphone status label"
   },
   "connectToActiveObsServer": "Connect to active OBS server",
   "@connectToActiveObsServer": {
