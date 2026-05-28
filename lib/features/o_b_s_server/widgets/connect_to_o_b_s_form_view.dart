@@ -56,7 +56,7 @@ class _ConnectToOBSFormViewState extends State<ConnectToOBSFormView> {
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: Theme.of(context).colorScheme.secondary),
                 ),
-                child: Icon(Icons.settings_input_component, size: 20),
+                child: const Icon(Icons.settings_input_component, size: 20),
               ),
               Expanded(
                 child: Column(

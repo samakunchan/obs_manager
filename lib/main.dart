@@ -8,7 +8,7 @@ import 'package:obs_manager/features/o_b_s_server/services/o_b_s_service.dart';
 import 'package:obs_manager/l10n/app_localizations.dart';
 import 'package:obs_manager/pages/pages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:signals_flutter/signals_core.dart';
+import 'package:signals_flutter/signals_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,13 +39,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeMode themeMode = getIt<ThemeService>().themeMode.watch(context);
+
     return MaterialApp(
       locale: kIsWeb ? DevicePreview.locale(context) : null,
       builder: kIsWeb ? DevicePreview.appBuilder : null,
       title: 'OBS Manager',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: .system,
+      themeMode: themeMode,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       // Default to system locale, or fallback to first supported

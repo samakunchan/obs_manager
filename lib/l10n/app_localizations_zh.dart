@@ -258,4 +258,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get reconnectingMessage => '已检测到 WiFi 网络连接。\n\n正在重新建立安全的本地 WebSocket 链接并与 OBS Studio 同步场景管道...';
+
+  @override
+  String get themeMode => '主题模式';
+
+  @override
+  String get themeLight => '浅色';
+
+  @override
+  String get themeDark => '深色';
+
+  @override
+  String get themeSystem => '系统';
 }

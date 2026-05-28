@@ -78,5 +78,9 @@
   "scanningSystem": "ANALYSE DU SYSTÈME...",
   "rescanConnection": "RESCANNER LA CONNEXION",
   "linkRestoration": "RESTAURATION DU LIEN",
-  "reconnectingMessage": "Connexion réseau Wi-Fi détectée.\n\nRétablissement des liaisons WebSocket locales sécurisées et synchronisation des scènes avec OBS Studio..."
+  "reconnectingMessage": "Connexion réseau Wi-Fi détectée.\n\nRétablissement des liaisons WebSocket locales sécurisées et synchronisation des scènes avec OBS Studio...",
+  "themeMode": "Mode Thème",
+  "themeLight": "Clair",
+  "themeDark": "Sombre",
+  "themeSystem": "Système"
 }

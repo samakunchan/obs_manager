@@ -279,6 +279,12 @@ class StationDrawer extends StatelessWidget {
               ),
             ),
 
+            /// Theme Mode Selector
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: ThemeModeSelector(),
+            ),
+
             /// OBS Connection Controls
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
@@ -310,8 +316,130 @@ class StationDrawer extends StatelessWidget {
                 onPressed: Navigator.of(context).pop,
                 child: Text(
                   context.localization.closeConsole.toUpperCase(),
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 11, fontWeight: .bold),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(fontSize: 11, fontWeight: .bold, color: Theme.of(context).colorScheme.tertiary),
                 ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// A premium cyber-styled theme selector widget
+class ThemeModeSelector extends StatelessWidget {
+  const ThemeModeSelector({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Watch((_) {
+      final ThemeMode currentMode = getIt<ThemeService>().themeMode.value;
+
+      return Column(
+        crossAxisAlignment: .start,
+        spacing: 8,
+        children: [
+          Text(
+            context.localization.themeMode.toUpperCase(),
+            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+              letterSpacing: 1.5,
+              fontSize: 10,
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surfaceContainerLow,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                width: 1.5,
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: _ThemeOptionButton(
+                    icon: Icons.light_mode_outlined,
+                    label: context.localization.themeLight,
+                    isSelected: currentMode == .light,
+                    onTap: () => getIt<ThemeService>().updateThemeMode(.light),
+                  ),
+                ),
+                Expanded(
+                  child: _ThemeOptionButton(
+                    icon: Icons.dark_mode_outlined,
+                    label: context.localization.themeDark,
+                    isSelected: currentMode == .dark,
+                    onTap: () => getIt<ThemeService>().updateThemeMode(.dark),
+                  ),
+                ),
+                Expanded(
+                  child: _ThemeOptionButton(
+                    icon: Icons.settings_brightness_outlined,
+                    label: context.localization.themeSystem,
+                    isSelected: currentMode == .system,
+                    onTap: () => getIt<ThemeService>().updateThemeMode(.system),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    });
+  }
+}
+
+class _ThemeOptionButton extends StatelessWidget {
+  const _ThemeOptionButton({
+    required this.icon,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  final IconData icon;
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final activeColor = theme.brightness == .dark ? AppColors.cyberCyan : theme.colorScheme.primary;
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? theme.colorScheme.surfaceContainerHighest : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: isSelected ? activeColor.withValues(alpha: 0.3) : Colors.transparent,
+            width: 1.5,
+          ),
+        ),
+        child: Column(
+          spacing: 4,
+          children: [
+            Icon(
+              icon,
+              size: 20,
+              color: isSelected ? activeColor : theme.colorScheme.secondary.withValues(alpha: 0.7),
+            ),
+            Text(
+              label,
+              style: theme.textTheme.bodySmall?.copyWith(
+                fontSize: 10,
+                fontWeight: isSelected ? .bold : .normal,
+                color: isSelected ? activeColor : theme.colorScheme.secondary.withValues(alpha: 0.7),
               ),
             ),
           ],

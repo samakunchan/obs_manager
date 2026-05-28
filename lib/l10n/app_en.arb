@@ -325,5 +325,21 @@
   "reconnectingMessage": "WiFi network connection detected.\n\nRe-establishing secure local WebSocket links and synchronizing scene pipelines with OBS Studio...",
   "@reconnectingMessage": {
     "description": "Reconnection progress descriptive details message"
+  },
+  "themeMode": "Theme Mode",
+  "@themeMode": {
+    "description": "Label for the theme mode selector in the drawer"
+  },
+  "themeLight": "Light",
+  "@themeLight": {
+    "description": "Light theme mode option label"
+  },
+  "themeDark": "Dark",
+  "@themeDark": {
+    "description": "Dark theme mode option label"
+  },
+  "themeSystem": "System",
+  "@themeSystem": {
+    "description": "System theme mode option label"
   }
 }

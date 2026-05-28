@@ -266,4 +266,16 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get reconnectingMessage =>
       'Connexion réseau Wi-Fi détectée.\n\nRétablissement des liaisons WebSocket locales sécurisées et synchronisation des scènes avec OBS Studio...';
+
+  @override
+  String get themeMode => 'Mode Thème';
+
+  @override
+  String get themeLight => 'Clair';
+
+  @override
+  String get themeDark => 'Sombre';
+
+  @override
+  String get themeSystem => 'Système';
 }

@@ -78,5 +78,9 @@
   "scanningSystem": "ESCANEANDO SISTEMA...",
   "rescanConnection": "REESCANEAR CONEXIÓN",
   "linkRestoration": "RESTAURACIÓN DEL ENLACE",
-  "reconnectingMessage": "Conexión de red WiFi detectada.\n\nReestableciendo enlaces locales seguros de WebSocket y sincronizando los canales de escenas con OBS Studio..."
+  "reconnectingMessage": "Conexión de red WiFi detectada.\n\nReestableciendo enlaces locales seguros de WebSocket y sincronizando los canales de escenas con OBS Studio...",
+  "themeMode": "Modo de Tema",
+  "themeLight": "Claro",
+  "themeDark": "Oscuro",
+  "themeSystem": "Sistema"
 }
