@@ -6,16 +6,16 @@ import 'package:obs_manager/widgets/widgets.dart';
 import 'package:signals_flutter/signals_flutter.dart';
 
 /// Monitoring Bottom Action Panel displaying connection Metadata and live Event Logs inside the ShowcaseCard.
-class MonitoringActionPanel extends StatefulWidget {
-  const MonitoringActionPanel({required this.onClose, super.key});
+class ActionPanelMonitoring extends StatefulWidget {
+  const ActionPanelMonitoring({required this.onClose, super.key});
 
   final VoidCallback onClose;
 
   @override
-  State<MonitoringActionPanel> createState() => _MonitoringActionPanelState();
+  State<ActionPanelMonitoring> createState() => _ActionPanelMonitoringState();
 }
 
-class _MonitoringActionPanelState extends State<MonitoringActionPanel> {
+class _ActionPanelMonitoringState extends State<ActionPanelMonitoring> {
   final ScrollController _scrollController = ScrollController();
   late final void Function() _disposeLogsEffect;
 

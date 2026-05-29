@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:obs_manager/core/index.dart';
+import 'package:obs_manager/widgets/widgets.dart';
 
 /// Individual navigation button in the bottom action bar
 class BottomNavButton extends StatelessWidget {
@@ -76,6 +77,9 @@ class BottomActionBar extends StatelessWidget {
       StatusStream.stopped => context.localization.startStream.toUpperCase(),
     };
 
+    final double width = MediaQuery.of(context).size.width;
+    final bool isDesktop = width > 800;
+
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(
@@ -104,42 +108,21 @@ class BottomActionBar extends StatelessWidget {
             onTap: onMonitoringTap,
           ),
 
+          if (isDesktop) const Spacer(flex: 2),
+
           /// Central broadcast CTA
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: streamStatus == StatusStream.started || streamStatus == StatusStream.isStopping
-                      ? AppColors.cyberAlertRed
-                      : AppColors.cyberSkyBlue.withValues(alpha: 0.8),
-                  foregroundColor: Colors.black,
-                  shadowColor: streamStatus == StatusStream.started || streamStatus == StatusStream.isStopping
-                      ? AppColors.cyberAlertRed
-                      : AppColors.cyberCyan,
-                  elevation: 8,
-                ),
-                onPressed: onToggleStream,
-                child: Row(
-                  children: [
-                    const Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Icon(Icons.rocket_launch, size: 20),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Text(
-                        streamStatusMessage,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: AppColors.cyberSurface),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+          if (isDesktop)
+            CTACentralBroadcastDesktop(
+              streamStatusMessage: streamStatusMessage,
+              onToggleStream: onToggleStream,
+              streamStatus: streamStatus,
+            )
+          else
+            CTACentralBroadcastMobile(
+              streamStatusMessage: streamStatusMessage,
+              onToggleStream: onToggleStream,
+              streamStatus: streamStatus,
             ),
-          ),
         ],
       ),
     );
