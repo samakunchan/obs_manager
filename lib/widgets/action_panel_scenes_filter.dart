@@ -8,8 +8,8 @@ import 'package:signals_flutter/signals_flutter.dart';
 
 /// Interactive Scenes Overlay Panel wrapped inside BottomActionPanelWrapper.
 /// Focuses strictly on scene visibility filtering: tapping anywhere on the tile toggles its main screen visibility checkbox.
-class ScenesActionPanel extends StatelessWidget {
-  const ScenesActionPanel({
+class ActionPanelScenesFilter extends StatelessWidget {
+  const ActionPanelScenesFilter({
     required this.onClose,
     required this.visibleScenes,
     required this.onSceneVisibilityChanged,
@@ -24,6 +24,14 @@ class ScenesActionPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final OBSScenesService scenesService = getIt<OBSScenesService>();
     final OBSService obsService = getIt<OBSService>();
+    final Orientation orientation = MediaQuery.of(context).orientation;
+    final int countAxis = switch (orientation) {
+      .portrait => 3,
+      .landscape => 5,
+    };
+
+    final double width = MediaQuery.of(context).size.width;
+    final bool isDesktop = width > 800;
 
     return BottomActionPanelWrapper(
       glowColor: Theme.of(context).colorScheme.tertiary,
@@ -79,13 +87,13 @@ class ScenesActionPanel extends StatelessWidget {
                             )
                           : GridView.builder(
                               itemCount: allScenes.length,
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: isDesktop ? countAxis + 2 : countAxis,
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
                                 childAspectRatio: 2,
                               ),
-                              itemBuilder: (context, index) {
+                              itemBuilder: (BuildContext context, int index) {
                                 final Scene scene = allScenes[index];
                                 final bool isChecked = visibleScenes.contains(scene.sceneName);
 
@@ -104,7 +112,9 @@ class ScenesActionPanel extends StatelessWidget {
                     : Center(
                         child: Text(
                           context.localization.connectToObsToListScenes.toUpperCase(),
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10, color: AppColors.cyberTextMuted),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodySmall?.copyWith(fontSize: 10, color: AppColors.cyberTextMuted),
                         ),
                       ),
               ),

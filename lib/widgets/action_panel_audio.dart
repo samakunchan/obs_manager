@@ -10,16 +10,16 @@ import 'package:signals_flutter/signals_flutter.dart';
 
 /// Premium State-of-the-art Glassmorphic Audio Quick Control Panel.
 /// Re-engineered to delegate layouts and transitions to [BottomActionPanelWrapper].
-class AudioActionPanel extends StatefulWidget {
-  const AudioActionPanel({required this.onClose, super.key});
+class ActionPanelAudio extends StatefulWidget {
+  const ActionPanelAudio({required this.onClose, super.key});
 
   final VoidCallback onClose;
 
   @override
-  State<AudioActionPanel> createState() => _AudioActionPanelState();
+  State<ActionPanelAudio> createState() => _ActionPanelAudioState();
 }
 
-class _AudioActionPanelState extends State<AudioActionPanel> {
+class _ActionPanelAudioState extends State<ActionPanelAudio> {
   // Mock Decibel level logic for a premium real-time visualizer effect
   final List<double> _barHeights = List.filled(15, 0.1);
   Timer? _visualizerTimer;
