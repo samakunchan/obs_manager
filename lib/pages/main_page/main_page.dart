@@ -96,7 +96,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
-    final bool isDesktop = width > 900;
+    final bool isDesktop = width > 800;
     final OBSService obsService = getIt<OBSService>();
     final OBSScenesService scenesService = getIt<OBSScenesService>();
 
@@ -209,7 +209,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                 crossAxisAlignment: .stretch,
                 children: [
                   if (_showAudioPanel)
-                    AudioActionPanel(
+                    ActionPanelAudio(
                       onClose: () {
                         setState(() {
                           _showAudioPanel = false;
@@ -217,7 +217,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                       },
                     ),
                   if (_showMonitoringPanel)
-                    MonitoringActionPanel(
+                    ActionPanelMonitoring(
                       onClose: () {
                         setState(() {
                           _showMonitoringPanel = false;
@@ -225,7 +225,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                       },
                     ),
                   if (_showScenesPanel)
-                    ScenesActionPanel(
+                    ActionPanelScenesFilter(
                       onClose: () {
                         setState(() {
                           _showScenesPanel = false;

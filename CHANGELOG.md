@@ -1,5 +1,19 @@
 # CHANGELOG OBS MANAGER
 
+## 🚀 0.9.0 - 29/05/2026
+
+### Added
+- Added missing web platform to deploy to Github Pages.
+- Added configuration for Github Pages.
+- Added a short responsive work for tablets.
+
+### Changed
+- Refacto widgets namespace for convinience.
+
+### Fixed
+- N/A
+
+
 ## 🚀 0.8.4 - 28/05/2026
 
 ### Added
